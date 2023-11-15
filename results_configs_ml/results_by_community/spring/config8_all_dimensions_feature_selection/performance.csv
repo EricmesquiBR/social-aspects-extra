@@ -1,0 +1,15 @@
+﻿config,file,project,type,model,test_precision,test_recall,test_accuracy,test_f1,test_fp,test_fn,test_tp,test_tn,test_auc
+852461,CSV,Spring,implementation,LinearSVMModel,0.77,0.57,0.70,0.65,237,49,123,163,0.70
+852461,CSV,Spring,implementation,RandomForestModel,0.75,0.71,0.73,0.72,217,69,84,202,0.73
+852461,CSV,Spring,implementation,DecisionTreeModel,0.69,0.66,0.68,0.67,200,86,97,189,0.68
+852461,CSV,Spring,implementation,LogisticRegressionModel,0.73,0.63,0.70,0.68,219,67,105,181,0.70
+852461,CSV,Spring,implementation,GaussianNaiveBayesModel,0.77,0.19,0.56,0.29,266,20,233,53,0.56
+852461,CSV,Spring,implementation,GradientBoostingRegressorModel,0.71,0.71,0.71,0.71,204,82,83,203,0.71
+852461,CSV,Spring,design,LinearSVMModel,0.79,0.45,0.66,0.56,211,30,133,108,0.66
+852461,CSV,Spring,design,RandomForestModel,0.75,0.54,0.67,0.62,195,46,112,129,0.67
+852461,CSV,Spring,design,DecisionTreeModel,0.74,0.57,0.68,0.64,191,50,103,138,0.68
+852461,CSV,Spring,design,LogisticRegressionModel,0.80,0.46,0.67,0.59,212,29,129,112,0.67
+852461,CSV,Spring,design,GaussianNaiveBayesModel,0.76,0.09,0.53,0.16,233,8,219,22,0.53
+852461,CSV,Spring,design,GradientBoostingRegressorModel,0.75,0.55,0.68,0.63,195,46,108,133,0.68
+
+

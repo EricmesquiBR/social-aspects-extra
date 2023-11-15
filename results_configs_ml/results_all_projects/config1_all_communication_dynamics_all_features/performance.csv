@@ -1,0 +1,13 @@
+﻿config,file,project,type,model,test_precision,test_recall,test_accuracy,test_f1,test_fp,test_fn,test_tp,test_tn,test_auc
+868161,CSV,All,implementation,LinearSVMModel,0.68,0.45,0.62,0.54,298,82,208,172,0.62
+868161,CSV,All,implementation,RandomForestModel,0.70,0.66,0.69,0.68,274,106,131,249,0.69
+868161,CSV,All,implementation,DecisionTreeModel,0.73,0.64,0.70,0.68,286,94,135,245,0.70
+868161,CSV,All,implementation,LogisticRegressionModel,0.68,0.52,0.64,0.59,285,95,181,199,0.64
+868161,CSV,All,implementation,GaussianNaiveBayesModel,0.52,0.95,0.51,0.66,30,350,20,360,0.51
+868161,CSV,All,implementation,GradientBoostingRegressorModel,0.70,0.65,0.69,0.67,274,106,133,247,0.69
+868161,CSV,All,design,LinearSVMModel,0.68,0.27,0.57,0.38,225,33,188,70,0.57
+868161,CSV,All,design,RandomForestModel,0.62,0.62,0.62,0.61,158,100,98,160,0.62
+868161,CSV,All,design,DecisionTreeModel,0.64,0.64,0.64,0.64,163,95,92,166,0.64
+868161,CSV,All,design,LogisticRegressionModel,0.64,0.43,0.59,0.51,194,64,148,110,0.59
+868161,CSV,All,design,GaussianNaiveBayesModel,0.75,0.27,0.58,0.37,230,28,189,69,0.58
+868161,CSV,All,design,GradientBoostingRegressorModel,0.64,0.60,0.63,0.62,169,89,103,155,0.63

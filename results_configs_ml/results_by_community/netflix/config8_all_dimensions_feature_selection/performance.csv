@@ -1,0 +1,15 @@
+﻿config,file,project,type,model,test_precision,test_recall,test_accuracy,test_f1,test_fp,test_fn,test_tp,test_tn,test_auc
+30774,CSV,Netflix,implementation,LinearSVMModel,0.68,0.55,0.65,0.61,282,98,170,210,0.65
+30774,CSV,Netflix,implementation,RandomForestModel,0.68,0.72,0.69,0.70,251,129,108,272,0.69
+30774,CSV,Netflix,implementation,DecisionTreeModel,0.66,0.68,0.66,0.67,247,133,123,257,0.66
+30774,CSV,Netflix,implementation,LogisticRegressionModel,0.69,0.59,0.66,0.63,276,104,156,224,0.66
+30774,CSV,Netflix,implementation,GaussianNaiveBayesModel,0.70,0.36,0.60,0.47,320,60,243,137,0.60
+30774,CSV,Netflix,implementation,GradientBoostingRegressorModel,0.68,0.72,0.69,0.70,246,134,105,275,0.69
+30774,CSV,Netflix,design,LinearSVMModel,0.69,0.37,0.60,0.48,214,44,162,96,0.60
+30774,CSV,Netflix,design,RandomForestModel,0.67,0.63,0.66,0.64,176,82,96,162,0.66
+30774,CSV,Netflix,design,DecisionTreeModel,0.72,0.51,0.65,0.59,206,52,127,131,0.65
+30774,CSV,Netflix,design,LogisticRegressionModel,0.66,0.47,0.62,0.54,197,61,137,121,0.62
+30774,CSV,Netflix,design,GaussianNaiveBayesModel,0.72,0.23,0.57,0.34,234,24,199,59,0.57
+30774,CSV,Netflix,design,GradientBoostingRegressorModel,0.65,0.53,0.62,0.58,185,73,121,137,0.62
+
+

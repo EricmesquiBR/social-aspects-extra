@@ -1,0 +1,13 @@
+11021,['Google-exoplayer', 'Google-gson', 'Google-guava'],LinearSVMModel,implementation,['C: 1.5969395096763868'; 'kernel: linear'; 'shrinking: false']
+11021,['Google-exoplayer', 'Google-gson', 'Google-guava'],RandomForestModel,implementation,['bootstrap: true'; 'criterion: gini'; 'max_depth: 24'; 'max_features: sqrt'; 'min_samples_split: 10'; 'n_estimators: 50']
+11021,['Google-exoplayer', 'Google-gson', 'Google-guava'],DecisionTreeModel,implementation,['criterion: gini'; 'max_depth: 6'; 'max_features: null'; 'min_samples_split: 10'; 'splitter: best']
+11021,['Google-exoplayer', 'Google-gson', 'Google-guava'],LogisticRegressionModel,implementation,['C: 3.8387002946956352'; 'max_iter: 50']
+11021,['Google-exoplayer', 'Google-gson', 'Google-guava'],GaussianNaiveBayesModel,implementation,['var_smoothing: 1e-10']
+11021,['Google-exoplayer', 'Google-gson', 'Google-guava'],GradientBoostingRegressorModel,implementation,['max_depth: 24'; 'min_samples_split: 5'; 'n_estimators: 10']
+11021,['Google-exoplayer', 'Google-gson', 'Google-guava'],LinearSVMModel,implementation,['C: 8.309500285607943'; 'kernel: linear'; 'shrinking: false']
+11021,['Google-exoplayer', 'Google-gson', 'Google-guava'],RandomForestModel,implementation,['bootstrap: true'; 'criterion: entropy'; 'max_depth: 3'; 'max_features: sqrt'; 'min_samples_split: 10'; 'n_estimators: 50']
+11021,['Google-exoplayer', 'Google-gson', 'Google-guava'],DecisionTreeModel,implementation,['criterion: gini'; 'max_depth: 3'; 'max_features: sqrt'; 'min_samples_split: 10'; 'splitter: best']
+11021,['Google-exoplayer', 'Google-gson', 'Google-guava'],LogisticRegressionModel,implementation,['C: 29.41226573759444'; 'max_iter: 50']
+11021,['Google-exoplayer', 'Google-gson', 'Google-guava'],GaussianNaiveBayesModel,implementation,['var_smoothing: 1e-10']
+11021,['Google-exoplayer', 'Google-gson', 'Google-guava'],GradientBoostingRegressorModel,implementation,['max_depth: 24'; 'min_samples_split: 5'; 'n_estimators: 150']
+

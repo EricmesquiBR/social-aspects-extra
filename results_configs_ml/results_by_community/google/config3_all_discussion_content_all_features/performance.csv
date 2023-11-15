@@ -1,0 +1,14 @@
+﻿config,file,project,type,model,test_precision,test_recall,test_accuracy,test_f1,test_fp,test_fn,test_tp,test_tn,test_auc
+92454,CSV,Google,implementation,LinearSVMModel,0.76,0.26,0.58,0.37,184,19,151,52,0.58
+92454,CSV,Google,implementation,RandomForestModel,0.64,0.56,0.62,0.59,138,65,90,113,0.62
+92454,CSV,Google,implementation,DecisionTreeModel,0.67,0.56,0.64,0.60,147,56,90,113,0.64
+92454,CSV,Google,implementation,LogisticRegressionModel,0.70,0.47,0.63,0.56,161,42,108,95,0.63
+92454,CSV,Google,implementation,GaussianNaiveBayesModel,0.78,0.21,0.56,0.32,187,16,161,42,0.56
+92454,CSV,Google,implementation,GradientBoostingRegressorModel,0.68,0.58,0.66,0.63,149,54,85,118,0.66
+92454,CSV,Google,design,LinearSVMModel,0.62,0.34,0.55,0.40,112,35,98,49,0.55
+92454,CSV,Google,design,RandomForestModel,0.58,0.51,0.57,0.54,94,53,72,75,0.57
+92454,CSV,Google,design,DecisionTreeModel,0.61,0.61,0.61,0.60,89,58,57,90,0.61
+92454,CSV,Google,design,LogisticRegressionModel,0.60,0.46,0.58,0.52,103,44,79,68,0.58
+92454,CSV,Google,design,GaussianNaiveBayesModel,0.65,0.20,0.55,0.30,132,15,118,29,0.55
+92454,CSV,Google,design,GradientBoostingRegressorModel,0.62,0.60,0.62,0.61,94,53,59,88,0.62
+

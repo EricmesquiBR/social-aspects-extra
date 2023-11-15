@@ -1,0 +1,9 @@
+project,type,model,test_precision,test_recall,test_f1,test_accuracy
+Spring,design,DecisionTreeModel,0.74,0.54,0.62,0.67
+Spring,design,GradientBoostingRegressorModel,0.75,0.58,0.65,0.69
+Spring,design,LinearSVMModel,0.79,0.45,0.57,0.66
+Spring,design,RandomForestModel,0.74,0.54,0.62,0.67
+Spring,implementation,DecisionTreeModel,0.75,0.51,0.6,0.67
+Spring,implementation,GradientBoostingRegressorModel,0.76,0.54,0.63,0.68
+Spring,implementation,LinearSVMModel,0.75,0.54,0.62,0.68
+Spring,implementation,RandomForestModel,0.78,0.52,0.62,0.68

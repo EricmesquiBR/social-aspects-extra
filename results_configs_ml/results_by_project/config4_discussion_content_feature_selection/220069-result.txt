@@ -1,0 +1,4370 @@
+--------------
+Configuration:
+Test: False
+ONLY_COMMUNICATION_DYNAMICS_METRICS? False ['discussion_duration', 'discussion_size', 'contributors', 'core_developers', 'newbies', 'mean_time_between_comments', 'last_and_close', 'open_and_first']
+ONLY_DISCUSSION_CONTENT_METRICS? True ['density_design_keywords', 'density_refactoring_keywords', 'number_design_keywords', 'number_refactoring_keywords', 'mean_number_of_words', 'number_of_words']
+ONLY_ORGANIZATIONAL_DYNAMICS_METRICS? False ['newbies', 'newcomers_size', 'team_size', 'users_left_size', 'number_females', 'number_males']
+Balance dataset? True random
+Scale dataset? True
+Feature reduction? True 5
+CV for Hyper parameter search: grid 5 100
+CV for evaluation: 10
+Datasets: ['Google-exoplayer', 'Google-gson', 'Google-guava', 'Netflix-zuul', 'Netflix-Hystrix', 'Netflix-conductor', 'Netflix-eureka', 'Spring-boot', 'Spring-security']
+Models: ['svm', 'random-forest', 'decision-tree', 'logistic-regression', 'naive-bayes', 'gradient-boosting']
+Deep Learning Models: ['neural-network']
+Smell Granularity: ['implementation', 'design']
+--------------
+ML4SocialMetricsImpactfulPatches: Binary classification
+Dataset Google-exoplayer
+**** Smell granularity implementation
+---- Retrieve labeled instances for dataset: Google-exoplayer
+raw number of impactful patches instances: 210
+raw number of not impactful patches instances: 310
+impactful patches instance (after dropping NA)s: 125
+not impactful patches instances (after dropping NA)s: 187
+instances before balancing: Counter({0: 187, 1: 125})
+instances after balancing: Counter({0: 125, 1: 125})
+Features before reduction (total of 6): mean_number_of_words, number_of_words, density_design_keywords, density_refactoring_keywords, number_design_keywords, number_refactoring_keywords
+Features after reduction (total of 1): number_refactoring_keywords
+Feature ranking: 6, 2, 4, 5, 3, 1
+Feature grid scores: mean_test_score, std_test_score, split0_test_score, split1_test_score, split2_test_score, split3_test_score, split4_test_score
+Model LinearSVMModel
+Execution: 1/108
+Started at 2023-10-17 22:29:53
+Test search started at 2023-10-17 22:29:53
+
+Hyperparametrization:
+{
+  "C": 1.764956980698315,
+  "kernel": "linear",
+  "shrinking": false
+}
+Best result: 0.54
+Cross validation started at 2023-10-17 22:29:55
+
+Production model build started at 2023-10-17 22:29:55
+
+Production Model Results:
+Precision scores: 0.00, 1.00, 1.00, 1.00, 0.67, 1.00, 0.67, 1.00, 1.00, 0.00
+Mean precision: 0.73
+
+Recall scores: 0.00, 0.08, 0.08, 0.08, 0.17, 0.08, 0.15, 0.15, 0.08, 0.00
+Mean recall: 0.09
+
+Accuracy scores: 0.52, 0.56, 0.56, 0.56, 0.56, 0.52, 0.52, 0.56, 0.52, 0.48
+Mean Accuracy:  0.54
+
+F1 scores: 0.00, 0.15, 0.15, 0.15, 0.27, 0.14, 0.25, 0.27, 0.14, 0.00
+Mean F1:  0.15
+
+AUC scores: 0.50, 0.54, 0.54, 0.54, 0.54, 0.54, 0.54, 0.58, 0.54, 0.50
+Mean AUC: 0.54
+Features:number_refactoring_keywords
+Coefficients:
+[4.363365868948613]
+CSV,Google-exoplayer,implementation,LinearSVMModel,0.73,0.09,0.54,0.15,123,2,114,11,0.54
+Finished at 2023-10-17 22:29:55
+TIME,Google-exoplayer,implementation,LinearSVMModel,2023-10-17 22:29:53,2023-10-17 22:29:55
+Model RandomForestModel
+Execution: 2/108
+Started at 2023-10-17 22:29:55
+Test search started at 2023-10-17 22:29:55
+
+Hyperparametrization:
+{
+  "bootstrap": true,
+  "criterion": "gini",
+  "max_depth": 6,
+  "max_features": "sqrt",
+  "min_samples_split": 2,
+  "n_estimators": 150
+}
+Best result: 0.552
+Cross validation started at 2023-10-17 22:33:21
+
+Production model build started at 2023-10-17 22:33:22
+
+Production Model Results:
+Precision scores: 0.47, 0.45, 0.38, 0.58, 0.55, 0.43, 0.57, 0.67, 0.53, 0.46
+Mean precision: 0.51
+
+Recall scores: 0.58, 0.42, 0.25, 0.58, 0.50, 0.23, 0.31, 0.46, 0.62, 0.46
+Mean recall: 0.44
+
+Accuracy scores: 0.48, 0.48, 0.44, 0.60, 0.56, 0.44, 0.52, 0.60, 0.52, 0.44
+Mean Accuracy:  0.51
+
+F1 scores: 0.52, 0.43, 0.30, 0.58, 0.52, 0.30, 0.40, 0.55, 0.57, 0.46
+Mean F1:  0.46
+
+AUC scores: 0.48, 0.48, 0.43, 0.60, 0.56, 0.45, 0.53, 0.61, 0.52, 0.44
+Mean AUC: 0.51
+Feature Importances: 
+number_refactoring_keywords      : 1.0000
+
+CSV,Google-exoplayer,implementation,RandomForestModel,0.51,0.44,0.51,0.46,72,53,70,55,0.51
+Finished at 2023-10-17 22:33:22
+TIME,Google-exoplayer,implementation,RandomForestModel,2023-10-17 22:29:55,2023-10-17 22:33:22
+Model DecisionTreeModel
+Execution: 3/108
+Started at 2023-10-17 22:33:22
+Test search started at 2023-10-17 22:33:22
+
+Hyperparametrization:
+{
+  "criterion": "gini",
+  "max_depth": 3,
+  "max_features": "sqrt",
+  "min_samples_split": 2,
+  "splitter": "random"
+}
+Best result: 0.5800000000000001
+Cross validation started at 2023-10-17 22:33:23
+
+Production model build started at 2023-10-17 22:33:23
+
+Production Model Results:
+Precision scores: 0.56, 0.50, 0.83, 0.57, 0.50, 0.25, 0.43, 0.71, 0.88, 0.78
+Mean precision: 0.60
+
+Recall scores: 0.42, 0.58, 0.42, 0.33, 0.42, 0.08, 0.23, 0.77, 0.54, 0.54
+Mean recall: 0.43
+
+Accuracy scores: 0.56, 0.52, 0.68, 0.56, 0.52, 0.40, 0.44, 0.72, 0.72, 0.68
+Mean Accuracy:  0.58
+
+F1 scores: 0.48, 0.54, 0.56, 0.42, 0.45, 0.12, 0.30, 0.74, 0.67, 0.64
+Mean F1:  0.49
+
+AUC scores: 0.55, 0.52, 0.67, 0.55, 0.52, 0.41, 0.45, 0.72, 0.73, 0.69
+Mean AUC: 0.58
+Feature Importances: 
+number_refactoring_keywords      : 1.0000
+
+CSV,Google-exoplayer,implementation,DecisionTreeModel,0.60,0.43,0.58,0.49,91,34,71,54,0.58
+Finished at 2023-10-17 22:33:23
+TIME,Google-exoplayer,implementation,DecisionTreeModel,2023-10-17 22:33:22,2023-10-17 22:33:23
+Model LogisticRegressionModel
+Execution: 4/108
+Started at 2023-10-17 22:33:23
+Test search started at 2023-10-17 22:33:23
+
+Hyperparametrization:
+{
+  "C": 58.52294384031607,
+  "max_iter": 50
+}
+Best result: 0.5960000000000001
+Cross validation started at 2023-10-17 22:33:24
+
+Production model build started at 2023-10-17 22:33:24
+
+Production Model Results:
+Precision scores: 0.86, 0.45, 0.50, 0.50, 0.67, 0.86, 0.50, 0.78, 1.00, 0.67
+Mean precision: 0.68
+
+Recall scores: 0.50, 0.42, 0.42, 0.42, 0.50, 0.46, 0.23, 0.54, 0.31, 0.46
+Mean recall: 0.42
+
+Accuracy scores: 0.72, 0.48, 0.52, 0.52, 0.64, 0.68, 0.48, 0.68, 0.64, 0.60
+Mean Accuracy:  0.60
+
+F1 scores: 0.63, 0.43, 0.45, 0.45, 0.57, 0.60, 0.32, 0.64, 0.47, 0.55
+Mean F1:  0.51
+
+AUC scores: 0.71, 0.48, 0.52, 0.52, 0.63, 0.69, 0.49, 0.69, 0.65, 0.61
+Mean AUC: 0.60
+Features:number_refactoring_keywords
+Coefficients:
+[5.032753630241674]
+CSV,Google-exoplayer,implementation,LogisticRegressionModel,0.68,0.42,0.60,0.51,96,29,72,53,0.60
+Finished at 2023-10-17 22:33:24
+TIME,Google-exoplayer,implementation,LogisticRegressionModel,2023-10-17 22:33:23,2023-10-17 22:33:24
+Model GaussianNaiveBayesModel
+Execution: 5/108
+Started at 2023-10-17 22:33:24
+Test search started at 2023-10-17 22:33:24
+
+Hyperparametrization:
+{
+  "var_smoothing": 1e-10
+}
+Best result: 0.544
+Cross validation started at 2023-10-17 22:33:24
+
+Production model build started at 2023-10-17 22:33:24
+
+Production Model Results:
+Precision scores: 0.00, 0.67, 0.75, 0.80, 1.00, 0.40, 1.00, 0.67, 1.00, 0.56
+Mean precision: 0.68
+
+Recall scores: 0.00, 0.17, 0.25, 0.33, 0.17, 0.15, 0.15, 0.15, 0.23, 0.38
+Mean recall: 0.20
+
+Accuracy scores: 0.48, 0.56, 0.60, 0.64, 0.60, 0.44, 0.56, 0.52, 0.60, 0.52
+Mean Accuracy:  0.55
+
+F1 scores: 0.00, 0.27, 0.38, 0.47, 0.29, 0.22, 0.27, 0.25, 0.38, 0.45
+Mean F1:  0.30
+
+AUC scores: 0.46, 0.54, 0.59, 0.63, 0.58, 0.45, 0.58, 0.54, 0.62, 0.53
+Mean AUC: 0.55
+(Not possible to collect feature importances)
+CSV,Google-exoplayer,implementation,GaussianNaiveBayesModel,0.68,0.20,0.55,0.30,113,12,100,25,0.55
+Finished at 2023-10-17 22:33:24
+TIME,Google-exoplayer,implementation,GaussianNaiveBayesModel,2023-10-17 22:33:24,2023-10-17 22:33:24
+Model GradientBoostingRegressorModel
+Execution: 6/108
+Started at 2023-10-17 22:33:24
+Test search started at 2023-10-17 22:33:24
+
+Hyperparametrization:
+{
+  "max_depth": 3,
+  "min_samples_split": 2,
+  "n_estimators": 10
+}
+Best result: 0.548
+Cross validation started at 2023-10-17 22:33:38
+
+Production model build started at 2023-10-17 22:33:38
+
+Production Model Results:
+Precision scores: 0.50, 0.50, 0.44, 0.58, 0.64, 0.71, 0.40, 0.46, 0.57, 0.40
+Mean precision: 0.52
+
+Recall scores: 0.33, 0.67, 0.33, 0.58, 0.58, 0.38, 0.31, 0.46, 0.62, 0.31
+Mean recall: 0.46
+
+Accuracy scores: 0.52, 0.52, 0.48, 0.60, 0.64, 0.60, 0.40, 0.44, 0.56, 0.40
+Mean Accuracy:  0.52
+
+F1 scores: 0.40, 0.57, 0.38, 0.58, 0.61, 0.50, 0.35, 0.46, 0.59, 0.35
+Mean F1:  0.48
+
+AUC scores: 0.51, 0.53, 0.47, 0.60, 0.64, 0.61, 0.40, 0.44, 0.56, 0.40
+Mean AUC: 0.52
+Feature Importances: 
+number_refactoring_keywords      : 1.0000
+
+CSV,Google-exoplayer,implementation,GradientBoostingRegressorModel,0.52,0.46,0.52,0.48,72,53,68,57,0.52
+Finished at 2023-10-17 22:33:38
+TIME,Google-exoplayer,implementation,GradientBoostingRegressorModel,2023-10-17 22:33:24,2023-10-17 22:33:38
+**** Smell granularity design
+---- Retrieve labeled instances for dataset: Google-exoplayer
+raw number of impactful patches instances: 163
+raw number of not impactful patches instances: 357
+impactful patches instance (after dropping NA)s: 83
+not impactful patches instances (after dropping NA)s: 229
+instances before balancing: Counter({0: 229, 1: 83})
+instances after balancing: Counter({0: 83, 1: 83})
+Features before reduction (total of 6): mean_number_of_words, number_of_words, density_design_keywords, density_refactoring_keywords, number_design_keywords, number_refactoring_keywords
+Features after reduction (total of 6): mean_number_of_words, number_of_words, density_design_keywords, density_refactoring_keywords, number_design_keywords, number_refactoring_keywords
+Feature ranking: 1, 1, 1, 1, 1, 1
+Feature grid scores: mean_test_score, std_test_score, split0_test_score, split1_test_score, split2_test_score, split3_test_score, split4_test_score
+Model LinearSVMModel
+Execution: 7/108
+Started at 2023-10-17 22:33:38
+Test search started at 2023-10-17 22:33:38
+
+Hyperparametrization:
+{
+  "C": 1.3360541525445646,
+  "kernel": "linear",
+  "shrinking": false
+}
+Best result: 0.5235294117647059
+Cross validation started at 2023-10-17 22:33:38
+
+Production model build started at 2023-10-17 22:33:38
+
+Production Model Results:
+Precision scores: 0.50, 0.00, 0.00, 1.00, 0.00, 0.50, 0.50, 0.00, 1.00, 1.00
+Mean precision: 0.45
+
+Recall scores: 0.12, 0.00, 0.00, 0.22, 0.00, 0.11, 0.12, 0.00, 0.12, 0.12
+Mean recall: 0.08
+
+Accuracy scores: 0.53, 0.47, 0.53, 0.59, 0.47, 0.47, 0.50, 0.38, 0.56, 0.56
+Mean Accuracy:  0.51
+
+F1 scores: 0.20, 0.00, 0.00, 0.36, 0.00, 0.18, 0.20, 0.00, 0.22, 0.22
+Mean F1:  0.14
+
+AUC scores: 0.51, 0.44, 0.50, 0.61, 0.50, 0.49, 0.50, 0.38, 0.56, 0.56
+Mean AUC: 0.51
+Features:mean_number_of_words, number_of_words, density_design_keywords, density_refactoring_keywords, number_design_keywords, number_refactoring_keywords
+Coefficients:
+[-0.9511353675552279, 1.5103394882065546, 1.0901450120101, 0.6829007936534471, 1.561059134697842, 1.5306770892272534]
+CSV,Google-exoplayer,design,LinearSVMModel,0.45,0.08,0.51,0.14,77,6,76,7,0.51
+Finished at 2023-10-17 22:33:38
+TIME,Google-exoplayer,design,LinearSVMModel,2023-10-17 22:33:38,2023-10-17 22:33:38
+Model RandomForestModel
+Execution: 8/108
+Started at 2023-10-17 22:33:38
+Test search started at 2023-10-17 22:33:38
+
+Hyperparametrization:
+{
+  "bootstrap": true,
+  "criterion": "gini",
+  "max_depth": 24,
+  "max_features": "sqrt",
+  "min_samples_split": 2,
+  "n_estimators": 10
+}
+Best result: 0.6627450980392157
+Cross validation started at 2023-10-17 22:37:00
+
+Production model build started at 2023-10-17 22:37:00
+
+Production Model Results:
+Precision scores: 0.50, 0.83, 1.00, 1.00, 0.38, 0.57, 0.67, 0.67, 0.44, 0.50
+Mean precision: 0.66
+
+Recall scores: 0.62, 0.62, 0.62, 0.56, 0.33, 0.44, 0.75, 0.50, 0.50, 0.62
+Mean recall: 0.56
+
+Accuracy scores: 0.53, 0.76, 0.82, 0.76, 0.35, 0.53, 0.69, 0.62, 0.44, 0.50
+Mean Accuracy:  0.60
+
+F1 scores: 0.56, 0.71, 0.77, 0.71, 0.35, 0.50, 0.71, 0.57, 0.47, 0.56
+Mean F1:  0.59
+
+AUC scores: 0.53, 0.76, 0.81, 0.78, 0.35, 0.53, 0.69, 0.62, 0.44, 0.50
+Mean AUC: 0.60
+Feature Importances: 
+mean_number_of_words             : 0.3048
+number_of_words                  : 0.2595
+density_design_keywords          : 0.0755
+density_refactoring_keywords     : 0.1472
+number_design_keywords           : 0.0851
+number_refactoring_keywords      : 0.1280
+
+CSV,Google-exoplayer,design,RandomForestModel,0.66,0.56,0.60,0.59,54,29,37,46,0.60
+Finished at 2023-10-17 22:37:00
+TIME,Google-exoplayer,design,RandomForestModel,2023-10-17 22:33:38,2023-10-17 22:37:00
+Model DecisionTreeModel
+Execution: 9/108
+Started at 2023-10-17 22:37:00
+Test search started at 2023-10-17 22:37:00
+
+Hyperparametrization:
+{
+  "criterion": "entropy",
+  "max_depth": 24,
+  "max_features": null,
+  "min_samples_split": 11,
+  "splitter": "random"
+}
+Best result: 0.6324420677361854
+Cross validation started at 2023-10-17 22:37:01
+
+Production model build started at 2023-10-17 22:37:01
+
+Production Model Results:
+Precision scores: 0.33, 0.50, 0.56, 0.50, 0.44, 0.62, 0.25, 0.50, 0.56, 0.50
+Mean precision: 0.48
+
+Recall scores: 0.38, 0.12, 0.62, 0.44, 0.44, 0.56, 0.12, 0.50, 0.62, 0.25
+Mean recall: 0.41
+
+Accuracy scores: 0.35, 0.53, 0.59, 0.47, 0.41, 0.59, 0.38, 0.50, 0.56, 0.50
+Mean Accuracy:  0.49
+
+F1 scores: 0.35, 0.20, 0.59, 0.47, 0.44, 0.59, 0.17, 0.50, 0.59, 0.33
+Mean F1:  0.42
+
+AUC scores: 0.35, 0.51, 0.59, 0.47, 0.41, 0.59, 0.38, 0.50, 0.56, 0.50
+Mean AUC: 0.49
+Feature Importances: 
+mean_number_of_words             : 0.2921
+number_of_words                  : 0.2009
+density_design_keywords          : 0.2355
+density_refactoring_keywords     : 0.1349
+number_design_keywords           : 0.0657
+number_refactoring_keywords      : 0.0710
+
+CSV,Google-exoplayer,design,DecisionTreeModel,0.48,0.41,0.49,0.42,47,36,49,34,0.49
+Finished at 2023-10-17 22:37:01
+TIME,Google-exoplayer,design,DecisionTreeModel,2023-10-17 22:37:00,2023-10-17 22:37:01
+Model LogisticRegressionModel
+Execution: 10/108
+Started at 2023-10-17 22:37:01
+Test search started at 2023-10-17 22:37:01
+
+Hyperparametrization:
+{
+  "C": 63.64520418413541,
+  "max_iter": 50
+}
+Best result: 0.5538324420677362
+Cross validation started at 2023-10-17 22:37:02
+
+Production model build started at 2023-10-17 22:37:02
+
+Production Model Results:
+Precision scores: 0.55, 0.20, 0.50, 0.86, 0.60, 0.67, 0.60, 0.40, 0.50, 0.50
+Mean precision: 0.54
+
+Recall scores: 0.75, 0.12, 0.50, 0.67, 0.33, 0.67, 0.38, 0.25, 0.25, 0.38
+Mean recall: 0.43
+
+Accuracy scores: 0.59, 0.35, 0.53, 0.76, 0.53, 0.65, 0.56, 0.44, 0.50, 0.50
+Mean Accuracy:  0.54
+
+F1 scores: 0.63, 0.15, 0.50, 0.75, 0.43, 0.67, 0.46, 0.31, 0.33, 0.43
+Mean F1:  0.47
+
+AUC scores: 0.60, 0.34, 0.53, 0.77, 0.54, 0.65, 0.56, 0.44, 0.50, 0.50
+Mean AUC: 0.54
+Features:mean_number_of_words, number_of_words, density_design_keywords, density_refactoring_keywords, number_design_keywords, number_refactoring_keywords
+Coefficients:
+[-2.5192313718605726, 8.141367588274651, 1.1277397814732784, 0.5023573314819978, -0.10172191533389084, -0.4780320911896352]
+CSV,Google-exoplayer,design,LogisticRegressionModel,0.54,0.43,0.54,0.47,54,29,47,36,0.54
+Finished at 2023-10-17 22:37:02
+TIME,Google-exoplayer,design,LogisticRegressionModel,2023-10-17 22:37:01,2023-10-17 22:37:02
+Model GaussianNaiveBayesModel
+Execution: 11/108
+Started at 2023-10-17 22:37:02
+Test search started at 2023-10-17 22:37:02
+
+Hyperparametrization:
+{
+  "var_smoothing": 1e-10
+}
+Best result: 0.5664884135472371
+Cross validation started at 2023-10-17 22:37:02
+
+Production model build started at 2023-10-17 22:37:02
+
+Production Model Results:
+Precision scores: 0.75, 0.50, 0.25, 1.00, 0.50, 0.67, 0.50, 1.00, 0.50, 1.00
+Mean precision: 0.67
+
+Recall scores: 0.38, 0.25, 0.12, 0.33, 0.11, 0.22, 0.12, 0.25, 0.12, 0.25
+Mean recall: 0.22
+
+Accuracy scores: 0.65, 0.53, 0.41, 0.65, 0.47, 0.53, 0.50, 0.62, 0.50, 0.62
+Mean Accuracy:  0.55
+
+F1 scores: 0.50, 0.33, 0.17, 0.50, 0.18, 0.33, 0.20, 0.40, 0.20, 0.40
+Mean F1:  0.32
+
+AUC scores: 0.63, 0.51, 0.40, 0.67, 0.49, 0.55, 0.50, 0.62, 0.50, 0.62
+Mean AUC: 0.55
+(Not possible to collect feature importances)
+CSV,Google-exoplayer,design,GaussianNaiveBayesModel,0.67,0.22,0.55,0.32,73,10,65,18,0.55
+Finished at 2023-10-17 22:37:02
+TIME,Google-exoplayer,design,GaussianNaiveBayesModel,2023-10-17 22:37:02,2023-10-17 22:37:02
+Model GradientBoostingRegressorModel
+Execution: 12/108
+Started at 2023-10-17 22:37:02
+Test search started at 2023-10-17 22:37:02
+
+Hyperparametrization:
+{
+  "max_depth": null,
+  "min_samples_split": 10,
+  "n_estimators": 150
+}
+Best result: 0.6386809269162209
+Cross validation started at 2023-10-17 22:37:25
+
+Production model build started at 2023-10-17 22:37:26
+
+Production Model Results:
+Precision scores: 0.57, 0.50, 0.50, 0.64, 0.75, 0.78, 0.58, 0.22, 0.71, 0.44
+Mean precision: 0.57
+
+Recall scores: 0.50, 0.50, 0.62, 0.78, 0.67, 0.78, 0.88, 0.25, 0.62, 0.50
+Mean recall: 0.61
+
+Accuracy scores: 0.59, 0.53, 0.53, 0.65, 0.71, 0.76, 0.62, 0.19, 0.69, 0.44
+Mean Accuracy:  0.57
+
+F1 scores: 0.53, 0.50, 0.56, 0.70, 0.71, 0.78, 0.70, 0.24, 0.67, 0.47
+Mean F1:  0.58
+
+AUC scores: 0.58, 0.53, 0.53, 0.64, 0.71, 0.76, 0.62, 0.19, 0.69, 0.44
+Mean AUC: 0.57
+Feature Importances: 
+mean_number_of_words             : 0.2921
+number_of_words                  : 0.3511
+density_design_keywords          : 0.0612
+density_refactoring_keywords     : 0.1605
+number_design_keywords           : 0.0497
+number_refactoring_keywords      : 0.0855
+
+CSV,Google-exoplayer,design,GradientBoostingRegressorModel,0.57,0.61,0.57,0.58,44,39,32,51,0.57
+Finished at 2023-10-17 22:37:26
+TIME,Google-exoplayer,design,GradientBoostingRegressorModel,2023-10-17 22:37:02,2023-10-17 22:37:26
+Dataset Google-gson
+**** Smell granularity implementation
+---- Retrieve labeled instances for dataset: Google-gson
+raw number of impactful patches instances: 61
+raw number of not impactful patches instances: 399
+impactful patches instance (after dropping NA)s: 54
+not impactful patches instances (after dropping NA)s: 228
+instances before balancing: Counter({0: 228, 1: 54})
+instances after balancing: Counter({0: 54, 1: 54})
+Features before reduction (total of 6): density_design_keywords, density_refactoring_keywords, number_design_keywords, number_refactoring_keywords, mean_number_of_words, number_of_words
+Features after reduction (total of 1): number_refactoring_keywords
+Feature ranking: 6, 5, 4, 1, 3, 2
+Feature grid scores: mean_test_score, std_test_score, split0_test_score, split1_test_score, split2_test_score, split3_test_score, split4_test_score
+Model LinearSVMModel
+Execution: 13/108
+Started at 2023-10-17 22:37:26
+Test search started at 2023-10-17 22:37:26
+
+Hyperparametrization:
+{
+  "C": 5.4974556039972216,
+  "kernel": "linear",
+  "shrinking": false
+}
+Best result: 0.554978354978355
+Cross validation started at 2023-10-17 22:37:26
+
+Production model build started at 2023-10-17 22:37:26
+
+Production Model Results:
+Precision scores: 0.00, 0.00, 0.00, 0.50, 0.00, 1.00, 1.00, 1.00, 0.00, 1.00
+Mean precision: 0.45
+
+Recall scores: 0.00, 0.00, 0.00, 0.20, 0.00, 0.33, 0.50, 0.17, 0.00, 0.20
+Mean recall: 0.14
+
+Accuracy scores: 0.55, 0.55, 0.55, 0.55, 0.45, 0.64, 0.73, 0.55, 0.50, 0.60
+Mean Accuracy:  0.56
+
+F1 scores: 0.00, 0.00, 0.00, 0.29, 0.00, 0.50, 0.67, 0.29, 0.00, 0.33
+Mean F1:  0.21
+
+AUC scores: 0.50, 0.50, 0.50, 0.52, 0.50, 0.67, 0.75, 0.58, 0.50, 0.60
+Mean AUC: 0.56
+Features:number_refactoring_keywords
+Coefficients:
+[4.380952617294804]
+CSV,Google-gson,implementation,LinearSVMModel,0.45,0.14,0.56,0.21,53,1,46,8,0.56
+Finished at 2023-10-17 22:37:26
+TIME,Google-gson,implementation,LinearSVMModel,2023-10-17 22:37:26,2023-10-17 22:37:26
+Model RandomForestModel
+Execution: 14/108
+Started at 2023-10-17 22:37:26
+Test search started at 2023-10-17 22:37:26
+
+Hyperparametrization:
+{
+  "bootstrap": true,
+  "criterion": "gini",
+  "max_depth": 6,
+  "max_features": "sqrt",
+  "min_samples_split": 2,
+  "n_estimators": 10
+}
+Best result: 0.6372294372294373
+Cross validation started at 2023-10-17 22:40:22
+
+Production model build started at 2023-10-17 22:40:23
+
+Production Model Results:
+Precision scores: 0.50, 0.80, 0.60, 0.75, 0.33, 0.57, 0.75, 0.80, 0.57, 0.67
+Mean precision: 0.63
+
+Recall scores: 0.20, 0.80, 0.60, 0.60, 0.33, 0.67, 0.50, 0.67, 0.80, 0.80
+Mean recall: 0.60
+
+Accuracy scores: 0.55, 0.82, 0.64, 0.73, 0.27, 0.55, 0.64, 0.73, 0.60, 0.70
+Mean Accuracy:  0.62
+
+F1 scores: 0.29, 0.80, 0.60, 0.67, 0.33, 0.62, 0.60, 0.73, 0.67, 0.73
+Mean F1:  0.60
+
+AUC scores: 0.52, 0.82, 0.63, 0.72, 0.27, 0.53, 0.65, 0.73, 0.60, 0.70
+Mean AUC: 0.62
+Feature Importances: 
+number_refactoring_keywords      : 1.0000
+
+CSV,Google-gson,implementation,RandomForestModel,0.63,0.60,0.62,0.60,35,19,22,32,0.62
+Finished at 2023-10-17 22:40:23
+TIME,Google-gson,implementation,RandomForestModel,2023-10-17 22:37:26,2023-10-17 22:40:23
+Model DecisionTreeModel
+Execution: 15/108
+Started at 2023-10-17 22:40:23
+Test search started at 2023-10-17 22:40:23
+
+Hyperparametrization:
+{
+  "criterion": "entropy",
+  "max_depth": 12,
+  "max_features": "sqrt",
+  "min_samples_split": 10,
+  "splitter": "best"
+}
+Best result: 0.6562770562770562
+Cross validation started at 2023-10-17 22:40:24
+
+Production model build started at 2023-10-17 22:40:24
+
+Production Model Results:
+Precision scores: 0.60, 1.00, 1.00, 0.50, 0.75, 0.80, 0.60, 0.67, 0.60, 0.60
+Mean precision: 0.71
+
+Recall scores: 0.60, 0.60, 0.80, 0.20, 0.50, 0.67, 0.50, 0.67, 0.60, 0.60
+Mean recall: 0.57
+
+Accuracy scores: 0.64, 0.82, 0.91, 0.55, 0.64, 0.73, 0.55, 0.64, 0.60, 0.60
+Mean Accuracy:  0.67
+
+F1 scores: 0.60, 0.75, 0.89, 0.29, 0.60, 0.73, 0.55, 0.67, 0.60, 0.60
+Mean F1:  0.63
+
+AUC scores: 0.63, 0.80, 0.90, 0.52, 0.65, 0.73, 0.55, 0.63, 0.60, 0.60
+Mean AUC: 0.66
+Feature Importances: 
+number_refactoring_keywords      : 1.0000
+
+CSV,Google-gson,implementation,DecisionTreeModel,0.71,0.57,0.67,0.63,41,13,23,31,0.66
+Finished at 2023-10-17 22:40:24
+TIME,Google-gson,implementation,DecisionTreeModel,2023-10-17 22:40:23,2023-10-17 22:40:24
+Model LogisticRegressionModel
+Execution: 16/108
+Started at 2023-10-17 22:40:24
+Test search started at 2023-10-17 22:40:24
+
+Hyperparametrization:
+{
+  "C": 12.962711212488399,
+  "max_iter": 50
+}
+Best result: 0.6004329004329004
+Cross validation started at 2023-10-17 22:40:25
+
+Production model build started at 2023-10-17 22:40:25
+
+Production Model Results:
+Precision scores: 0.40, 0.67, 0.75, 0.40, 1.00, 0.75, 1.00, 0.50, 0.80, 1.00
+Mean precision: 0.73
+
+Recall scores: 0.40, 0.40, 0.60, 0.40, 0.17, 0.50, 0.17, 0.17, 0.80, 0.60
+Mean recall: 0.42
+
+Accuracy scores: 0.45, 0.64, 0.73, 0.45, 0.55, 0.64, 0.55, 0.45, 0.80, 0.80
+Mean Accuracy:  0.61
+
+F1 scores: 0.40, 0.50, 0.67, 0.40, 0.29, 0.60, 0.29, 0.25, 0.80, 0.75
+Mean F1:  0.49
+
+AUC scores: 0.45, 0.62, 0.72, 0.45, 0.58, 0.65, 0.58, 0.48, 0.80, 0.80
+Mean AUC: 0.61
+Features:number_refactoring_keywords
+Coefficients:
+[2.02018109068226]
+CSV,Google-gson,implementation,LogisticRegressionModel,0.73,0.42,0.61,0.49,43,11,32,22,0.61
+Finished at 2023-10-17 22:40:25
+TIME,Google-gson,implementation,LogisticRegressionModel,2023-10-17 22:40:24,2023-10-17 22:40:25
+Model GaussianNaiveBayesModel
+Execution: 17/108
+Started at 2023-10-17 22:40:25
+Test search started at 2023-10-17 22:40:25
+
+Hyperparametrization:
+{
+  "var_smoothing": 1e-10
+}
+Best result: 0.48268398268398266
+Cross validation started at 2023-10-17 22:40:25
+
+Production model build started at 2023-10-17 22:40:25
+
+Production Model Results:
+Precision scores: 0.40, 0.67, 0.50, 0.50, 0.33, 0.33, 0.38, 0.44, 0.67, 0.57
+Mean precision: 0.48
+
+Recall scores: 0.80, 0.80, 0.80, 1.00, 0.17, 0.17, 0.50, 0.67, 0.80, 0.80
+Mean recall: 0.65
+
+Accuracy scores: 0.36, 0.73, 0.55, 0.55, 0.36, 0.36, 0.27, 0.36, 0.70, 0.60
+Mean Accuracy:  0.48
+
+F1 scores: 0.53, 0.73, 0.62, 0.67, 0.22, 0.22, 0.43, 0.53, 0.73, 0.67
+Mean F1:  0.53
+
+AUC scores: 0.40, 0.73, 0.57, 0.58, 0.38, 0.38, 0.25, 0.33, 0.70, 0.60
+Mean AUC: 0.49
+(Not possible to collect feature importances)
+CSV,Google-gson,implementation,GaussianNaiveBayesModel,0.48,0.65,0.48,0.53,18,36,20,34,0.49
+Finished at 2023-10-17 22:40:25
+TIME,Google-gson,implementation,GaussianNaiveBayesModel,2023-10-17 22:40:25,2023-10-17 22:40:25
+Model GradientBoostingRegressorModel
+Execution: 18/108
+Started at 2023-10-17 22:40:25
+Test search started at 2023-10-17 22:40:25
+
+Hyperparametrization:
+{
+  "max_depth": 3,
+  "min_samples_split": 2,
+  "n_estimators": 100
+}
+Best result: 0.629004329004329
+Cross validation started at 2023-10-17 22:40:35
+
+Production model build started at 2023-10-17 22:40:35
+
+Production Model Results:
+Precision scores: 0.50, 0.60, 0.33, 0.50, 0.83, 0.83, 0.00, 0.67, 1.00, 0.80
+Mean precision: 0.61
+
+Recall scores: 0.60, 0.60, 0.40, 0.20, 0.83, 0.83, 0.00, 0.33, 0.20, 0.80
+Mean recall: 0.48
+
+Accuracy scores: 0.55, 0.64, 0.36, 0.55, 0.82, 0.82, 0.45, 0.55, 0.60, 0.80
+Mean Accuracy:  0.61
+
+F1 scores: 0.55, 0.60, 0.36, 0.29, 0.83, 0.83, 0.00, 0.44, 0.33, 0.80
+Mean F1:  0.50
+
+AUC scores: 0.55, 0.63, 0.37, 0.52, 0.82, 0.82, 0.50, 0.57, 0.60, 0.80
+Mean AUC: 0.62
+Feature Importances: 
+number_refactoring_keywords      : 1.0000
+
+CSV,Google-gson,implementation,GradientBoostingRegressorModel,0.61,0.48,0.61,0.50,40,14,28,26,0.62
+Finished at 2023-10-17 22:40:36
+TIME,Google-gson,implementation,GradientBoostingRegressorModel,2023-10-17 22:40:25,2023-10-17 22:40:36
+**** Smell granularity design
+---- Retrieve labeled instances for dataset: Google-gson
+raw number of impactful patches instances: 55
+raw number of not impactful patches instances: 405
+impactful patches instance (after dropping NA)s: 45
+not impactful patches instances (after dropping NA)s: 237
+instances before balancing: Counter({0: 237, 1: 45})
+instances after balancing: Counter({0: 45, 1: 45})
+Features before reduction (total of 6): density_design_keywords, density_refactoring_keywords, number_design_keywords, number_refactoring_keywords, mean_number_of_words, number_of_words
+Features after reduction (total of 2): density_refactoring_keywords, number_refactoring_keywords
+Feature ranking: 2, 1, 4, 1, 5, 3
+Feature grid scores: mean_test_score, std_test_score, split0_test_score, split1_test_score, split2_test_score, split3_test_score, split4_test_score
+Model LinearSVMModel
+Execution: 19/108
+Started at 2023-10-17 22:40:36
+Test search started at 2023-10-17 22:40:36
+
+Hyperparametrization:
+{
+  "C": 8.92652514926067,
+  "kernel": "linear",
+  "shrinking": false
+}
+Best result: 0.6222222222222221
+Cross validation started at 2023-10-17 22:40:36
+
+Production model build started at 2023-10-17 22:40:36
+
+Production Model Results:
+Precision scores: 0.67, 1.00, 0.67, 0.00, 0.50, 1.00, 0.00, 1.00, 0.33, 0.50
+Mean precision: 0.57
+
+Recall scores: 0.50, 0.50, 0.50, 0.00, 0.25, 0.60, 0.00, 0.20, 0.20, 0.20
+Mean recall: 0.29
+
+Accuracy scores: 0.67, 0.78, 0.67, 0.56, 0.56, 0.78, 0.44, 0.56, 0.33, 0.44
+Mean Accuracy:  0.58
+
+F1 scores: 0.57, 0.67, 0.57, 0.00, 0.33, 0.75, 0.00, 0.33, 0.25, 0.29
+Mean F1:  0.38
+
+AUC scores: 0.65, 0.75, 0.65, 0.50, 0.53, 0.80, 0.50, 0.60, 0.35, 0.47
+Mean AUC: 0.58
+Features:density_refactoring_keywords, number_refactoring_keywords
+Coefficients:
+[-0.8615050687109829, 5.753793209198033]
+CSV,Google-gson,design,LinearSVMModel,0.57,0.30,0.58,0.38,39,6,32,13,0.58
+Finished at 2023-10-17 22:40:36
+TIME,Google-gson,design,LinearSVMModel,2023-10-17 22:40:36,2023-10-17 22:40:36
+Model RandomForestModel
+Execution: 20/108
+Started at 2023-10-17 22:40:36
+Test search started at 2023-10-17 22:40:36
+
+Hyperparametrization:
+{
+  "bootstrap": true,
+  "criterion": "gini",
+  "max_depth": 3,
+  "max_features": "sqrt",
+  "min_samples_split": 10,
+  "n_estimators": 200
+}
+Best result: 0.6
+Cross validation started at 2023-10-17 22:43:37
+
+Production model build started at 2023-10-17 22:43:38
+
+Production Model Results:
+Precision scores: 0.50, 0.60, 0.00, 0.75, 0.50, 0.60, 0.60, 1.00, 0.67, 0.50
+Mean precision: 0.57
+
+Recall scores: 0.50, 0.75, 0.00, 0.75, 0.50, 0.60, 0.60, 0.80, 0.80, 0.60
+Mean recall: 0.59
+
+Accuracy scores: 0.56, 0.67, 0.44, 0.78, 0.56, 0.56, 0.56, 0.89, 0.67, 0.44
+Mean Accuracy:  0.61
+
+F1 scores: 0.50, 0.67, 0.00, 0.75, 0.50, 0.60, 0.60, 0.89, 0.73, 0.55
+Mean F1:  0.58
+
+AUC scores: 0.55, 0.68, 0.40, 0.78, 0.55, 0.55, 0.55, 0.90, 0.65, 0.42
+Mean AUC: 0.60
+Feature Importances: 
+density_refactoring_keywords     : 0.5199
+number_refactoring_keywords      : 0.4801
+
+CSV,Google-gson,design,RandomForestModel,0.57,0.59,0.61,0.58,28,17,18,27,0.60
+Finished at 2023-10-17 22:43:38
+TIME,Google-gson,design,RandomForestModel,2023-10-17 22:40:36,2023-10-17 22:43:38
+Model DecisionTreeModel
+Execution: 21/108
+Started at 2023-10-17 22:43:38
+Test search started at 2023-10-17 22:43:38
+
+Hyperparametrization:
+{
+  "criterion": "gini",
+  "max_depth": 3,
+  "max_features": null,
+  "min_samples_split": 2,
+  "splitter": "random"
+}
+Best result: 0.6333333333333333
+Cross validation started at 2023-10-17 22:43:40
+
+Production model build started at 2023-10-17 22:43:40
+
+Production Model Results:
+Precision scores: 0.67, 0.33, 0.50, 0.50, 1.00, 1.00, 1.00, 0.67, 1.00, 0.67
+Mean precision: 0.73
+
+Recall scores: 0.50, 0.25, 0.25, 0.50, 0.25, 0.20, 0.20, 0.40, 0.40, 0.40
+Mean recall: 0.34
+
+Accuracy scores: 0.67, 0.44, 0.56, 0.56, 0.67, 0.56, 0.56, 0.56, 0.67, 0.56
+Mean Accuracy:  0.58
+
+F1 scores: 0.57, 0.29, 0.33, 0.50, 0.40, 0.33, 0.33, 0.50, 0.57, 0.50
+Mean F1:  0.43
+
+AUC scores: 0.65, 0.42, 0.53, 0.55, 0.62, 0.60, 0.60, 0.57, 0.70, 0.57
+Mean AUC: 0.58
+Feature Importances: 
+density_refactoring_keywords     : 0.2720
+number_refactoring_keywords      : 0.7280
+
+CSV,Google-gson,design,DecisionTreeModel,0.73,0.33,0.58,0.43,37,8,30,15,0.58
+Finished at 2023-10-17 22:43:40
+TIME,Google-gson,design,DecisionTreeModel,2023-10-17 22:43:38,2023-10-17 22:43:40
+Model LogisticRegressionModel
+Execution: 22/108
+Started at 2023-10-17 22:43:40
+Test search started at 2023-10-17 22:43:40
+
+Hyperparametrization:
+{
+  "C": 18.106220816319386,
+  "max_iter": 50
+}
+Best result: 0.6333333333333333
+Cross validation started at 2023-10-17 22:43:40
+
+Production model build started at 2023-10-17 22:43:40
+
+Production Model Results:
+Precision scores: 0.80, 0.50, 0.67, 0.67, 1.00, 0.50, 0.75, 0.75, 0.50, 0.00
+Mean precision: 0.61
+
+Recall scores: 1.00, 0.25, 0.50, 0.50, 0.50, 0.20, 0.60, 0.60, 0.20, 0.00
+Mean recall: 0.43
+
+Accuracy scores: 0.89, 0.56, 0.67, 0.67, 0.78, 0.44, 0.67, 0.67, 0.44, 0.11
+Mean Accuracy:  0.59
+
+F1 scores: 0.89, 0.33, 0.57, 0.57, 0.67, 0.29, 0.67, 0.67, 0.29, 0.00
+Mean F1:  0.49
+
+AUC scores: 0.90, 0.53, 0.65, 0.65, 0.75, 0.47, 0.68, 0.68, 0.47, 0.12
+Mean AUC: 0.59
+Features:density_refactoring_keywords, number_refactoring_keywords
+Coefficients:
+[-0.4225533858052189, 3.8675665242438213]
+CSV,Google-gson,design,LogisticRegressionModel,0.61,0.44,0.59,0.49,34,11,26,19,0.59
+Finished at 2023-10-17 22:43:40
+TIME,Google-gson,design,LogisticRegressionModel,2023-10-17 22:43:40,2023-10-17 22:43:40
+Model GaussianNaiveBayesModel
+Execution: 23/108
+Started at 2023-10-17 22:43:40
+Test search started at 2023-10-17 22:43:40
+
+Hyperparametrization:
+{
+  "var_smoothing": 1e-10
+}
+Best result: 0.6
+Cross validation started at 2023-10-17 22:43:40
+
+Production model build started at 2023-10-17 22:43:40
+
+Production Model Results:
+Precision scores: 0.67, 0.00, 0.50, 0.50, 1.00, 0.50, 0.67, 1.00, 1.00, 1.00
+Mean precision: 0.68
+
+Recall scores: 0.50, 0.00, 0.25, 0.25, 0.25, 0.20, 0.40, 0.40, 0.20, 0.20
+Mean recall: 0.27
+
+Accuracy scores: 0.67, 0.44, 0.56, 0.56, 0.67, 0.44, 0.56, 0.67, 0.56, 0.56
+Mean Accuracy:  0.57
+
+F1 scores: 0.57, 0.00, 0.33, 0.33, 0.40, 0.29, 0.50, 0.57, 0.33, 0.33
+Mean F1:  0.37
+
+AUC scores: 0.65, 0.40, 0.53, 0.53, 0.62, 0.47, 0.57, 0.70, 0.60, 0.60
+Mean AUC: 0.57
+(Not possible to collect feature importances)
+CSV,Google-gson,design,GaussianNaiveBayesModel,0.68,0.27,0.57,0.37,39,6,33,12,0.57
+Finished at 2023-10-17 22:43:40
+TIME,Google-gson,design,GaussianNaiveBayesModel,2023-10-17 22:43:40,2023-10-17 22:43:40
+Model GradientBoostingRegressorModel
+Execution: 24/108
+Started at 2023-10-17 22:43:40
+Test search started at 2023-10-17 22:43:40
+
+Hyperparametrization:
+{
+  "max_depth": 24,
+  "min_samples_split": 10,
+  "n_estimators": 200
+}
+Best result: 0.6222222222222222
+Cross validation started at 2023-10-17 22:43:54
+
+Production model build started at 2023-10-17 22:43:55
+
+Production Model Results:
+Precision scores: 0.50, 0.25, 0.80, 0.67, 0.50, 0.00, 1.00, 0.50, 0.67, 0.50
+Mean precision: 0.54
+
+Recall scores: 0.50, 0.25, 1.00, 0.50, 0.25, 0.00, 0.80, 0.40, 0.40, 0.40
+Mean recall: 0.45
+
+Accuracy scores: 0.56, 0.33, 0.89, 0.67, 0.56, 0.33, 0.89, 0.44, 0.56, 0.44
+Mean Accuracy:  0.57
+
+F1 scores: 0.50, 0.25, 0.89, 0.57, 0.33, 0.00, 0.89, 0.44, 0.50, 0.44
+Mean F1:  0.48
+
+AUC scores: 0.55, 0.33, 0.90, 0.65, 0.53, 0.38, 0.90, 0.45, 0.57, 0.45
+Mean AUC: 0.57
+Feature Importances: 
+density_refactoring_keywords     : 0.5084
+number_refactoring_keywords      : 0.4916
+
+CSV,Google-gson,design,GradientBoostingRegressorModel,0.54,0.45,0.57,0.48,31,14,25,20,0.57
+Finished at 2023-10-17 22:43:55
+TIME,Google-gson,design,GradientBoostingRegressorModel,2023-10-17 22:43:40,2023-10-17 22:43:55
+Dataset Google-guava
+**** Smell granularity implementation
+---- Retrieve labeled instances for dataset: Google-guava
+raw number of impactful patches instances: 69
+raw number of not impactful patches instances: 484
+impactful patches instance (after dropping NA)s: 24
+not impactful patches instances (after dropping NA)s: 166
+instances before balancing: Counter({0: 166, 1: 24})
+instances after balancing: Counter({0: 24, 1: 24})
+Features before reduction (total of 6): density_design_keywords, density_refactoring_keywords, number_design_keywords, number_refactoring_keywords, mean_number_of_words, number_of_words
+Features after reduction (total of 5): density_design_keywords, number_design_keywords, number_refactoring_keywords, mean_number_of_words, number_of_words
+Feature ranking: 1, 2, 1, 1, 1, 1
+Feature grid scores: mean_test_score, std_test_score, split0_test_score, split1_test_score, split2_test_score, split3_test_score, split4_test_score
+Model LinearSVMModel
+Execution: 25/108
+Started at 2023-10-17 22:43:55
+Test search started at 2023-10-17 22:43:55
+
+Hyperparametrization:
+{
+  "C": 1.384565983392646,
+  "kernel": "linear",
+  "shrinking": false
+}
+Best result: 0.5199999999999999
+Cross validation started at 2023-10-17 22:43:55
+
+Production model build started at 2023-10-17 22:43:55
+
+Production Model Results:
+Precision scores: 0.40, 0.40, 0.33, 0.00, 1.00, 0.50, 0.00, 0.00, 0.00, 1.00
+Mean precision: 0.36
+
+Recall scores: 1.00, 1.00, 0.50, 0.00, 0.33, 0.33, 0.00, 0.00, 0.00, 0.50
+Mean recall: 0.37
+
+Accuracy scores: 0.40, 0.40, 0.40, 0.40, 0.60, 0.40, 0.40, 0.20, 0.25, 0.75
+Mean Accuracy:  0.42
+
+F1 scores: 0.57, 0.57, 0.40, 0.00, 0.50, 0.40, 0.00, 0.00, 0.00, 0.67
+Mean F1:  0.31
+
+AUC scores: 0.50, 0.50, 0.42, 0.33, 0.67, 0.42, 0.50, 0.25, 0.25, 0.75
+Mean AUC: 0.46
+Features:density_design_keywords, number_design_keywords, number_refactoring_keywords, mean_number_of_words, number_of_words
+Coefficients:
+[0.31885737677887166, 1.651162972631564, -0.4027243177484612, 0.599791346518995, 0.31330226011559914]
+CSV,Google-guava,implementation,LinearSVMModel,0.36,0.37,0.42,0.31,12,12,16,8,0.46
+Finished at 2023-10-17 22:43:55
+TIME,Google-guava,implementation,LinearSVMModel,2023-10-17 22:43:55,2023-10-17 22:43:55
+Model RandomForestModel
+Execution: 26/108
+Started at 2023-10-17 22:43:55
+Test search started at 2023-10-17 22:43:55
+
+Hyperparametrization:
+{
+  "bootstrap": false,
+  "criterion": "gini",
+  "max_depth": 12,
+  "max_features": "sqrt",
+  "min_samples_split": 2,
+  "n_estimators": 10
+}
+Best result: 0.6
+Cross validation started at 2023-10-17 22:46:53
+
+Production model build started at 2023-10-17 22:46:53
+
+Production Model Results:
+Precision scores: 0.00, 1.00, 0.25, 0.33, 0.00, 0.67, 0.67, 0.00, 0.50, 0.50
+Mean precision: 0.39
+
+Recall scores: 0.00, 0.50, 0.50, 0.50, 0.00, 0.67, 0.67, 0.00, 0.50, 1.00
+Mean recall: 0.43
+
+Accuracy scores: 0.20, 0.80, 0.20, 0.40, 0.00, 0.60, 0.60, 0.20, 0.50, 0.50
+Mean Accuracy:  0.40
+
+F1 scores: 0.00, 0.67, 0.33, 0.40, 0.00, 0.67, 0.67, 0.00, 0.50, 0.67
+Mean F1:  0.39
+
+AUC scores: 0.17, 0.75, 0.25, 0.42, 0.00, 0.58, 0.58, 0.25, 0.50, 0.50
+Mean AUC: 0.40
+Feature Importances: 
+density_design_keywords          : 0.0676
+number_design_keywords           : 0.0181
+number_refactoring_keywords      : 0.2402
+mean_number_of_words             : 0.3043
+number_of_words                  : 0.3698
+
+CSV,Google-guava,implementation,RandomForestModel,0.39,0.43,0.40,0.39,9,15,14,10,0.40
+Finished at 2023-10-17 22:46:53
+TIME,Google-guava,implementation,RandomForestModel,2023-10-17 22:43:55,2023-10-17 22:46:53
+Model DecisionTreeModel
+Execution: 27/108
+Started at 2023-10-17 22:46:53
+Test search started at 2023-10-17 22:46:53
+
+Hyperparametrization:
+{
+  "criterion": "gini",
+  "max_depth": 6,
+  "max_features": null,
+  "min_samples_split": 10,
+  "splitter": "best"
+}
+Best result: 0.5244444444444444
+Cross validation started at 2023-10-17 22:46:55
+
+Production model build started at 2023-10-17 22:46:55
+
+Production Model Results:
+Precision scores: 0.00, 0.33, 0.50, 0.33, 0.33, 0.33, 0.50, 1.00, 0.50, 0.00
+Mean precision: 0.38
+
+Recall scores: 0.00, 0.50, 1.00, 0.50, 0.33, 0.33, 0.33, 0.67, 0.50, 0.00
+Mean recall: 0.42
+
+Accuracy scores: 0.20, 0.40, 0.60, 0.40, 0.20, 0.20, 0.40, 0.80, 0.50, 0.50
+Mean Accuracy:  0.42
+
+F1 scores: 0.00, 0.40, 0.67, 0.40, 0.33, 0.33, 0.40, 0.80, 0.50, 0.00
+Mean F1:  0.38
+
+AUC scores: 0.17, 0.42, 0.67, 0.42, 0.17, 0.17, 0.42, 0.83, 0.50, 0.50
+Mean AUC: 0.42
+Feature Importances: 
+density_design_keywords          : 0.1811
+number_design_keywords           : 0.0000
+number_refactoring_keywords      : 0.0657
+mean_number_of_words             : 0.0556
+number_of_words                  : 0.6976
+
+CSV,Google-guava,implementation,DecisionTreeModel,0.38,0.42,0.42,0.38,10,14,14,10,0.42
+Finished at 2023-10-17 22:46:55
+TIME,Google-guava,implementation,DecisionTreeModel,2023-10-17 22:46:53,2023-10-17 22:46:55
+Model LogisticRegressionModel
+Execution: 28/108
+Started at 2023-10-17 22:46:55
+Test search started at 2023-10-17 22:46:55
+
+Hyperparametrization:
+{
+  "C": 92.6016573461764,
+  "max_iter": 50
+}
+Best result: 0.4177777777777778
+Cross validation started at 2023-10-17 22:46:55
+
+Production model build started at 2023-10-17 22:46:55
+
+Production Model Results:
+Precision scores: 0.33, 0.33, 0.00, 0.00, 1.00, 0.00, 0.60, 0.00, 0.00, 0.00
+Mean precision: 0.23
+
+Recall scores: 0.50, 0.50, 0.00, 0.00, 0.33, 0.00, 1.00, 0.00, 0.00, 0.00
+Mean recall: 0.23
+
+Accuracy scores: 0.40, 0.40, 0.40, 0.40, 0.60, 0.20, 0.60, 0.40, 0.25, 0.25
+Mean Accuracy:  0.39
+
+F1 scores: 0.40, 0.40, 0.00, 0.00, 0.50, 0.00, 0.75, 0.00, 0.00, 0.00
+Mean F1:  0.20
+
+AUC scores: 0.42, 0.42, 0.33, 0.33, 0.67, 0.25, 0.50, 0.50, 0.25, 0.25
+Mean AUC: 0.39
+Features:density_design_keywords, number_design_keywords, number_refactoring_keywords, mean_number_of_words, number_of_words
+Coefficients:
+[-0.766189099135916, 1.3241305422154257, -1.2199307558499957, 0.02193715758250957, 0.7728464330442332]
+CSV,Google-guava,implementation,LogisticRegressionModel,0.23,0.23,0.39,0.20,13,11,18,6,0.39
+Finished at 2023-10-17 22:46:55
+TIME,Google-guava,implementation,LogisticRegressionModel,2023-10-17 22:46:55,2023-10-17 22:46:55
+Model GaussianNaiveBayesModel
+Execution: 29/108
+Started at 2023-10-17 22:46:55
+Test search started at 2023-10-17 22:46:55
+
+Hyperparametrization:
+{
+  "var_smoothing": 1e-10
+}
+Best result: 0.4644444444444444
+Cross validation started at 2023-10-17 22:46:55
+
+Production model build started at 2023-10-17 22:46:55
+
+Production Model Results:
+Precision scores: 0.00, 0.33, 0.25, 0.25, 0.00, 0.67, 0.00, 0.33, 0.50, 0.50
+Mean precision: 0.28
+
+Recall scores: 0.00, 0.50, 0.50, 0.50, 0.00, 0.67, 0.00, 0.33, 0.50, 1.00
+Mean recall: 0.40
+
+Accuracy scores: 0.20, 0.40, 0.20, 0.20, 0.20, 0.60, 0.20, 0.20, 0.50, 0.50
+Mean Accuracy:  0.32
+
+F1 scores: 0.00, 0.40, 0.33, 0.33, 0.00, 0.67, 0.00, 0.33, 0.50, 0.67
+Mean F1:  0.32
+
+AUC scores: 0.17, 0.42, 0.25, 0.25, 0.25, 0.58, 0.25, 0.17, 0.50, 0.50
+Mean AUC: 0.33
+(Not possible to collect feature importances)
+CSV,Google-guava,implementation,GaussianNaiveBayesModel,0.28,0.40,0.32,0.32,6,18,15,9,0.33
+Finished at 2023-10-17 22:46:55
+TIME,Google-guava,implementation,GaussianNaiveBayesModel,2023-10-17 22:46:55,2023-10-17 22:46:55
+Model GradientBoostingRegressorModel
+Execution: 30/108
+Started at 2023-10-17 22:46:55
+Test search started at 2023-10-17 22:46:55
+
+Hyperparametrization:
+{
+  "max_depth": 12,
+  "min_samples_split": 5,
+  "n_estimators": 100
+}
+Best result: 0.4666666666666666
+Cross validation started at 2023-10-17 22:47:08
+
+Production model build started at 2023-10-17 22:47:08
+
+Production Model Results:
+Precision scores: 0.00, 0.33, 0.67, 0.50, 0.67, 0.50, 0.50, 0.33, 1.00, 0.00
+Mean precision: 0.45
+
+Recall scores: 0.00, 0.50, 1.00, 0.50, 0.67, 0.33, 0.33, 0.33, 1.00, 0.00
+Mean recall: 0.47
+
+Accuracy scores: 0.20, 0.40, 0.80, 0.60, 0.60, 0.40, 0.40, 0.20, 1.00, 0.25
+Mean Accuracy:  0.48
+
+F1 scores: 0.00, 0.40, 0.80, 0.50, 0.67, 0.40, 0.40, 0.33, 1.00, 0.00
+Mean F1:  0.45
+
+AUC scores: 0.17, 0.42, 0.83, 0.58, 0.58, 0.42, 0.42, 0.17, 1.00, 0.25
+Mean AUC: 0.48
+Feature Importances: 
+density_design_keywords          : 0.1314
+number_design_keywords           : 0.0094
+number_refactoring_keywords      : 0.1795
+mean_number_of_words             : 0.2453
+number_of_words                  : 0.4344
+
+CSV,Google-guava,implementation,GradientBoostingRegressorModel,0.45,0.47,0.48,0.45,12,12,13,11,0.48
+Finished at 2023-10-17 22:47:08
+TIME,Google-guava,implementation,GradientBoostingRegressorModel,2023-10-17 22:46:55,2023-10-17 22:47:08
+**** Smell granularity design
+---- Retrieve labeled instances for dataset: Google-guava
+raw number of impactful patches instances: 57
+raw number of not impactful patches instances: 496
+impactful patches instance (after dropping NA)s: 19
+not impactful patches instances (after dropping NA)s: 171
+instances before balancing: Counter({0: 171, 1: 19})
+instances after balancing: Counter({0: 19, 1: 19})
+Features before reduction (total of 6): density_design_keywords, density_refactoring_keywords, number_design_keywords, number_refactoring_keywords, mean_number_of_words, number_of_words
+Features after reduction (total of 1): number_refactoring_keywords
+Feature ranking: 2, 4, 6, 1, 5, 3
+Feature grid scores: mean_test_score, std_test_score, split0_test_score, split1_test_score, split2_test_score, split3_test_score, split4_test_score
+Model LinearSVMModel
+Execution: 31/108
+Started at 2023-10-17 22:47:08
+Test search started at 2023-10-17 22:47:08
+
+Hyperparametrization:
+{
+  "C": 9.356849649329494,
+  "kernel": "linear",
+  "shrinking": false
+}
+Best result: 0.575
+Cross validation started at 2023-10-17 22:47:08
+
+Production model build started at 2023-10-17 22:47:09
+
+Production Model Results:
+Precision scores: 0.00, 1.00, 1.00, 0.50, 0.00, 0.00, 0.00, 0.00, 0.00, 1.00
+Mean precision: 0.35
+
+Recall scores: 0.00, 0.50, 0.50, 0.50, 0.00, 0.00, 0.00, 0.00, 0.00, 0.50
+Mean recall: 0.20
+
+Accuracy scores: 0.50, 0.75, 0.75, 0.50, 0.25, 0.50, 0.50, 0.50, 0.33, 0.67
+Mean Accuracy:  0.53
+
+F1 scores: 0.00, 0.67, 0.67, 0.50, 0.00, 0.00, 0.00, 0.00, 0.00, 0.67
+Mean F1:  0.25
+
+AUC scores: 0.50, 0.75, 0.75, 0.50, 0.25, 0.50, 0.50, 0.50, 0.25, 0.75
+Mean AUC: 0.53
+Features:number_refactoring_keywords
+Coefficients:
+[3.1111110026671702]
+CSV,Google-guava,design,LinearSVMModel,0.35,0.20,0.53,0.25,16,3,15,4,0.53
+Finished at 2023-10-17 22:47:09
+TIME,Google-guava,design,LinearSVMModel,2023-10-17 22:47:08,2023-10-17 22:47:09
+Model RandomForestModel
+Execution: 32/108
+Started at 2023-10-17 22:47:09
+Test search started at 2023-10-17 22:47:09
+
+Hyperparametrization:
+{
+  "bootstrap": false,
+  "criterion": "gini",
+  "max_depth": 3,
+  "max_features": "sqrt",
+  "min_samples_split": 2,
+  "n_estimators": 10
+}
+Best result: 0.575
+Cross validation started at 2023-10-17 22:49:45
+
+Production model build started at 2023-10-17 22:49:45
+
+Production Model Results:
+Precision scores: 1.00, 0.50, 0.50, 0.00, 1.00, 0.50, 0.33, 0.67, 0.50, 0.00
+Mean precision: 0.50
+
+Recall scores: 0.50, 0.50, 0.50, 0.00, 0.50, 0.50, 0.50, 1.00, 1.00, 0.00
+Mean recall: 0.50
+
+Accuracy scores: 0.75, 0.50, 0.50, 0.25, 0.75, 0.50, 0.25, 0.75, 0.67, 0.00
+Mean Accuracy:  0.49
+
+F1 scores: 0.67, 0.50, 0.50, 0.00, 0.67, 0.50, 0.40, 0.80, 0.67, 0.00
+Mean F1:  0.47
+
+AUC scores: 0.75, 0.50, 0.50, 0.25, 0.75, 0.50, 0.25, 0.75, 0.75, 0.00
+Mean AUC: 0.50
+Feature Importances: 
+number_refactoring_keywords      : 1.0000
+
+CSV,Google-guava,design,RandomForestModel,0.50,0.50,0.49,0.47,10,9,10,9,0.50
+Finished at 2023-10-17 22:49:45
+TIME,Google-guava,design,RandomForestModel,2023-10-17 22:47:09,2023-10-17 22:49:45
+Model DecisionTreeModel
+Execution: 33/108
+Started at 2023-10-17 22:49:45
+Test search started at 2023-10-17 22:49:45
+
+Hyperparametrization:
+{
+  "criterion": "entropy",
+  "max_depth": 3,
+  "max_features": "sqrt",
+  "min_samples_split": 2,
+  "splitter": "best"
+}
+Best result: 0.5857142857142856
+Cross validation started at 2023-10-17 22:49:46
+
+Production model build started at 2023-10-17 22:49:46
+
+Production Model Results:
+Precision scores: 0.50, 0.00, 0.50, 0.67, 1.00, 1.00, 0.00, 0.00, 0.33, 0.00
+Mean precision: 0.40
+
+Recall scores: 0.50, 0.00, 1.00, 1.00, 0.50, 0.50, 0.00, 0.00, 1.00, 0.00
+Mean recall: 0.45
+
+Accuracy scores: 0.50, 0.50, 0.50, 0.75, 0.75, 0.75, 0.25, 0.00, 0.33, 0.33
+Mean Accuracy:  0.47
+
+F1 scores: 0.50, 0.00, 0.67, 0.80, 0.67, 0.67, 0.00, 0.00, 0.50, 0.00
+Mean F1:  0.38
+
+AUC scores: 0.50, 0.50, 0.50, 0.75, 0.75, 0.75, 0.25, 0.00, 0.50, 0.50
+Mean AUC: 0.50
+Feature Importances: 
+number_refactoring_keywords      : 1.0000
+
+CSV,Google-guava,design,DecisionTreeModel,0.40,0.45,0.47,0.38,10,9,11,8,0.50
+Finished at 2023-10-17 22:49:46
+TIME,Google-guava,design,DecisionTreeModel,2023-10-17 22:49:45,2023-10-17 22:49:46
+Model LogisticRegressionModel
+Execution: 34/108
+Started at 2023-10-17 22:49:46
+Test search started at 2023-10-17 22:49:46
+
+Hyperparametrization:
+{
+  "C": 96.23150663639402,
+  "max_iter": 50
+}
+Best result: 0.5285714285714285
+Cross validation started at 2023-10-17 22:49:46
+
+Production model build started at 2023-10-17 22:49:46
+
+Production Model Results:
+Precision scores: 0.50, 1.00, 1.00, 0.33, 1.00, 0.00, 1.00, 0.00, 0.00, 0.50
+Mean precision: 0.53
+
+Recall scores: 0.50, 1.00, 0.50, 0.50, 0.50, 0.00, 0.50, 0.00, 0.00, 0.50
+Mean recall: 0.40
+
+Accuracy scores: 0.50, 1.00, 0.75, 0.25, 0.75, 0.50, 0.75, 0.50, 0.00, 0.33
+Mean Accuracy:  0.53
+
+F1 scores: 0.50, 1.00, 0.67, 0.40, 0.67, 0.00, 0.67, 0.00, 0.00, 0.50
+Mean F1:  0.44
+
+AUC scores: 0.50, 1.00, 0.75, 0.25, 0.75, 0.50, 0.75, 0.50, 0.00, 0.25
+Mean AUC: 0.53
+Features:number_refactoring_keywords
+Coefficients:
+[2.1821888216909526]
+CSV,Google-guava,design,LogisticRegressionModel,0.53,0.40,0.53,0.44,13,6,11,8,0.53
+Finished at 2023-10-17 22:49:46
+TIME,Google-guava,design,LogisticRegressionModel,2023-10-17 22:49:46,2023-10-17 22:49:46
+Model GaussianNaiveBayesModel
+Execution: 35/108
+Started at 2023-10-17 22:49:46
+Test search started at 2023-10-17 22:49:46
+
+Hyperparametrization:
+{
+  "var_smoothing": 1e-10
+}
+Best result: 0.5285714285714285
+Cross validation started at 2023-10-17 22:49:46
+
+Production model build started at 2023-10-17 22:49:46
+
+Production Model Results:
+Precision scores: 0.00, 0.00, 0.00, 1.00, 0.00, 0.00, 0.00, 0.50, 1.00, 1.00
+Mean precision: 0.35
+
+Recall scores: 0.00, 0.00, 0.00, 1.00, 0.00, 0.00, 0.00, 0.50, 1.00, 0.50
+Mean recall: 0.30
+
+Accuracy scores: 0.50, 0.00, 0.25, 1.00, 0.50, 0.50, 0.50, 0.50, 1.00, 0.67
+Mean Accuracy:  0.54
+
+F1 scores: 0.00, 0.00, 0.00, 1.00, 0.00, 0.00, 0.00, 0.50, 1.00, 0.67
+Mean F1:  0.32
+
+AUC scores: 0.50, 0.00, 0.25, 1.00, 0.50, 0.50, 0.50, 0.50, 1.00, 0.75
+Mean AUC: 0.55
+(Not possible to collect feature importances)
+CSV,Google-guava,design,GaussianNaiveBayesModel,0.35,0.30,0.54,0.32,15,4,14,5,0.55
+Finished at 2023-10-17 22:49:46
+TIME,Google-guava,design,GaussianNaiveBayesModel,2023-10-17 22:49:46,2023-10-17 22:49:46
+Model GradientBoostingRegressorModel
+Execution: 36/108
+Started at 2023-10-17 22:49:46
+Test search started at 2023-10-17 22:49:46
+
+Hyperparametrization:
+{
+  "max_depth": 3,
+  "min_samples_split": 10,
+  "n_estimators": 10
+}
+Best result: 0.5499999999999999
+Cross validation started at 2023-10-17 22:49:55
+
+Production model build started at 2023-10-17 22:49:55
+
+Production Model Results:
+Precision scores: 0.50, 0.50, 0.33, 0.00, 0.67, 0.50, 0.50, 1.00, 0.00, 0.50
+Mean precision: 0.45
+
+Recall scores: 0.50, 0.50, 0.50, 0.00, 1.00, 0.50, 0.50, 0.50, 0.00, 0.50
+Mean recall: 0.45
+
+Accuracy scores: 0.50, 0.50, 0.25, 0.25, 0.75, 0.50, 0.50, 0.75, 0.33, 0.33
+Mean Accuracy:  0.47
+
+F1 scores: 0.50, 0.50, 0.40, 0.00, 0.80, 0.50, 0.50, 0.67, 0.00, 0.50
+Mean F1:  0.44
+
+AUC scores: 0.50, 0.50, 0.25, 0.25, 0.75, 0.50, 0.50, 0.75, 0.25, 0.25
+Mean AUC: 0.45
+Feature Importances: 
+number_refactoring_keywords      : 1.0000
+
+CSV,Google-guava,design,GradientBoostingRegressorModel,0.45,0.45,0.47,0.44,9,10,10,9,0.45
+Finished at 2023-10-17 22:49:55
+TIME,Google-guava,design,GradientBoostingRegressorModel,2023-10-17 22:49:46,2023-10-17 22:49:55
+Dataset Netflix-zuul
+**** Smell granularity implementation
+---- Retrieve labeled instances for dataset: Netflix-zuul
+raw number of impactful patches instances: 99
+raw number of not impactful patches instances: 505
+impactful patches instance (after dropping NA)s: 20
+not impactful patches instances (after dropping NA)s: 75
+instances before balancing: Counter({0: 75, 1: 20})
+instances after balancing: Counter({0: 20, 1: 20})
+Features before reduction (total of 7): number_of_comments, density_design_keywords, density_refactoring_keywords, number_design_keywords, number_refactoring_keywords, mean_number_of_words, number_of_words
+Features after reduction (total of 4): density_design_keywords, density_refactoring_keywords, number_refactoring_keywords, mean_number_of_words
+Feature ranking: 3, 1, 1, 4, 1, 1, 2
+Feature grid scores: mean_test_score, std_test_score, split0_test_score, split1_test_score, split2_test_score, split3_test_score, split4_test_score
+Model LinearSVMModel
+Execution: 37/108
+Started at 2023-10-17 22:49:55
+Test search started at 2023-10-17 22:49:55
+
+Hyperparametrization:
+{
+  "C": 2.050770583948275,
+  "kernel": "linear",
+  "shrinking": false
+}
+Best result: 0.675
+Cross validation started at 2023-10-17 22:49:55
+
+Production model build started at 2023-10-17 22:49:55
+
+Production Model Results:
+Precision scores: 0.00, 1.00, 0.00, 1.00, 1.00, 1.00, 0.00, 0.00, 1.00, 1.00
+Mean precision: 0.60
+
+Recall scores: 0.00, 0.50, 0.00, 0.50, 1.00, 1.00, 0.00, 0.00, 1.00, 1.00
+Mean recall: 0.50
+
+Accuracy scores: 0.25, 0.75, 0.50, 0.75, 1.00, 1.00, 0.50, 0.00, 1.00, 1.00
+Mean Accuracy:  0.68
+
+F1 scores: 0.00, 0.67, 0.00, 0.67, 1.00, 1.00, 0.00, 0.00, 1.00, 1.00
+Mean F1:  0.53
+
+AUC scores: 0.25, 0.75, 0.50, 0.75, 1.00, 1.00, 0.50, 0.00, 1.00, 1.00
+Mean AUC: 0.68
+Features:density_design_keywords, density_refactoring_keywords, number_refactoring_keywords, mean_number_of_words
+Coefficients:
+[-0.9928679979317039, 1.291974763967624, 1.7910570455109016, 1.0596166165953778]
+CSV,Netflix-zuul,implementation,LinearSVMModel,0.60,0.50,0.68,0.53,17,3,10,10,0.68
+Finished at 2023-10-17 22:49:55
+TIME,Netflix-zuul,implementation,LinearSVMModel,2023-10-17 22:49:55,2023-10-17 22:49:55
+Model RandomForestModel
+Execution: 38/108
+Started at 2023-10-17 22:49:55
+Test search started at 2023-10-17 22:49:55
+
+Hyperparametrization:
+{
+  "bootstrap": false,
+  "criterion": "gini",
+  "max_depth": 3,
+  "max_features": "sqrt",
+  "min_samples_split": 2,
+  "n_estimators": 10
+}
+Best result: 0.6
+Cross validation started at 2023-10-17 22:52:37
+
+Production model build started at 2023-10-17 22:52:37
+
+Production Model Results:
+Precision scores: 0.67, 0.00, 1.00, 1.00, 0.00, 0.50, 1.00, 0.50, 0.00, 1.00
+Mean precision: 0.57
+
+Recall scores: 1.00, 0.00, 0.50, 0.50, 0.00, 0.50, 0.50, 1.00, 0.00, 0.50
+Mean recall: 0.45
+
+Accuracy scores: 0.75, 0.25, 0.75, 0.75, 0.25, 0.50, 0.75, 0.50, 0.50, 0.75
+Mean Accuracy:  0.57
+
+F1 scores: 0.80, 0.00, 0.67, 0.67, 0.00, 0.50, 0.67, 0.67, 0.00, 0.67
+Mean F1:  0.46
+
+AUC scores: 0.75, 0.25, 0.75, 0.75, 0.25, 0.50, 0.75, 0.50, 0.50, 0.75
+Mean AUC: 0.57
+Feature Importances: 
+density_design_keywords          : 0.0068
+density_refactoring_keywords     : 0.1636
+number_refactoring_keywords      : 0.6410
+mean_number_of_words             : 0.1886
+
+CSV,Netflix-zuul,implementation,RandomForestModel,0.57,0.45,0.57,0.46,14,6,11,9,0.57
+Finished at 2023-10-17 22:52:38
+TIME,Netflix-zuul,implementation,RandomForestModel,2023-10-17 22:49:55,2023-10-17 22:52:38
+Model DecisionTreeModel
+Execution: 39/108
+Started at 2023-10-17 22:52:38
+Test search started at 2023-10-17 22:52:38
+
+Hyperparametrization:
+{
+  "criterion": "entropy",
+  "max_depth": 6,
+  "max_features": "sqrt",
+  "min_samples_split": 5,
+  "splitter": "random"
+}
+Best result: 0.675
+Cross validation started at 2023-10-17 22:52:39
+
+Production model build started at 2023-10-17 22:52:39
+
+Production Model Results:
+Precision scores: 0.00, 0.00, 0.00, 0.67, 0.67, 1.00, 0.50, 0.67, 0.00, 0.00
+Mean precision: 0.35
+
+Recall scores: 0.00, 0.00, 0.00, 1.00, 1.00, 0.50, 0.50, 1.00, 0.00, 0.00
+Mean recall: 0.40
+
+Accuracy scores: 0.25, 0.25, 0.50, 0.75, 0.75, 0.75, 0.50, 0.75, 0.50, 0.50
+Mean Accuracy:  0.55
+
+F1 scores: 0.00, 0.00, 0.00, 0.80, 0.80, 0.67, 0.50, 0.80, 0.00, 0.00
+Mean F1:  0.36
+
+AUC scores: 0.25, 0.25, 0.50, 0.75, 0.75, 0.75, 0.50, 0.75, 0.50, 0.50
+Mean AUC: 0.55
+Feature Importances: 
+density_design_keywords          : 0.3010
+density_refactoring_keywords     : 0.1164
+number_refactoring_keywords      : 0.0436
+mean_number_of_words             : 0.5390
+
+CSV,Netflix-zuul,implementation,DecisionTreeModel,0.35,0.40,0.55,0.36,14,6,12,8,0.55
+Finished at 2023-10-17 22:52:39
+TIME,Netflix-zuul,implementation,DecisionTreeModel,2023-10-17 22:52:38,2023-10-17 22:52:39
+Model LogisticRegressionModel
+Execution: 40/108
+Started at 2023-10-17 22:52:39
+Test search started at 2023-10-17 22:52:39
+
+Hyperparametrization:
+{
+  "C": 47.41686168985238,
+  "max_iter": 50
+}
+Best result: 0.6
+Cross validation started at 2023-10-17 22:52:39
+
+Production model build started at 2023-10-17 22:52:39
+
+Production Model Results:
+Precision scores: 0.33, 1.00, 1.00, 0.33, 1.00, 1.00, 0.00, 0.00, 0.00, 1.00
+Mean precision: 0.57
+
+Recall scores: 0.50, 1.00, 0.50, 0.50, 1.00, 1.00, 0.00, 0.00, 0.00, 0.50
+Mean recall: 0.50
+
+Accuracy scores: 0.25, 1.00, 0.75, 0.25, 1.00, 1.00, 0.25, 0.50, 0.25, 0.75
+Mean Accuracy:  0.60
+
+F1 scores: 0.40, 1.00, 0.67, 0.40, 1.00, 1.00, 0.00, 0.00, 0.00, 0.67
+Mean F1:  0.51
+
+AUC scores: 0.25, 1.00, 0.75, 0.25, 1.00, 1.00, 0.25, 0.50, 0.25, 0.75
+Mean AUC: 0.60
+Features:density_design_keywords, density_refactoring_keywords, number_refactoring_keywords, mean_number_of_words
+Coefficients:
+[-2.5600820918182845, 0.3045847301176867, 5.342851519809577, 1.8906842061012505]
+CSV,Netflix-zuul,implementation,LogisticRegressionModel,0.57,0.50,0.60,0.51,14,6,10,10,0.60
+Finished at 2023-10-17 22:52:39
+TIME,Netflix-zuul,implementation,LogisticRegressionModel,2023-10-17 22:52:39,2023-10-17 22:52:39
+Model GaussianNaiveBayesModel
+Execution: 41/108
+Started at 2023-10-17 22:52:39
+Test search started at 2023-10-17 22:52:39
+
+Hyperparametrization:
+{
+  "var_smoothing": 1e-10
+}
+Best result: 0.65
+Cross validation started at 2023-10-17 22:52:39
+
+Production model build started at 2023-10-17 22:52:39
+
+Production Model Results:
+Precision scores: 1.00, 0.00, 1.00, 0.50, 1.00, 1.00, 1.00, 0.50, 0.00, 0.50
+Mean precision: 0.65
+
+Recall scores: 0.50, 0.00, 0.50, 0.50, 0.50, 0.50, 1.00, 0.50, 0.00, 1.00
+Mean recall: 0.50
+
+Accuracy scores: 0.75, 0.50, 0.75, 0.50, 0.75, 0.75, 1.00, 0.50, 0.50, 0.50
+Mean Accuracy:  0.65
+
+F1 scores: 0.67, 0.00, 0.67, 0.50, 0.67, 0.67, 1.00, 0.50, 0.00, 0.67
+Mean F1:  0.53
+
+AUC scores: 0.75, 0.50, 0.75, 0.50, 0.75, 0.75, 1.00, 0.50, 0.50, 0.50
+Mean AUC: 0.65
+(Not possible to collect feature importances)
+CSV,Netflix-zuul,implementation,GaussianNaiveBayesModel,0.65,0.50,0.65,0.53,16,4,10,10,0.65
+Finished at 2023-10-17 22:52:39
+TIME,Netflix-zuul,implementation,GaussianNaiveBayesModel,2023-10-17 22:52:39,2023-10-17 22:52:39
+Model GradientBoostingRegressorModel
+Execution: 42/108
+Started at 2023-10-17 22:52:39
+Test search started at 2023-10-17 22:52:39
+
+Hyperparametrization:
+{
+  "max_depth": 3,
+  "min_samples_split": 2,
+  "n_estimators": 50
+}
+Best result: 0.55
+Cross validation started at 2023-10-17 22:52:49
+
+Production model build started at 2023-10-17 22:52:49
+
+Production Model Results:
+Precision scores: 0.33, 0.33, 0.67, 0.50, 0.33, 0.00, 0.33, 0.00, 0.67, 0.00
+Mean precision: 0.32
+
+Recall scores: 0.50, 0.50, 1.00, 1.00, 0.50, 0.00, 0.50, 0.00, 1.00, 0.00
+Mean recall: 0.50
+
+Accuracy scores: 0.25, 0.25, 0.75, 0.50, 0.25, 0.50, 0.25, 0.50, 0.75, 0.25
+Mean Accuracy:  0.42
+
+F1 scores: 0.40, 0.40, 0.80, 0.67, 0.40, 0.00, 0.40, 0.00, 0.80, 0.00
+Mean F1:  0.39
+
+AUC scores: 0.25, 0.25, 0.75, 0.50, 0.25, 0.50, 0.25, 0.50, 0.75, 0.25
+Mean AUC: 0.42
+Feature Importances: 
+density_design_keywords          : 0.0143
+density_refactoring_keywords     : 0.1120
+number_refactoring_keywords      : 0.4912
+mean_number_of_words             : 0.3826
+
+CSV,Netflix-zuul,implementation,GradientBoostingRegressorModel,0.32,0.50,0.42,0.39,7,13,10,10,0.42
+Finished at 2023-10-17 22:52:49
+TIME,Netflix-zuul,implementation,GradientBoostingRegressorModel,2023-10-17 22:52:39,2023-10-17 22:52:49
+**** Smell granularity design
+---- Retrieve labeled instances for dataset: Netflix-zuul
+raw number of impactful patches instances: 81
+raw number of not impactful patches instances: 523
+impactful patches instance (after dropping NA)s: 17
+not impactful patches instances (after dropping NA)s: 78
+instances before balancing: Counter({0: 78, 1: 17})
+instances after balancing: Counter({0: 17, 1: 17})
+Features before reduction (total of 7): number_of_comments, density_design_keywords, density_refactoring_keywords, number_design_keywords, number_refactoring_keywords, mean_number_of_words, number_of_words
+Features after reduction (total of 3): density_refactoring_keywords, number_refactoring_keywords, mean_number_of_words
+Feature ranking: 3, 5, 1, 4, 1, 1, 2
+Feature grid scores: mean_test_score, std_test_score, split0_test_score, split1_test_score, split2_test_score, split3_test_score, split4_test_score
+Model LinearSVMModel
+Execution: 43/108
+Started at 2023-10-17 22:52:49
+Test search started at 2023-10-17 22:52:49
+
+Hyperparametrization:
+{
+  "C": 2.2780647733559074,
+  "kernel": "linear",
+  "shrinking": false
+}
+Best result: 0.738095238095238
+Cross validation started at 2023-10-17 22:52:49
+
+Production model build started at 2023-10-17 22:52:49
+
+Production Model Results:
+Precision scores: 1.00, 1.00, 0.50, 0.67, 1.00, 0.33, 0.50, 1.00, 1.00, 1.00
+Mean precision: 0.80
+
+Recall scores: 0.50, 1.00, 0.50, 1.00, 1.00, 1.00, 1.00, 0.50, 0.50, 0.50
+Mean recall: 0.75
+
+Accuracy scores: 0.75, 1.00, 0.50, 0.75, 1.00, 0.33, 0.67, 0.67, 0.67, 0.67
+Mean Accuracy:  0.70
+
+F1 scores: 0.67, 1.00, 0.50, 0.80, 1.00, 0.50, 0.67, 0.67, 0.67, 0.67
+Mean F1:  0.71
+
+AUC scores: 0.75, 1.00, 0.50, 0.75, 1.00, 0.50, 0.75, 0.75, 0.75, 0.75
+Mean AUC: 0.75
+Features:density_refactoring_keywords, number_refactoring_keywords, mean_number_of_words
+Coefficients:
+[2.7079629394747915, 1.862762797726789, 0.4558212266109599]
+CSV,Netflix-zuul,design,LinearSVMModel,0.80,0.75,0.70,0.71,12,5,5,12,0.75
+Finished at 2023-10-17 22:52:49
+TIME,Netflix-zuul,design,LinearSVMModel,2023-10-17 22:52:49,2023-10-17 22:52:49
+Model RandomForestModel
+Execution: 44/108
+Started at 2023-10-17 22:52:49
+Test search started at 2023-10-17 22:52:49
+
+Hyperparametrization:
+{
+  "bootstrap": true,
+  "criterion": "gini",
+  "max_depth": 3,
+  "max_features": "sqrt",
+  "min_samples_split": 10,
+  "n_estimators": 10
+}
+Best result: 0.7047619047619047
+Cross validation started at 2023-10-17 22:55:27
+
+Production model build started at 2023-10-17 22:55:28
+
+Production Model Results:
+Precision scores: 1.00, 0.00, 0.50, 0.67, 1.00, 1.00, 0.50, 0.00, 1.00, 1.00
+Mean precision: 0.67
+
+Recall scores: 0.50, 0.00, 1.00, 1.00, 1.00, 1.00, 1.00, 0.00, 0.50, 1.00
+Mean recall: 0.70
+
+Accuracy scores: 0.75, 0.25, 0.50, 0.75, 1.00, 1.00, 0.67, 0.33, 0.67, 1.00
+Mean Accuracy:  0.69
+
+F1 scores: 0.67, 0.00, 0.67, 0.80, 1.00, 1.00, 0.67, 0.00, 0.67, 1.00
+Mean F1:  0.65
+
+AUC scores: 0.75, 0.25, 0.50, 0.75, 1.00, 1.00, 0.75, 0.50, 0.75, 1.00
+Mean AUC: 0.72
+Feature Importances: 
+density_refactoring_keywords     : 0.2548
+number_refactoring_keywords      : 0.4606
+mean_number_of_words             : 0.2846
+
+CSV,Netflix-zuul,design,RandomForestModel,0.67,0.70,0.69,0.65,12,5,6,11,0.72
+Finished at 2023-10-17 22:55:28
+TIME,Netflix-zuul,design,RandomForestModel,2023-10-17 22:52:49,2023-10-17 22:55:28
+Model DecisionTreeModel
+Execution: 45/108
+Started at 2023-10-17 22:55:28
+Test search started at 2023-10-17 22:55:28
+
+Hyperparametrization:
+{
+  "criterion": "gini",
+  "max_depth": 6,
+  "max_features": null,
+  "min_samples_split": 11,
+  "splitter": "random"
+}
+Best result: 0.7619047619047619
+Cross validation started at 2023-10-17 22:55:29
+
+Production model build started at 2023-10-17 22:55:29
+
+Production Model Results:
+Precision scores: 0.67, 1.00, 1.00, 1.00, 1.00, 0.00, 0.00, 0.00, 1.00, 1.00
+Mean precision: 0.67
+
+Recall scores: 1.00, 0.50, 1.00, 1.00, 1.00, 0.00, 0.00, 0.00, 0.50, 1.00
+Mean recall: 0.60
+
+Accuracy scores: 0.75, 0.75, 1.00, 1.00, 1.00, 0.67, 0.33, 0.33, 0.67, 1.00
+Mean Accuracy:  0.75
+
+F1 scores: 0.80, 0.67, 1.00, 1.00, 1.00, 0.00, 0.00, 0.00, 0.67, 1.00
+Mean F1:  0.61
+
+AUC scores: 0.75, 0.75, 1.00, 1.00, 1.00, 0.50, 0.25, 0.50, 0.75, 1.00
+Mean AUC: 0.75
+Feature Importances: 
+density_refactoring_keywords     : 0.7095
+number_refactoring_keywords      : 0.0000
+mean_number_of_words             : 0.2905
+
+CSV,Netflix-zuul,design,DecisionTreeModel,0.67,0.60,0.75,0.61,15,2,6,11,0.75
+Finished at 2023-10-17 22:55:29
+TIME,Netflix-zuul,design,DecisionTreeModel,2023-10-17 22:55:28,2023-10-17 22:55:29
+Model LogisticRegressionModel
+Execution: 46/108
+Started at 2023-10-17 22:55:29
+Test search started at 2023-10-17 22:55:29
+
+Hyperparametrization:
+{
+  "C": 26.450571970433327,
+  "max_iter": 50
+}
+Best result: 0.6428571428571428
+Cross validation started at 2023-10-17 22:55:29
+
+Production model build started at 2023-10-17 22:55:29
+
+Production Model Results:
+Precision scores: 1.00, 1.00, 0.00, 0.50, 0.00, 0.00, 0.50, 0.67, 0.00, 1.00
+Mean precision: 0.47
+
+Recall scores: 1.00, 1.00, 0.00, 0.50, 0.00, 0.00, 1.00, 1.00, 0.00, 1.00
+Mean recall: 0.55
+
+Accuracy scores: 1.00, 1.00, 0.25, 0.50, 0.67, 0.67, 0.67, 0.67, 0.33, 1.00
+Mean Accuracy:  0.67
+
+F1 scores: 1.00, 1.00, 0.00, 0.50, 0.00, 0.00, 0.67, 0.80, 0.00, 1.00
+Mean F1:  0.50
+
+AUC scores: 1.00, 1.00, 0.25, 0.50, 0.50, 0.50, 0.75, 0.50, 0.50, 1.00
+Mean AUC: 0.65
+Features:density_refactoring_keywords, number_refactoring_keywords, mean_number_of_words
+Coefficients:
+[1.309387333860964, 2.3058512616983022, 1.3798639126937908]
+CSV,Netflix-zuul,design,LogisticRegressionModel,0.47,0.55,0.67,0.50,13,4,7,10,0.65
+Finished at 2023-10-17 22:55:29
+TIME,Netflix-zuul,design,LogisticRegressionModel,2023-10-17 22:55:29,2023-10-17 22:55:29
+Model GaussianNaiveBayesModel
+Execution: 47/108
+Started at 2023-10-17 22:55:29
+Test search started at 2023-10-17 22:55:29
+
+Hyperparametrization:
+{
+  "var_smoothing": 1e-10
+}
+Best result: 0.6476190476190475
+Cross validation started at 2023-10-17 22:55:29
+
+Production model build started at 2023-10-17 22:55:29
+
+Production Model Results:
+Precision scores: 1.00, 0.50, 1.00, 1.00, 0.00, 1.00, 0.00, 1.00, 1.00, 0.50
+Mean precision: 0.70
+
+Recall scores: 1.00, 0.50, 0.50, 0.50, 0.00, 1.00, 0.00, 0.50, 0.50, 0.50
+Mean recall: 0.50
+
+Accuracy scores: 1.00, 0.50, 0.75, 0.75, 0.67, 1.00, 0.33, 0.67, 0.67, 0.33
+Mean Accuracy:  0.67
+
+F1 scores: 1.00, 0.50, 0.67, 0.67, 0.00, 1.00, 0.00, 0.67, 0.67, 0.50
+Mean F1:  0.57
+
+AUC scores: 1.00, 0.50, 0.75, 0.75, 0.50, 1.00, 0.25, 0.75, 0.75, 0.25
+Mean AUC: 0.65
+(Not possible to collect feature importances)
+CSV,Netflix-zuul,design,GaussianNaiveBayesModel,0.70,0.50,0.67,0.57,14,3,8,9,0.65
+Finished at 2023-10-17 22:55:29
+TIME,Netflix-zuul,design,GaussianNaiveBayesModel,2023-10-17 22:55:29,2023-10-17 22:55:29
+Model GradientBoostingRegressorModel
+Execution: 48/108
+Started at 2023-10-17 22:55:29
+Test search started at 2023-10-17 22:55:29
+
+Hyperparametrization:
+{
+  "max_depth": 6,
+  "min_samples_split": 5,
+  "n_estimators": 100
+}
+Best result: 0.6857142857142857
+Cross validation started at 2023-10-17 22:55:38
+
+Production model build started at 2023-10-17 22:55:39
+
+Production Model Results:
+Precision scores: 1.00, 0.00, 1.00, 0.50, 0.50, 1.00, 0.00, 0.50, 0.67, 1.00
+Mean precision: 0.62
+
+Recall scores: 0.50, 0.00, 0.50, 0.50, 1.00, 1.00, 0.00, 0.50, 1.00, 0.50
+Mean recall: 0.55
+
+Accuracy scores: 0.75, 0.25, 0.75, 0.50, 0.67, 1.00, 0.33, 0.33, 0.67, 0.67
+Mean Accuracy:  0.59
+
+F1 scores: 0.67, 0.00, 0.67, 0.50, 0.67, 1.00, 0.00, 0.50, 0.80, 0.67
+Mean F1:  0.55
+
+AUC scores: 0.75, 0.25, 0.75, 0.50, 0.75, 1.00, 0.25, 0.25, 0.50, 0.75
+Mean AUC: 0.57
+Feature Importances: 
+density_refactoring_keywords     : 0.5545
+number_refactoring_keywords      : 0.1488
+mean_number_of_words             : 0.2967
+
+CSV,Netflix-zuul,design,GradientBoostingRegressorModel,0.62,0.55,0.59,0.55,11,6,8,9,0.57
+Finished at 2023-10-17 22:55:39
+TIME,Netflix-zuul,design,GradientBoostingRegressorModel,2023-10-17 22:55:29,2023-10-17 22:55:39
+Dataset Netflix-Hystrix
+**** Smell granularity implementation
+---- Retrieve labeled instances for dataset: Netflix-Hystrix
+raw number of impactful patches instances: 82
+raw number of not impactful patches instances: 530
+impactful patches instance (after dropping NA)s: 77
+not impactful patches instances (after dropping NA)s: 409
+instances before balancing: Counter({0: 409, 1: 77})
+instances after balancing: Counter({0: 77, 1: 77})
+Features before reduction (total of 7): number_of_comments, density_design_keywords, density_refactoring_keywords, number_design_keywords, number_refactoring_keywords, mean_number_of_words, number_of_words
+Features after reduction (total of 5): number_of_comments, density_design_keywords, number_design_keywords, mean_number_of_words, number_of_words
+Feature ranking: 1, 1, 3, 1, 2, 1, 1
+Feature grid scores: mean_test_score, std_test_score, split0_test_score, split1_test_score, split2_test_score, split3_test_score, split4_test_score
+Model LinearSVMModel
+Execution: 49/108
+Started at 2023-10-17 22:55:39
+Test search started at 2023-10-17 22:55:39
+
+Hyperparametrization:
+{
+  "C": 7.216701927241,
+  "kernel": "linear",
+  "shrinking": false
+}
+Best result: 0.6236559139784946
+Cross validation started at 2023-10-17 22:55:39
+
+Production model build started at 2023-10-17 22:55:39
+
+Production Model Results:
+Precision scores: 0.50, 0.80, 0.55, 0.50, 1.00, 1.00, 1.00, 1.00, 0.00, 1.00
+Mean precision: 0.73
+
+Recall scores: 0.12, 0.50, 0.75, 0.12, 0.29, 0.43, 0.29, 0.25, 0.00, 0.25
+Mean recall: 0.30
+
+Accuracy scores: 0.50, 0.69, 0.56, 0.50, 0.67, 0.73, 0.67, 0.60, 0.40, 0.60
+Mean Accuracy:  0.59
+
+F1 scores: 0.20, 0.62, 0.63, 0.20, 0.44, 0.60, 0.44, 0.40, 0.00, 0.40
+Mean F1:  0.39
+
+AUC scores: 0.50, 0.69, 0.56, 0.50, 0.64, 0.71, 0.64, 0.62, 0.43, 0.62
+Mean AUC: 0.59
+Features:number_of_comments, density_design_keywords, number_design_keywords, mean_number_of_words, number_of_words
+Coefficients:
+[6.415675837186956, -0.011239699459162367, 3.9391358805135273, -0.6056960836282259, 1.8507406938964457]
+CSV,Netflix-Hystrix,implementation,LinearSVMModel,0.73,0.30,0.59,0.39,68,9,54,23,0.59
+Finished at 2023-10-17 22:55:39
+TIME,Netflix-Hystrix,implementation,LinearSVMModel,2023-10-17 22:55:39,2023-10-17 22:55:39
+Model RandomForestModel
+Execution: 50/108
+Started at 2023-10-17 22:55:39
+Test search started at 2023-10-17 22:55:39
+
+Hyperparametrization:
+{
+  "bootstrap": true,
+  "criterion": "gini",
+  "max_depth": 3,
+  "max_features": "sqrt",
+  "min_samples_split": 10,
+  "n_estimators": 100
+}
+Best result: 0.6752688172043011
+Cross validation started at 2023-10-17 22:58:30
+
+Production model build started at 2023-10-17 22:58:30
+
+Production Model Results:
+Precision scores: 0.83, 0.50, 0.83, 0.57, 0.75, 0.40, 0.60, 0.71, 0.50, 0.88
+Mean precision: 0.66
+
+Recall scores: 0.62, 0.25, 0.62, 0.50, 0.43, 0.57, 0.43, 0.62, 0.12, 0.88
+Mean recall: 0.51
+
+Accuracy scores: 0.75, 0.50, 0.75, 0.56, 0.67, 0.40, 0.60, 0.67, 0.47, 0.87
+Mean Accuracy:  0.62
+
+F1 scores: 0.71, 0.33, 0.71, 0.53, 0.55, 0.47, 0.50, 0.67, 0.20, 0.88
+Mean F1:  0.56
+
+AUC scores: 0.75, 0.50, 0.75, 0.56, 0.65, 0.41, 0.59, 0.67, 0.49, 0.87
+Mean AUC: 0.62
+Feature Importances: 
+number_of_comments               : 0.2759
+density_design_keywords          : 0.0968
+number_design_keywords           : 0.0978
+mean_number_of_words             : 0.2246
+number_of_words                  : 0.3049
+
+CSV,Netflix-Hystrix,implementation,RandomForestModel,0.66,0.51,0.62,0.56,57,20,38,39,0.62
+Finished at 2023-10-17 22:58:31
+TIME,Netflix-Hystrix,implementation,RandomForestModel,2023-10-17 22:55:39,2023-10-17 22:58:31
+Model DecisionTreeModel
+Execution: 51/108
+Started at 2023-10-17 22:58:31
+Test search started at 2023-10-17 22:58:31
+
+Hyperparametrization:
+{
+  "criterion": "entropy",
+  "max_depth": 6,
+  "max_features": null,
+  "min_samples_split": 10,
+  "splitter": "random"
+}
+Best result: 0.669032258064516
+Cross validation started at 2023-10-17 22:58:32
+
+Production model build started at 2023-10-17 22:58:32
+
+Production Model Results:
+Precision scores: 0.67, 1.00, 0.50, 1.00, 0.67, 1.00, 0.75, 0.50, 0.50, 0.75
+Mean precision: 0.73
+
+Recall scores: 0.50, 0.50, 0.25, 0.62, 0.86, 0.14, 0.86, 0.25, 0.12, 0.75
+Mean recall: 0.49
+
+Accuracy scores: 0.62, 0.75, 0.50, 0.81, 0.73, 0.60, 0.80, 0.47, 0.47, 0.73
+Mean Accuracy:  0.65
+
+F1 scores: 0.57, 0.67, 0.33, 0.77, 0.75, 0.25, 0.80, 0.33, 0.20, 0.75
+Mean F1:  0.54
+
+AUC scores: 0.62, 0.75, 0.50, 0.81, 0.74, 0.57, 0.80, 0.48, 0.49, 0.73
+Mean AUC: 0.65
+Feature Importances: 
+number_of_comments               : 0.4345
+density_design_keywords          : 0.0785
+number_design_keywords           : 0.2884
+mean_number_of_words             : 0.1117
+number_of_words                  : 0.0868
+
+CSV,Netflix-Hystrix,implementation,DecisionTreeModel,0.73,0.49,0.65,0.54,63,14,40,37,0.65
+Finished at 2023-10-17 22:58:32
+TIME,Netflix-Hystrix,implementation,DecisionTreeModel,2023-10-17 22:58:31,2023-10-17 22:58:32
+Model LogisticRegressionModel
+Execution: 52/108
+Started at 2023-10-17 22:58:32
+Test search started at 2023-10-17 22:58:32
+
+Hyperparametrization:
+{
+  "C": 40.953007932762816,
+  "max_iter": 50
+}
+Best result: 0.6817204301075269
+Cross validation started at 2023-10-17 22:58:32
+
+Production model build started at 2023-10-17 22:58:32
+
+Production Model Results:
+Precision scores: 0.40, 0.67, 1.00, 0.86, 0.67, 0.60, 0.80, 1.00, 1.00, 0.80
+Mean precision: 0.78
+
+Recall scores: 0.25, 0.50, 0.50, 0.75, 0.29, 0.43, 0.57, 0.50, 0.38, 0.50
+Mean recall: 0.47
+
+Accuracy scores: 0.44, 0.62, 0.75, 0.81, 0.60, 0.60, 0.73, 0.73, 0.67, 0.67
+Mean Accuracy:  0.66
+
+F1 scores: 0.31, 0.57, 0.67, 0.80, 0.40, 0.50, 0.67, 0.67, 0.55, 0.62
+Mean F1:  0.57
+
+AUC scores: 0.44, 0.62, 0.75, 0.81, 0.58, 0.59, 0.72, 0.75, 0.69, 0.68
+Mean AUC: 0.66
+Features:number_of_comments, density_design_keywords, number_design_keywords, mean_number_of_words, number_of_words
+Coefficients:
+[4.5673536900318, -0.8287018840475576, 7.194205283319552, -0.7846979305890268, 2.712888199286376]
+CSV,Netflix-Hystrix,implementation,LogisticRegressionModel,0.78,0.47,0.66,0.57,66,11,41,36,0.66
+Finished at 2023-10-17 22:58:32
+TIME,Netflix-Hystrix,implementation,LogisticRegressionModel,2023-10-17 22:58:32,2023-10-17 22:58:32
+Model GaussianNaiveBayesModel
+Execution: 53/108
+Started at 2023-10-17 22:58:32
+Test search started at 2023-10-17 22:58:32
+
+Hyperparametrization:
+{
+  "var_smoothing": 1e-10
+}
+Best result: 0.5974193548387097
+Cross validation started at 2023-10-17 22:58:32
+
+Production model build started at 2023-10-17 22:58:32
+
+Production Model Results:
+Precision scores: 0.50, 0.75, 0.75, 0.50, 1.00, 0.75, 0.50, 1.00, 0.75, 0.00
+Mean precision: 0.65
+
+Recall scores: 0.25, 0.38, 0.38, 0.12, 0.43, 0.86, 0.14, 0.38, 0.38, 0.00
+Mean recall: 0.33
+
+Accuracy scores: 0.50, 0.62, 0.62, 0.50, 0.73, 0.80, 0.53, 0.67, 0.60, 0.47
+Mean Accuracy:  0.60
+
+F1 scores: 0.33, 0.50, 0.50, 0.20, 0.60, 0.80, 0.22, 0.55, 0.50, 0.00
+Mean F1:  0.42
+
+AUC scores: 0.50, 0.62, 0.62, 0.50, 0.71, 0.80, 0.51, 0.69, 0.62, 0.50
+Mean AUC: 0.61
+(Not possible to collect feature importances)
+CSV,Netflix-Hystrix,implementation,GaussianNaiveBayesModel,0.65,0.33,0.60,0.42,68,9,52,25,0.61
+Finished at 2023-10-17 22:58:32
+TIME,Netflix-Hystrix,implementation,GaussianNaiveBayesModel,2023-10-17 22:58:32,2023-10-17 22:58:32
+Model GradientBoostingRegressorModel
+Execution: 54/108
+Started at 2023-10-17 22:58:32
+Test search started at 2023-10-17 22:58:32
+
+Hyperparametrization:
+{
+  "max_depth": 6,
+  "min_samples_split": 10,
+  "n_estimators": 10
+}
+Best result: 0.5978494623655913
+Cross validation started at 2023-10-17 22:58:50
+
+Production model build started at 2023-10-17 22:58:50
+
+Production Model Results:
+Precision scores: 0.55, 0.60, 0.62, 0.62, 0.80, 0.67, 0.57, 0.57, 0.50, 0.57
+Mean precision: 0.61
+
+Recall scores: 0.75, 0.38, 0.62, 0.62, 0.57, 0.57, 0.57, 0.50, 0.25, 0.50
+Mean recall: 0.53
+
+Accuracy scores: 0.56, 0.56, 0.62, 0.62, 0.73, 0.67, 0.60, 0.53, 0.47, 0.53
+Mean Accuracy:  0.59
+
+F1 scores: 0.63, 0.46, 0.62, 0.62, 0.67, 0.62, 0.57, 0.53, 0.33, 0.53
+Mean F1:  0.56
+
+AUC scores: 0.56, 0.56, 0.62, 0.62, 0.72, 0.66, 0.60, 0.54, 0.48, 0.54
+Mean AUC: 0.59
+Feature Importances: 
+number_of_comments               : 0.2721
+density_design_keywords          : 0.1537
+number_design_keywords           : 0.0822
+mean_number_of_words             : 0.3143
+number_of_words                  : 0.1778
+
+CSV,Netflix-Hystrix,implementation,GradientBoostingRegressorModel,0.61,0.53,0.59,0.56,50,27,36,41,0.59
+Finished at 2023-10-17 22:58:50
+TIME,Netflix-Hystrix,implementation,GradientBoostingRegressorModel,2023-10-17 22:58:32,2023-10-17 22:58:50
+**** Smell granularity design
+---- Retrieve labeled instances for dataset: Netflix-Hystrix
+raw number of impactful patches instances: 70
+raw number of not impactful patches instances: 542
+impactful patches instance (after dropping NA)s: 69
+not impactful patches instances (after dropping NA)s: 417
+instances before balancing: Counter({0: 417, 1: 69})
+instances after balancing: Counter({0: 69, 1: 69})
+Features before reduction (total of 7): number_of_comments, density_design_keywords, density_refactoring_keywords, number_design_keywords, number_refactoring_keywords, mean_number_of_words, number_of_words
+Features after reduction (total of 1): density_design_keywords
+Feature ranking: 2, 1, 4, 3, 6, 7, 5
+Feature grid scores: mean_test_score, std_test_score, split0_test_score, split1_test_score, split2_test_score, split3_test_score, split4_test_score
+Model LinearSVMModel
+Execution: 55/108
+Started at 2023-10-17 22:58:50
+Test search started at 2023-10-17 22:58:50
+
+Hyperparametrization:
+{
+  "C": 9.792864123662458,
+  "kernel": "linear",
+  "shrinking": false
+}
+Best result: 0.6460317460317461
+Cross validation started at 2023-10-17 22:58:50
+
+Production model build started at 2023-10-17 22:58:50
+
+Production Model Results:
+Precision scores: 0.50, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00
+Mean precision: 0.95
+
+Recall scores: 0.14, 0.14, 0.29, 0.29, 0.29, 0.29, 0.43, 0.29, 0.50, 0.43
+Mean recall: 0.31
+
+Accuracy scores: 0.50, 0.57, 0.64, 0.64, 0.64, 0.64, 0.71, 0.64, 0.77, 0.69
+Mean Accuracy:  0.65
+
+F1 scores: 0.22, 0.25, 0.44, 0.44, 0.44, 0.44, 0.60, 0.44, 0.67, 0.60
+Mean F1:  0.46
+
+AUC scores: 0.50, 0.57, 0.64, 0.64, 0.64, 0.64, 0.71, 0.64, 0.75, 0.71
+Mean AUC: 0.65
+Features:density_design_keywords
+Coefficients:
+[6.66666620203862]
+CSV,Netflix-Hystrix,design,LinearSVMModel,0.95,0.31,0.65,0.46,68,1,48,21,0.65
+Finished at 2023-10-17 22:58:50
+TIME,Netflix-Hystrix,design,LinearSVMModel,2023-10-17 22:58:50,2023-10-17 22:58:50
+Model RandomForestModel
+Execution: 56/108
+Started at 2023-10-17 22:58:50
+Test search started at 2023-10-17 22:58:50
+
+Hyperparametrization:
+{
+  "bootstrap": true,
+  "criterion": "gini",
+  "max_depth": 3,
+  "max_features": "sqrt",
+  "min_samples_split": 2,
+  "n_estimators": 10
+}
+Best result: 0.6455026455026455
+Cross validation started at 2023-10-17 23:01:26
+
+Production model build started at 2023-10-17 23:01:26
+
+Production Model Results:
+Precision scores: 1.00, 0.83, 1.00, 1.00, 0.67, 1.00, 1.00, 1.00, 1.00, 1.00
+Mean precision: 0.95
+
+Recall scores: 0.43, 0.71, 0.43, 0.14, 0.29, 0.14, 0.43, 0.14, 0.33, 0.14
+Mean recall: 0.32
+
+Accuracy scores: 0.71, 0.79, 0.71, 0.57, 0.57, 0.57, 0.71, 0.57, 0.69, 0.54
+Mean Accuracy:  0.64
+
+F1 scores: 0.60, 0.77, 0.60, 0.25, 0.40, 0.25, 0.60, 0.25, 0.50, 0.25
+Mean F1:  0.45
+
+AUC scores: 0.71, 0.79, 0.71, 0.57, 0.57, 0.57, 0.71, 0.57, 0.67, 0.57
+Mean AUC: 0.65
+Feature Importances: 
+density_design_keywords          : 1.0000
+
+CSV,Netflix-Hystrix,design,RandomForestModel,0.95,0.32,0.64,0.45,67,2,47,22,0.65
+Finished at 2023-10-17 23:01:26
+TIME,Netflix-Hystrix,design,RandomForestModel,2023-10-17 22:58:50,2023-10-17 23:01:26
+Model DecisionTreeModel
+Execution: 57/108
+Started at 2023-10-17 23:01:26
+Test search started at 2023-10-17 23:01:26
+
+Hyperparametrization:
+{
+  "criterion": "gini",
+  "max_depth": 3,
+  "max_features": "sqrt",
+  "min_samples_split": 2,
+  "splitter": "best"
+}
+Best result: 0.6365079365079364
+Cross validation started at 2023-10-17 23:01:27
+
+Production model build started at 2023-10-17 23:01:27
+
+Production Model Results:
+Precision scores: 1.00, 1.00, 1.00, 0.83, 1.00, 0.00, 1.00, 0.67, 1.00, 1.00
+Mean precision: 0.85
+
+Recall scores: 0.14, 0.43, 0.14, 0.71, 0.14, 0.00, 0.29, 0.29, 0.50, 0.29
+Mean recall: 0.29
+
+Accuracy scores: 0.57, 0.71, 0.57, 0.79, 0.57, 0.50, 0.64, 0.57, 0.77, 0.62
+Mean Accuracy:  0.63
+
+F1 scores: 0.25, 0.60, 0.25, 0.77, 0.25, 0.00, 0.44, 0.40, 0.67, 0.44
+Mean F1:  0.41
+
+AUC scores: 0.57, 0.71, 0.57, 0.79, 0.57, 0.50, 0.64, 0.57, 0.75, 0.64
+Mean AUC: 0.63
+Feature Importances: 
+density_design_keywords          : 1.0000
+
+CSV,Netflix-Hystrix,design,DecisionTreeModel,0.85,0.29,0.63,0.41,67,2,49,20,0.63
+Finished at 2023-10-17 23:01:27
+TIME,Netflix-Hystrix,design,DecisionTreeModel,2023-10-17 23:01:26,2023-10-17 23:01:27
+Model LogisticRegressionModel
+Execution: 58/108
+Started at 2023-10-17 23:01:27
+Test search started at 2023-10-17 23:01:27
+
+Hyperparametrization:
+{
+  "C": 17.94407573933274,
+  "max_iter": 50
+}
+Best result: 0.6447089947089948
+Cross validation started at 2023-10-17 23:01:28
+
+Production model build started at 2023-10-17 23:01:28
+
+Production Model Results:
+Precision scores: 1.00, 1.00, 1.00, 1.00, 0.00, 0.67, 1.00, 1.00, 1.00, 0.67
+Mean precision: 0.83
+
+Recall scores: 0.43, 0.29, 0.43, 0.57, 0.00, 0.29, 0.29, 0.29, 0.33, 0.29
+Mean recall: 0.32
+
+Accuracy scores: 0.71, 0.64, 0.71, 0.79, 0.50, 0.57, 0.64, 0.64, 0.69, 0.54
+Mean Accuracy:  0.64
+
+F1 scores: 0.60, 0.44, 0.60, 0.73, 0.00, 0.40, 0.44, 0.44, 0.50, 0.40
+Mean F1:  0.46
+
+AUC scores: 0.71, 0.64, 0.71, 0.79, 0.50, 0.57, 0.64, 0.64, 0.67, 0.56
+Mean AUC: 0.64
+Features:density_design_keywords
+Coefficients:
+[5.315155210654399]
+CSV,Netflix-Hystrix,design,LogisticRegressionModel,0.83,0.32,0.64,0.46,67,2,47,22,0.64
+Finished at 2023-10-17 23:01:28
+TIME,Netflix-Hystrix,design,LogisticRegressionModel,2023-10-17 23:01:27,2023-10-17 23:01:28
+Model GaussianNaiveBayesModel
+Execution: 59/108
+Started at 2023-10-17 23:01:28
+Test search started at 2023-10-17 23:01:28
+
+Hyperparametrization:
+{
+  "var_smoothing": 1e-10
+}
+Best result: 0.6452380952380952
+Cross validation started at 2023-10-17 23:01:28
+
+Production model build started at 2023-10-17 23:01:28
+
+Production Model Results:
+Precision scores: 1.00, 1.00, 0.67, 1.00, 0.00, 1.00, 1.00, 1.00, 1.00, 1.00
+Mean precision: 0.87
+
+Recall scores: 0.29, 0.14, 0.29, 0.29, 0.00, 0.29, 0.57, 0.29, 0.50, 0.43
+Mean recall: 0.31
+
+Accuracy scores: 0.64, 0.57, 0.57, 0.64, 0.50, 0.64, 0.79, 0.64, 0.77, 0.69
+Mean Accuracy:  0.65
+
+F1 scores: 0.44, 0.25, 0.40, 0.44, 0.00, 0.44, 0.73, 0.44, 0.67, 0.60
+Mean F1:  0.44
+
+AUC scores: 0.64, 0.57, 0.57, 0.64, 0.50, 0.64, 0.79, 0.64, 0.75, 0.71
+Mean AUC: 0.65
+(Not possible to collect feature importances)
+CSV,Netflix-Hystrix,design,GaussianNaiveBayesModel,0.87,0.31,0.65,0.44,68,1,48,21,0.65
+Finished at 2023-10-17 23:01:28
+TIME,Netflix-Hystrix,design,GaussianNaiveBayesModel,2023-10-17 23:01:28,2023-10-17 23:01:28
+Model GradientBoostingRegressorModel
+Execution: 60/108
+Started at 2023-10-17 23:01:28
+Test search started at 2023-10-17 23:01:28
+
+Hyperparametrization:
+{
+  "max_depth": 3,
+  "min_samples_split": 2,
+  "n_estimators": 10
+}
+Best result: 0.62989417989418
+Cross validation started at 2023-10-17 23:01:35
+
+Production model build started at 2023-10-17 23:01:35
+
+Production Model Results:
+Precision scores: 1.00, 1.00, 1.00, 0.00, 0.75, 1.00, 1.00, 1.00, 0.50, 1.00
+Mean precision: 0.82
+
+Recall scores: 0.29, 0.71, 0.29, 0.00, 0.43, 0.14, 0.29, 0.29, 0.17, 0.29
+Mean recall: 0.29
+
+Accuracy scores: 0.64, 0.86, 0.64, 0.50, 0.64, 0.57, 0.64, 0.64, 0.54, 0.62
+Mean Accuracy:  0.63
+
+F1 scores: 0.44, 0.83, 0.44, 0.00, 0.55, 0.25, 0.44, 0.44, 0.25, 0.44
+Mean F1:  0.41
+
+AUC scores: 0.64, 0.86, 0.64, 0.50, 0.64, 0.57, 0.64, 0.64, 0.51, 0.64
+Mean AUC: 0.63
+Feature Importances: 
+density_design_keywords          : 1.0000
+
+CSV,Netflix-Hystrix,design,GradientBoostingRegressorModel,0.82,0.29,0.63,0.41,67,2,49,20,0.63
+Finished at 2023-10-17 23:01:35
+TIME,Netflix-Hystrix,design,GradientBoostingRegressorModel,2023-10-17 23:01:28,2023-10-17 23:01:35
+Dataset Netflix-conductor
+**** Smell granularity implementation
+---- Retrieve labeled instances for dataset: Netflix-conductor
+raw number of impactful patches instances: 323
+raw number of not impactful patches instances: 751
+impactful patches instance (after dropping NA)s: 221
+not impactful patches instances (after dropping NA)s: 408
+instances before balancing: Counter({0: 408, 1: 221})
+instances after balancing: Counter({0: 221, 1: 221})
+Features before reduction (total of 7): number_of_comments, density_design_keywords, density_refactoring_keywords, number_design_keywords, number_refactoring_keywords, mean_number_of_words, number_of_words
+Features after reduction (total of 6): number_of_comments, density_refactoring_keywords, number_design_keywords, number_refactoring_keywords, mean_number_of_words, number_of_words
+Feature ranking: 1, 2, 1, 1, 1, 1, 1
+Feature grid scores: mean_test_score, std_test_score, split0_test_score, split1_test_score, split2_test_score, split3_test_score, split4_test_score
+Model LinearSVMModel
+Execution: 61/108
+Started at 2023-10-17 23:01:35
+Test search started at 2023-10-17 23:01:35
+
+Hyperparametrization:
+{
+  "C": 2.7065952025582325,
+  "kernel": "linear",
+  "shrinking": false
+}
+Best result: 0.5859550561797753
+Cross validation started at 2023-10-17 23:01:36
+
+Production model build started at 2023-10-17 23:01:36
+
+Production Model Results:
+Precision scores: 0.75, 1.00, 0.71, 0.56, 0.64, 0.58, 0.60, 0.57, 0.50, 0.67
+Mean precision: 0.66
+
+Recall scores: 0.27, 0.26, 0.23, 0.41, 0.41, 0.32, 0.41, 0.36, 0.27, 0.45
+Mean recall: 0.34
+
+Accuracy scores: 0.60, 0.62, 0.57, 0.55, 0.59, 0.55, 0.57, 0.55, 0.50, 0.61
+Mean Accuracy:  0.57
+
+F1 scores: 0.40, 0.41, 0.34, 0.47, 0.50, 0.41, 0.49, 0.44, 0.35, 0.54
+Mean F1:  0.44
+
+AUC scores: 0.59, 0.63, 0.57, 0.55, 0.59, 0.55, 0.57, 0.55, 0.50, 0.61
+Mean AUC: 0.57
+Features:number_of_comments, density_refactoring_keywords, number_design_keywords, number_refactoring_keywords, mean_number_of_words, number_of_words
+Coefficients:
+[1.622944950183511, -0.9008291959264576, 1.5089907789285337, 2.355166436112429, -0.32342022152556793, 3.973172979688853]
+CSV,Netflix-conductor,implementation,LinearSVMModel,0.66,0.34,0.57,0.44,177,44,146,75,0.57
+Finished at 2023-10-17 23:01:36
+TIME,Netflix-conductor,implementation,LinearSVMModel,2023-10-17 23:01:35,2023-10-17 23:01:36
+Model RandomForestModel
+Execution: 62/108
+Started at 2023-10-17 23:01:36
+Test search started at 2023-10-17 23:01:36
+
+Hyperparametrization:
+{
+  "bootstrap": false,
+  "criterion": "gini",
+  "max_depth": 3,
+  "max_features": "sqrt",
+  "min_samples_split": 10,
+  "n_estimators": 50
+}
+Best result: 0.617773237997957
+Cross validation started at 2023-10-17 23:05:30
+
+Production model build started at 2023-10-17 23:05:30
+
+Production Model Results:
+Precision scores: 0.79, 0.59, 0.80, 0.80, 0.70, 0.71, 0.47, 0.64, 0.59, 0.44
+Mean precision: 0.65
+
+Recall scores: 0.50, 0.43, 0.55, 0.55, 0.64, 0.55, 0.36, 0.32, 0.45, 0.32
+Mean recall: 0.47
+
+Accuracy scores: 0.69, 0.56, 0.70, 0.70, 0.68, 0.66, 0.48, 0.57, 0.57, 0.45
+Mean Accuracy:  0.61
+
+F1 scores: 0.61, 0.50, 0.65, 0.65, 0.67, 0.62, 0.41, 0.42, 0.51, 0.37
+Mean F1:  0.54
+
+AUC scores: 0.68, 0.56, 0.70, 0.70, 0.68, 0.66, 0.48, 0.57, 0.57, 0.45
+Mean AUC: 0.61
+Feature Importances: 
+number_of_comments               : 0.1978
+density_refactoring_keywords     : 0.1022
+number_design_keywords           : 0.0477
+number_refactoring_keywords      : 0.2338
+mean_number_of_words             : 0.1269
+number_of_words                  : 0.2916
+
+CSV,Netflix-conductor,implementation,RandomForestModel,0.65,0.47,0.61,0.54,165,56,118,103,0.61
+Finished at 2023-10-17 23:05:30
+TIME,Netflix-conductor,implementation,RandomForestModel,2023-10-17 23:01:36,2023-10-17 23:05:30
+Model DecisionTreeModel
+Execution: 63/108
+Started at 2023-10-17 23:05:30
+Test search started at 2023-10-17 23:05:30
+
+Hyperparametrization:
+{
+  "criterion": "gini",
+  "max_depth": 3,
+  "max_features": "sqrt",
+  "min_samples_split": 2,
+  "splitter": "best"
+}
+Best result: 0.5971654749744638
+Cross validation started at 2023-10-17 23:05:32
+
+Production model build started at 2023-10-17 23:05:32
+
+Production Model Results:
+Precision scores: 0.60, 0.80, 0.77, 0.71, 0.57, 0.61, 0.62, 0.54, 0.83, 0.68
+Mean precision: 0.67
+
+Recall scores: 0.41, 0.35, 0.45, 0.55, 0.55, 0.50, 0.45, 0.32, 0.45, 0.68
+Mean recall: 0.47
+
+Accuracy scores: 0.58, 0.62, 0.66, 0.66, 0.57, 0.59, 0.59, 0.52, 0.68, 0.68
+Mean Accuracy:  0.62
+
+F1 scores: 0.49, 0.48, 0.57, 0.62, 0.56, 0.55, 0.53, 0.40, 0.59, 0.68
+Mean F1:  0.55
+
+AUC scores: 0.57, 0.63, 0.66, 0.66, 0.57, 0.59, 0.59, 0.52, 0.68, 0.68
+Mean AUC: 0.62
+Feature Importances: 
+number_of_comments               : 0.0879
+density_refactoring_keywords     : 0.0000
+number_design_keywords           : 0.0000
+number_refactoring_keywords      : 0.4175
+mean_number_of_words             : 0.0000
+number_of_words                  : 0.4946
+
+CSV,Netflix-conductor,implementation,DecisionTreeModel,0.67,0.47,0.62,0.55,168,53,117,104,0.62
+Finished at 2023-10-17 23:05:32
+TIME,Netflix-conductor,implementation,DecisionTreeModel,2023-10-17 23:05:30,2023-10-17 23:05:32
+Model LogisticRegressionModel
+Execution: 64/108
+Started at 2023-10-17 23:05:32
+Test search started at 2023-10-17 23:05:32
+
+Hyperparametrization:
+{
+  "C": 67.02422310430968,
+  "max_iter": 50
+}
+Best result: 0.563432073544433
+Cross validation started at 2023-10-17 23:05:32
+
+Production model build started at 2023-10-17 23:05:32
+
+Production Model Results:
+Precision scores: 0.57, 0.65, 0.50, 0.65, 0.75, 0.60, 0.47, 0.71, 0.43, 0.65
+Mean precision: 0.60
+
+Recall scores: 0.36, 0.48, 0.41, 0.50, 0.41, 0.55, 0.41, 0.45, 0.27, 0.50
+Mean recall: 0.43
+
+Accuracy scores: 0.56, 0.60, 0.50, 0.61, 0.64, 0.59, 0.48, 0.64, 0.45, 0.61
+Mean Accuracy:  0.57
+
+F1 scores: 0.44, 0.55, 0.45, 0.56, 0.53, 0.57, 0.44, 0.56, 0.33, 0.56
+Mean F1:  0.50
+
+AUC scores: 0.55, 0.60, 0.50, 0.61, 0.64, 0.59, 0.48, 0.64, 0.45, 0.61
+Mean AUC: 0.57
+Features:number_of_comments, density_refactoring_keywords, number_design_keywords, number_refactoring_keywords, mean_number_of_words, number_of_words
+Coefficients:
+[-0.505169279615586, -2.7503064055468243, 1.3359285893768598, 4.763438403877495, -0.77028594435713, 3.045941278130439]
+CSV,Netflix-conductor,implementation,LogisticRegressionModel,0.60,0.43,0.57,0.50,155,66,125,96,0.57
+Finished at 2023-10-17 23:05:32
+TIME,Netflix-conductor,implementation,LogisticRegressionModel,2023-10-17 23:05:32,2023-10-17 23:05:32
+Model GaussianNaiveBayesModel
+Execution: 65/108
+Started at 2023-10-17 23:05:32
+Test search started at 2023-10-17 23:05:32
+
+Hyperparametrization:
+{
+  "var_smoothing": 1e-10
+}
+Best result: 0.5882788559754852
+Cross validation started at 2023-10-17 23:05:32
+
+Production model build started at 2023-10-17 23:05:32
+
+Production Model Results:
+Precision scores: 1.00, 0.83, 0.67, 0.80, 0.62, 0.69, 0.83, 0.90, 0.58, 0.58
+Mean precision: 0.75
+
+Recall scores: 0.32, 0.22, 0.18, 0.36, 0.23, 0.41, 0.23, 0.41, 0.32, 0.32
+Mean recall: 0.30
+
+Accuracy scores: 0.67, 0.58, 0.55, 0.64, 0.55, 0.61, 0.59, 0.68, 0.55, 0.55
+Mean Accuracy:  0.59
+
+F1 scores: 0.48, 0.34, 0.29, 0.50, 0.33, 0.51, 0.36, 0.56, 0.41, 0.41
+Mean F1:  0.42
+
+AUC scores: 0.66, 0.59, 0.55, 0.64, 0.55, 0.61, 0.59, 0.68, 0.55, 0.55
+Mean AUC: 0.59
+(Not possible to collect feature importances)
+CSV,Netflix-conductor,implementation,GaussianNaiveBayesModel,0.75,0.30,0.59,0.42,197,24,155,66,0.59
+Finished at 2023-10-17 23:05:32
+TIME,Netflix-conductor,implementation,GaussianNaiveBayesModel,2023-10-17 23:05:32,2023-10-17 23:05:32
+Model GradientBoostingRegressorModel
+Execution: 66/108
+Started at 2023-10-17 23:05:32
+Test search started at 2023-10-17 23:05:32
+
+Hyperparametrization:
+{
+  "max_depth": 3,
+  "min_samples_split": 10,
+  "n_estimators": 10
+}
+Best result: 0.5950970377936671
+Cross validation started at 2023-10-17 23:06:18
+
+Production model build started at 2023-10-17 23:06:18
+
+Production Model Results:
+Precision scores: 0.74, 0.64, 0.64, 0.62, 0.64, 0.61, 0.56, 0.64, 0.69, 0.65
+Mean precision: 0.64
+
+Recall scores: 0.64, 0.39, 0.41, 0.36, 0.41, 0.50, 0.41, 0.32, 0.50, 0.50
+Mean recall: 0.44
+
+Accuracy scores: 0.71, 0.58, 0.59, 0.57, 0.59, 0.59, 0.55, 0.57, 0.64, 0.61
+Mean Accuracy:  0.60
+
+F1 scores: 0.68, 0.49, 0.50, 0.46, 0.50, 0.55, 0.47, 0.42, 0.58, 0.56
+Mean F1:  0.52
+
+AUC scores: 0.71, 0.58, 0.59, 0.57, 0.59, 0.59, 0.55, 0.57, 0.64, 0.61
+Mean AUC: 0.60
+Feature Importances: 
+number_of_comments               : 0.0661
+density_refactoring_keywords     : 0.0927
+number_design_keywords           : 0.0128
+number_refactoring_keywords      : 0.2233
+mean_number_of_words             : 0.2175
+number_of_words                  : 0.3877
+
+CSV,Netflix-conductor,implementation,GradientBoostingRegressorModel,0.64,0.44,0.60,0.52,167,54,123,98,0.60
+Finished at 2023-10-17 23:06:18
+TIME,Netflix-conductor,implementation,GradientBoostingRegressorModel,2023-10-17 23:05:32,2023-10-17 23:06:18
+**** Smell granularity design
+---- Retrieve labeled instances for dataset: Netflix-conductor
+raw number of impactful patches instances: 202
+raw number of not impactful patches instances: 872
+impactful patches instance (after dropping NA)s: 128
+not impactful patches instances (after dropping NA)s: 501
+instances before balancing: Counter({0: 501, 1: 128})
+instances after balancing: Counter({0: 128, 1: 128})
+Features before reduction (total of 7): number_of_comments, density_design_keywords, density_refactoring_keywords, number_design_keywords, number_refactoring_keywords, mean_number_of_words, number_of_words
+Features after reduction (total of 1): number_of_words
+Feature ranking: 2, 4, 3, 5, 7, 6, 1
+Feature grid scores: mean_test_score, std_test_score, split0_test_score, split1_test_score, split2_test_score, split3_test_score, split4_test_score
+Model LinearSVMModel
+Execution: 67/108
+Started at 2023-10-17 23:06:18
+Test search started at 2023-10-17 23:06:18
+
+Hyperparametrization:
+{
+  "C": 3.0308262887380595,
+  "kernel": "linear",
+  "shrinking": false
+}
+Best result: 0.5745852187028658
+Cross validation started at 2023-10-17 23:06:18
+
+Production model build started at 2023-10-17 23:06:18
+
+Production Model Results:
+Precision scores: 0.67, 0.75, 0.71, 0.50, 0.75, 0.67, 0.62, 0.57, 0.78, 0.38
+Mean precision: 0.64
+
+Recall scores: 0.31, 0.46, 0.38, 0.38, 0.23, 0.46, 0.42, 0.33, 0.54, 0.23
+Mean recall: 0.38
+
+Accuracy scores: 0.58, 0.65, 0.62, 0.50, 0.58, 0.62, 0.60, 0.56, 0.68, 0.40
+Mean Accuracy:  0.58
+
+F1 scores: 0.42, 0.57, 0.50, 0.43, 0.35, 0.55, 0.50, 0.42, 0.64, 0.29
+Mean F1:  0.47
+
+AUC scores: 0.58, 0.65, 0.62, 0.50, 0.58, 0.62, 0.59, 0.55, 0.69, 0.41
+Mean AUC: 0.58
+Features:number_of_words
+Coefficients:
+[5.227733735267465]
+CSV,Netflix-conductor,design,LinearSVMModel,0.64,0.38,0.58,0.47,100,28,80,48,0.58
+Finished at 2023-10-17 23:06:18
+TIME,Netflix-conductor,design,LinearSVMModel,2023-10-17 23:06:18,2023-10-17 23:06:18
+Model RandomForestModel
+Execution: 68/108
+Started at 2023-10-17 23:06:18
+Test search started at 2023-10-17 23:06:18
+
+Hyperparametrization:
+{
+  "bootstrap": false,
+  "criterion": "gini",
+  "max_depth": 24,
+  "max_features": "sqrt",
+  "min_samples_split": 4,
+  "n_estimators": 10
+}
+Best result: 0.5743589743589743
+Cross validation started at 2023-10-17 23:09:30
+
+Production model build started at 2023-10-17 23:09:30
+
+Production Model Results:
+Precision scores: 0.46, 0.45, 0.64, 0.45, 0.38, 0.62, 0.62, 0.64, 0.50, 0.64
+Mean precision: 0.54
+
+Recall scores: 0.46, 0.38, 0.54, 0.38, 0.38, 0.77, 0.42, 0.58, 0.38, 0.54
+Mean recall: 0.48
+
+Accuracy scores: 0.46, 0.46, 0.62, 0.46, 0.38, 0.65, 0.60, 0.64, 0.48, 0.60
+Mean Accuracy:  0.54
+
+F1 scores: 0.46, 0.42, 0.58, 0.42, 0.38, 0.69, 0.50, 0.61, 0.43, 0.58
+Mean F1:  0.51
+
+AUC scores: 0.46, 0.46, 0.62, 0.46, 0.38, 0.65, 0.59, 0.64, 0.48, 0.60
+Mean AUC: 0.54
+Feature Importances: 
+number_of_words                  : 1.0000
+
+CSV,Netflix-conductor,design,RandomForestModel,0.54,0.48,0.54,0.51,75,53,66,62,0.54
+Finished at 2023-10-17 23:09:30
+TIME,Netflix-conductor,design,RandomForestModel,2023-10-17 23:06:18,2023-10-17 23:09:30
+Model DecisionTreeModel
+Execution: 69/108
+Started at 2023-10-17 23:09:30
+Test search started at 2023-10-17 23:09:30
+
+Hyperparametrization:
+{
+  "criterion": "gini",
+  "max_depth": 6,
+  "max_features": "sqrt",
+  "min_samples_split": 2,
+  "splitter": "random"
+}
+Best result: 0.5743589743589743
+Cross validation started at 2023-10-17 23:09:31
+
+Production model build started at 2023-10-17 23:09:31
+
+Production Model Results:
+Precision scores: 0.64, 0.53, 0.50, 0.55, 0.50, 0.50, 0.40, 0.60, 0.60, 0.58
+Mean precision: 0.54
+
+Recall scores: 0.54, 0.69, 0.46, 0.46, 0.46, 0.46, 0.33, 0.25, 0.46, 0.54
+Mean recall: 0.47
+
+Accuracy scores: 0.62, 0.54, 0.50, 0.54, 0.50, 0.50, 0.44, 0.56, 0.56, 0.56
+Mean Accuracy:  0.53
+
+F1 scores: 0.58, 0.60, 0.48, 0.50, 0.48, 0.48, 0.36, 0.35, 0.52, 0.56
+Mean F1:  0.49
+
+AUC scores: 0.62, 0.54, 0.50, 0.54, 0.50, 0.50, 0.44, 0.55, 0.56, 0.56
+Mean AUC: 0.53
+Feature Importances: 
+number_of_words                  : 1.0000
+
+CSV,Netflix-conductor,design,DecisionTreeModel,0.54,0.47,0.53,0.49,76,52,68,60,0.53
+Finished at 2023-10-17 23:09:31
+TIME,Netflix-conductor,design,DecisionTreeModel,2023-10-17 23:09:30,2023-10-17 23:09:31
+Model LogisticRegressionModel
+Execution: 70/108
+Started at 2023-10-17 23:09:31
+Test search started at 2023-10-17 23:09:31
+
+Hyperparametrization:
+{
+  "C": 90.32646792042499,
+  "max_iter": 50
+}
+Best result: 0.5667420814479638
+Cross validation started at 2023-10-17 23:09:32
+
+Production model build started at 2023-10-17 23:09:32
+
+Production Model Results:
+Precision scores: 0.75, 0.58, 0.33, 0.57, 0.57, 0.60, 0.62, 0.70, 0.56, 0.50
+Mean precision: 0.58
+
+Recall scores: 0.46, 0.54, 0.31, 0.62, 0.62, 0.46, 0.67, 0.58, 0.69, 0.31
+Mean recall: 0.53
+
+Accuracy scores: 0.65, 0.58, 0.35, 0.58, 0.58, 0.58, 0.64, 0.68, 0.56, 0.48
+Mean Accuracy:  0.57
+
+F1 scores: 0.57, 0.56, 0.32, 0.59, 0.59, 0.52, 0.64, 0.64, 0.62, 0.38
+Mean F1:  0.54
+
+AUC scores: 0.65, 0.58, 0.35, 0.58, 0.58, 0.58, 0.64, 0.68, 0.55, 0.49
+Mean AUC: 0.57
+Features:number_of_words
+Coefficients:
+[2.798721994400698]
+CSV,Netflix-conductor,design,LogisticRegressionModel,0.58,0.53,0.57,0.54,78,50,61,67,0.57
+Finished at 2023-10-17 23:09:32
+TIME,Netflix-conductor,design,LogisticRegressionModel,2023-10-17 23:09:31,2023-10-17 23:09:32
+Model GaussianNaiveBayesModel
+Execution: 71/108
+Started at 2023-10-17 23:09:32
+Test search started at 2023-10-17 23:09:32
+
+Hyperparametrization:
+{
+  "var_smoothing": 1e-10
+}
+Best result: 0.5700603318250377
+Cross validation started at 2023-10-17 23:09:32
+
+Production model build started at 2023-10-17 23:09:32
+
+Production Model Results:
+Precision scores: 0.75, 0.67, 0.40, 0.64, 1.00, 0.50, 1.00, 0.50, 0.50, 0.67
+Mean precision: 0.66
+
+Recall scores: 0.46, 0.31, 0.15, 0.54, 0.38, 0.15, 0.42, 0.25, 0.23, 0.31
+Mean recall: 0.32
+
+Accuracy scores: 0.65, 0.58, 0.46, 0.62, 0.69, 0.50, 0.72, 0.52, 0.48, 0.56
+Mean Accuracy:  0.58
+
+F1 scores: 0.57, 0.42, 0.22, 0.58, 0.56, 0.24, 0.59, 0.33, 0.32, 0.42
+Mean F1:  0.42
+
+AUC scores: 0.65, 0.58, 0.46, 0.62, 0.69, 0.50, 0.71, 0.51, 0.49, 0.57
+Mean AUC: 0.58
+(Not possible to collect feature importances)
+CSV,Netflix-conductor,design,GaussianNaiveBayesModel,0.66,0.32,0.58,0.42,107,21,87,41,0.58
+Finished at 2023-10-17 23:09:32
+TIME,Netflix-conductor,design,GaussianNaiveBayesModel,2023-10-17 23:09:32,2023-10-17 23:09:32
+Model GradientBoostingRegressorModel
+Execution: 72/108
+Started at 2023-10-17 23:09:32
+Test search started at 2023-10-17 23:09:32
+
+Hyperparametrization:
+{
+  "max_depth": 12,
+  "min_samples_split": 10,
+  "n_estimators": 10
+}
+Best result: 0.5621417797888386
+Cross validation started at 2023-10-17 23:09:55
+
+Production model build started at 2023-10-17 23:09:55
+
+Production Model Results:
+Precision scores: 0.47, 0.70, 0.44, 0.57, 0.45, 0.50, 0.36, 0.64, 0.60, 0.55
+Mean precision: 0.53
+
+Recall scores: 0.54, 0.54, 0.31, 0.31, 0.38, 0.46, 0.33, 0.75, 0.69, 0.46
+Mean recall: 0.48
+
+Accuracy scores: 0.46, 0.65, 0.46, 0.54, 0.46, 0.50, 0.40, 0.68, 0.60, 0.52
+Mean Accuracy:  0.53
+
+F1 scores: 0.50, 0.61, 0.36, 0.40, 0.42, 0.48, 0.35, 0.69, 0.64, 0.50
+Mean F1:  0.50
+
+AUC scores: 0.46, 0.65, 0.46, 0.54, 0.46, 0.50, 0.40, 0.68, 0.60, 0.52
+Mean AUC: 0.53
+Feature Importances: 
+number_of_words                  : 1.0000
+
+CSV,Netflix-conductor,design,GradientBoostingRegressorModel,0.53,0.48,0.53,0.50,74,54,67,61,0.53
+Finished at 2023-10-17 23:09:55
+TIME,Netflix-conductor,design,GradientBoostingRegressorModel,2023-10-17 23:09:32,2023-10-17 23:09:55
+Dataset Netflix-eureka
+**** Smell granularity implementation
+---- Retrieve labeled instances for dataset: Netflix-eureka
+raw number of impactful patches instances: 71
+raw number of not impactful patches instances: 366
+impactful patches instance (after dropping NA)s: 62
+not impactful patches instances (after dropping NA)s: 294
+instances before balancing: Counter({0: 294, 1: 62})
+instances after balancing: Counter({0: 62, 1: 62})
+Features before reduction (total of 7): number_of_comments, density_design_keywords, density_refactoring_keywords, number_design_keywords, number_refactoring_keywords, mean_number_of_words, number_of_words
+Features after reduction (total of 7): number_of_comments, density_design_keywords, density_refactoring_keywords, number_design_keywords, number_refactoring_keywords, mean_number_of_words, number_of_words
+Feature ranking: 1, 1, 1, 1, 1, 1, 1
+Feature grid scores: mean_test_score, std_test_score, split0_test_score, split1_test_score, split2_test_score, split3_test_score, split4_test_score
+Model LinearSVMModel
+Execution: 73/108
+Started at 2023-10-17 23:09:55
+Test search started at 2023-10-17 23:09:55
+
+Hyperparametrization:
+{
+  "C": 1.1100815515740519,
+  "kernel": "linear",
+  "shrinking": false
+}
+Best result: 0.5653333333333334
+Cross validation started at 2023-10-17 23:09:55
+
+Production model build started at 2023-10-17 23:09:55
+
+Production Model Results:
+Precision scores: 0.50, 1.00, 1.00, 1.00, 0.33, 1.00, 0.50, 1.00, 0.67, 1.00
+Mean precision: 0.80
+
+Recall scores: 0.17, 0.33, 0.29, 0.14, 0.17, 0.33, 0.17, 0.50, 0.33, 0.17
+Mean recall: 0.26
+
+Accuracy scores: 0.54, 0.69, 0.62, 0.54, 0.42, 0.67, 0.50, 0.75, 0.58, 0.58
+Mean Accuracy:  0.59
+
+F1 scores: 0.25, 0.50, 0.44, 0.25, 0.22, 0.50, 0.25, 0.67, 0.44, 0.29
+Mean F1:  0.38
+
+AUC scores: 0.51, 0.67, 0.64, 0.57, 0.42, 0.67, 0.50, 0.75, 0.58, 0.58
+Mean AUC: 0.59
+Features:number_of_comments, density_design_keywords, density_refactoring_keywords, number_design_keywords, number_refactoring_keywords, mean_number_of_words, number_of_words
+Coefficients:
+[0.17852057025769696, -0.11084922964579313, 1.482326348428952, 1.2010837801507872, 1.424156714454784, 0.4271971994806874, 0.7165307455517874]
+CSV,Netflix-eureka,implementation,LinearSVMModel,0.80,0.26,0.59,0.38,57,5,46,16,0.59
+Finished at 2023-10-17 23:09:55
+TIME,Netflix-eureka,implementation,LinearSVMModel,2023-10-17 23:09:55,2023-10-17 23:09:55
+Model RandomForestModel
+Execution: 74/108
+Started at 2023-10-17 23:09:55
+Test search started at 2023-10-17 23:09:55
+
+Hyperparametrization:
+{
+  "bootstrap": true,
+  "criterion": "entropy",
+  "max_depth": 3,
+  "max_features": "sqrt",
+  "min_samples_split": 3,
+  "n_estimators": 100
+}
+Best result: 0.5966666666666668
+Cross validation started at 2023-10-17 23:12:43
+
+Production model build started at 2023-10-17 23:12:43
+
+Production Model Results:
+Precision scores: 0.50, 0.75, 1.00, 1.00, 0.17, 0.60, 0.50, 0.75, 0.33, 0.57
+Mean precision: 0.62
+
+Recall scores: 0.50, 0.50, 0.57, 0.29, 0.17, 0.50, 0.50, 0.50, 0.17, 0.67
+Mean recall: 0.44
+
+Accuracy scores: 0.54, 0.69, 0.77, 0.62, 0.17, 0.58, 0.50, 0.67, 0.42, 0.58
+Mean Accuracy:  0.55
+
+F1 scores: 0.50, 0.60, 0.73, 0.44, 0.17, 0.55, 0.50, 0.60, 0.22, 0.62
+Mean F1:  0.49
+
+AUC scores: 0.54, 0.68, 0.79, 0.64, 0.17, 0.58, 0.50, 0.67, 0.42, 0.58
+Mean AUC: 0.56
+Feature Importances: 
+number_of_comments               : 0.1158
+density_design_keywords          : 0.1173
+density_refactoring_keywords     : 0.0948
+number_design_keywords           : 0.0871
+number_refactoring_keywords      : 0.1785
+mean_number_of_words             : 0.2278
+number_of_words                  : 0.1787
+
+CSV,Netflix-eureka,implementation,RandomForestModel,0.62,0.44,0.55,0.49,42,20,35,27,0.56
+Finished at 2023-10-17 23:12:43
+TIME,Netflix-eureka,implementation,RandomForestModel,2023-10-17 23:09:55,2023-10-17 23:12:43
+Model DecisionTreeModel
+Execution: 75/108
+Started at 2023-10-17 23:12:43
+Test search started at 2023-10-17 23:12:43
+
+Hyperparametrization:
+{
+  "criterion": "gini",
+  "max_depth": 6,
+  "max_features": null,
+  "min_samples_split": 11,
+  "splitter": "random"
+}
+Best result: 0.6050000000000001
+Cross validation started at 2023-10-17 23:12:44
+
+Production model build started at 2023-10-17 23:12:44
+
+Production Model Results:
+Precision scores: 0.25, 1.00, 0.75, 0.50, 0.33, 0.00, 0.67, 0.56, 0.50, 1.00
+Mean precision: 0.56
+
+Recall scores: 0.17, 0.17, 0.43, 0.14, 0.33, 0.00, 0.33, 0.83, 0.33, 0.17
+Mean recall: 0.29
+
+Accuracy scores: 0.38, 0.62, 0.62, 0.46, 0.33, 0.50, 0.58, 0.58, 0.50, 0.58
+Mean Accuracy:  0.52
+
+F1 scores: 0.20, 0.29, 0.55, 0.22, 0.33, 0.00, 0.44, 0.67, 0.40, 0.29
+Mean F1:  0.34
+
+AUC scores: 0.37, 0.58, 0.63, 0.49, 0.33, 0.50, 0.58, 0.58, 0.50, 0.58
+Mean AUC: 0.52
+Feature Importances: 
+number_of_comments               : 0.0000
+density_design_keywords          : 0.0900
+density_refactoring_keywords     : 0.1300
+number_design_keywords           : 0.2190
+number_refactoring_keywords      : 0.1889
+mean_number_of_words             : 0.2854
+number_of_words                  : 0.0867
+
+CSV,Netflix-eureka,implementation,DecisionTreeModel,0.56,0.29,0.52,0.34,46,16,44,18,0.52
+Finished at 2023-10-17 23:12:44
+TIME,Netflix-eureka,implementation,DecisionTreeModel,2023-10-17 23:12:43,2023-10-17 23:12:44
+Model LogisticRegressionModel
+Execution: 76/108
+Started at 2023-10-17 23:12:44
+Test search started at 2023-10-17 23:12:44
+
+Hyperparametrization:
+{
+  "C": 18.254791777354843,
+  "max_iter": 50
+}
+Best result: 0.5
+Cross validation started at 2023-10-17 23:12:45
+
+Production model build started at 2023-10-17 23:12:45
+
+Production Model Results:
+Precision scores: 0.67, 0.60, 0.00, 1.00, 0.60, 0.50, 1.00, 0.50, 0.00, 0.50
+Mean precision: 0.54
+
+Recall scores: 0.33, 0.50, 0.00, 0.29, 0.50, 0.33, 0.33, 0.50, 0.00, 0.50
+Mean recall: 0.33
+
+Accuracy scores: 0.62, 0.62, 0.38, 0.62, 0.58, 0.50, 0.67, 0.50, 0.33, 0.50
+Mean Accuracy:  0.53
+
+F1 scores: 0.44, 0.55, 0.00, 0.44, 0.55, 0.40, 0.50, 0.50, 0.00, 0.50
+Mean F1:  0.39
+
+AUC scores: 0.60, 0.61, 0.42, 0.64, 0.58, 0.50, 0.67, 0.50, 0.33, 0.50
+Mean AUC: 0.53
+Features:number_of_comments, density_design_keywords, density_refactoring_keywords, number_design_keywords, number_refactoring_keywords, mean_number_of_words, number_of_words
+Coefficients:
+[-2.204682686968371, -1.2274188225571268, 0.4625120315597876, 2.1182981936121172, 2.6988155134118013, 0.39673830149185785, 2.4219562062172977]
+CSV,Netflix-eureka,implementation,LogisticRegressionModel,0.54,0.33,0.53,0.39,46,16,42,20,0.53
+Finished at 2023-10-17 23:12:45
+TIME,Netflix-eureka,implementation,LogisticRegressionModel,2023-10-17 23:12:44,2023-10-17 23:12:45
+Model GaussianNaiveBayesModel
+Execution: 77/108
+Started at 2023-10-17 23:12:45
+Test search started at 2023-10-17 23:12:45
+
+Hyperparametrization:
+{
+  "var_smoothing": 1e-10
+}
+Best result: 0.5890000000000001
+Cross validation started at 2023-10-17 23:12:45
+
+Production model build started at 2023-10-17 23:12:45
+
+Production Model Results:
+Precision scores: 0.67, 0.50, 0.50, 1.00, 0.33, 0.60, 0.00, 1.00, 0.50, 0.75
+Mean precision: 0.58
+
+Recall scores: 0.33, 0.17, 0.14, 0.43, 0.17, 0.50, 0.00, 0.50, 0.17, 0.50
+Mean recall: 0.29
+
+Accuracy scores: 0.62, 0.54, 0.46, 0.69, 0.42, 0.58, 0.50, 0.75, 0.50, 0.67
+Mean Accuracy:  0.57
+
+F1 scores: 0.44, 0.25, 0.22, 0.60, 0.22, 0.55, 0.00, 0.67, 0.25, 0.60
+Mean F1:  0.38
+
+AUC scores: 0.60, 0.51, 0.49, 0.71, 0.42, 0.58, 0.50, 0.75, 0.50, 0.67
+Mean AUC: 0.57
+(Not possible to collect feature importances)
+CSV,Netflix-eureka,implementation,GaussianNaiveBayesModel,0.58,0.29,0.57,0.38,53,9,44,18,0.57
+Finished at 2023-10-17 23:12:45
+TIME,Netflix-eureka,implementation,GaussianNaiveBayesModel,2023-10-17 23:12:45,2023-10-17 23:12:45
+Model GradientBoostingRegressorModel
+Execution: 78/108
+Started at 2023-10-17 23:12:45
+Test search started at 2023-10-17 23:12:45
+
+Hyperparametrization:
+{
+  "max_depth": 3,
+  "min_samples_split": 4,
+  "n_estimators": 10
+}
+Best result: 0.5883333333333333
+Cross validation started at 2023-10-17 23:13:02
+
+Production model build started at 2023-10-17 23:13:03
+
+Production Model Results:
+Precision scores: 0.50, 0.40, 0.50, 1.00, 0.75, 1.00, 0.57, 0.00, 0.60, 0.50
+Mean precision: 0.58
+
+Recall scores: 0.67, 0.33, 0.43, 0.14, 0.50, 0.17, 0.67, 0.00, 0.50, 0.33
+Mean recall: 0.37
+
+Accuracy scores: 0.54, 0.46, 0.46, 0.54, 0.67, 0.58, 0.58, 0.25, 0.58, 0.50
+Mean Accuracy:  0.52
+
+F1 scores: 0.57, 0.36, 0.46, 0.25, 0.60, 0.29, 0.62, 0.00, 0.55, 0.40
+Mean F1:  0.41
+
+AUC scores: 0.55, 0.45, 0.46, 0.57, 0.67, 0.58, 0.58, 0.25, 0.58, 0.50
+Mean AUC: 0.52
+Feature Importances: 
+number_of_comments               : 0.0000
+density_design_keywords          : 0.1746
+density_refactoring_keywords     : 0.1032
+number_design_keywords           : 0.0470
+number_refactoring_keywords      : 0.0993
+mean_number_of_words             : 0.5752
+number_of_words                  : 0.0008
+
+CSV,Netflix-eureka,implementation,GradientBoostingRegressorModel,0.58,0.37,0.52,0.41,41,21,39,23,0.52
+Finished at 2023-10-17 23:13:03
+TIME,Netflix-eureka,implementation,GradientBoostingRegressorModel,2023-10-17 23:12:45,2023-10-17 23:13:03
+**** Smell granularity design
+---- Retrieve labeled instances for dataset: Netflix-eureka
+raw number of impactful patches instances: 51
+raw number of not impactful patches instances: 386
+impactful patches instance (after dropping NA)s: 44
+not impactful patches instances (after dropping NA)s: 312
+instances before balancing: Counter({0: 312, 1: 44})
+instances after balancing: Counter({0: 44, 1: 44})
+Features before reduction (total of 7): number_of_comments, density_design_keywords, density_refactoring_keywords, number_design_keywords, number_refactoring_keywords, mean_number_of_words, number_of_words
+Features after reduction (total of 1): number_of_comments
+Feature ranking: 1, 3, 2, 4, 7, 5, 6
+Feature grid scores: mean_test_score, std_test_score, split0_test_score, split1_test_score, split2_test_score, split3_test_score, split4_test_score
+Model LinearSVMModel
+Execution: 79/108
+Started at 2023-10-17 23:13:03
+Test search started at 2023-10-17 23:13:03
+
+Hyperparametrization:
+{
+  "C": 8.468648666494092,
+  "kernel": "linear",
+  "shrinking": false
+}
+Best result: 0.6254901960784314
+Cross validation started at 2023-10-17 23:13:03
+
+Production model build started at 2023-10-17 23:13:03
+
+Production Model Results:
+Precision scores: 0.50, 0.75, 1.00, 1.00, 0.00, 0.75, 0.50, 1.00, 0.75, 1.00
+Mean precision: 0.72
+
+Recall scores: 0.25, 0.75, 0.25, 0.25, 0.00, 0.60, 0.20, 0.40, 0.75, 0.25
+Mean recall: 0.37
+
+Accuracy scores: 0.56, 0.78, 0.67, 0.67, 0.44, 0.67, 0.44, 0.67, 0.75, 0.62
+Mean Accuracy:  0.63
+
+F1 scores: 0.33, 0.75, 0.40, 0.40, 0.00, 0.67, 0.29, 0.57, 0.75, 0.40
+Mean F1:  0.46
+
+AUC scores: 0.53, 0.78, 0.62, 0.62, 0.50, 0.68, 0.47, 0.70, 0.75, 0.62
+Mean AUC: 0.63
+Features:number_of_comments
+Coefficients:
+[7.599999814695984]
+CSV,Netflix-eureka,design,LinearSVMModel,0.72,0.37,0.63,0.46,39,5,28,16,0.63
+Finished at 2023-10-17 23:13:03
+TIME,Netflix-eureka,design,LinearSVMModel,2023-10-17 23:13:03,2023-10-17 23:13:03
+Model RandomForestModel
+Execution: 80/108
+Started at 2023-10-17 23:13:03
+Test search started at 2023-10-17 23:13:03
+
+Hyperparametrization:
+{
+  "bootstrap": true,
+  "criterion": "gini",
+  "max_depth": 6,
+  "max_features": "sqrt",
+  "min_samples_split": 2,
+  "n_estimators": 50
+}
+Best result: 0.7143790849673203
+Cross validation started at 2023-10-17 23:15:41
+
+Production model build started at 2023-10-17 23:15:41
+
+Production Model Results:
+Precision scores: 1.00, 0.80, 0.80, 0.60, 0.67, 0.50, 1.00, 0.75, 0.50, 0.75
+Mean precision: 0.74
+
+Recall scores: 0.75, 1.00, 1.00, 0.75, 0.80, 0.40, 0.60, 0.60, 0.25, 0.75
+Mean recall: 0.69
+
+Accuracy scores: 0.89, 0.89, 0.89, 0.67, 0.67, 0.44, 0.78, 0.67, 0.50, 0.75
+Mean Accuracy:  0.71
+
+F1 scores: 0.86, 0.89, 0.89, 0.67, 0.73, 0.44, 0.75, 0.67, 0.33, 0.75
+Mean F1:  0.70
+
+AUC scores: 0.88, 0.90, 0.90, 0.68, 0.65, 0.45, 0.80, 0.68, 0.50, 0.75
+Mean AUC: 0.72
+Feature Importances: 
+number_of_comments               : 1.0000
+
+CSV,Netflix-eureka,design,RandomForestModel,0.74,0.69,0.71,0.70,33,11,14,30,0.72
+Finished at 2023-10-17 23:15:42
+TIME,Netflix-eureka,design,RandomForestModel,2023-10-17 23:13:03,2023-10-17 23:15:42
+Model DecisionTreeModel
+Execution: 81/108
+Started at 2023-10-17 23:15:42
+Test search started at 2023-10-17 23:15:42
+
+Hyperparametrization:
+{
+  "criterion": "gini",
+  "max_depth": 6,
+  "max_features": "sqrt",
+  "min_samples_split": 2,
+  "splitter": "best"
+}
+Best result: 0.7176470588235293
+Cross validation started at 2023-10-17 23:15:43
+
+Production model build started at 2023-10-17 23:15:43
+
+Production Model Results:
+Precision scores: 1.00, 0.50, 0.50, 0.50, 0.60, 1.00, 0.80, 1.00, 1.00, 0.75
+Mean precision: 0.77
+
+Recall scores: 0.50, 0.50, 0.25, 1.00, 0.60, 0.80, 0.80, 0.80, 0.75, 0.75
+Mean recall: 0.68
+
+Accuracy scores: 0.78, 0.56, 0.56, 0.56, 0.56, 0.89, 0.78, 0.89, 0.88, 0.75
+Mean Accuracy:  0.72
+
+F1 scores: 0.67, 0.50, 0.33, 0.67, 0.60, 0.89, 0.80, 0.89, 0.86, 0.75
+Mean F1:  0.70
+
+AUC scores: 0.75, 0.55, 0.53, 0.60, 0.55, 0.90, 0.78, 0.90, 0.88, 0.75
+Mean AUC: 0.72
+Feature Importances: 
+number_of_comments               : 1.0000
+
+CSV,Netflix-eureka,design,DecisionTreeModel,0.77,0.68,0.72,0.70,33,11,14,30,0.72
+Finished at 2023-10-17 23:15:43
+TIME,Netflix-eureka,design,DecisionTreeModel,2023-10-17 23:15:42,2023-10-17 23:15:43
+Model LogisticRegressionModel
+Execution: 82/108
+Started at 2023-10-17 23:15:43
+Test search started at 2023-10-17 23:15:43
+
+Hyperparametrization:
+{
+  "C": 14.332107933728532,
+  "max_iter": 50
+}
+Best result: 0.592156862745098
+Cross validation started at 2023-10-17 23:15:43
+
+Production model build started at 2023-10-17 23:15:43
+
+Production Model Results:
+Precision scores: 1.00, 0.00, 0.75, 0.50, 1.00, 0.60, 1.00, 0.75, 0.25, 0.75
+Mean precision: 0.66
+
+Recall scores: 0.25, 0.00, 0.75, 0.25, 0.20, 0.60, 0.60, 0.60, 0.25, 0.75
+Mean recall: 0.42
+
+Accuracy scores: 0.67, 0.33, 0.78, 0.56, 0.56, 0.56, 0.78, 0.67, 0.25, 0.75
+Mean Accuracy:  0.59
+
+F1 scores: 0.40, 0.00, 0.75, 0.33, 0.33, 0.60, 0.75, 0.67, 0.25, 0.75
+Mean F1:  0.48
+
+AUC scores: 0.62, 0.30, 0.78, 0.53, 0.60, 0.55, 0.80, 0.68, 0.25, 0.75
+Mean AUC: 0.59
+Features:number_of_comments
+Coefficients:
+[3.937124927340369]
+CSV,Netflix-eureka,design,LogisticRegressionModel,0.66,0.42,0.59,0.48,33,11,25,19,0.59
+Finished at 2023-10-17 23:15:43
+TIME,Netflix-eureka,design,LogisticRegressionModel,2023-10-17 23:15:43,2023-10-17 23:15:43
+Model GaussianNaiveBayesModel
+Execution: 83/108
+Started at 2023-10-17 23:15:43
+Test search started at 2023-10-17 23:15:43
+
+Hyperparametrization:
+{
+  "var_smoothing": 1e-10
+}
+Best result: 0.6137254901960785
+Cross validation started at 2023-10-17 23:15:43
+
+Production model build started at 2023-10-17 23:15:43
+
+Production Model Results:
+Precision scores: 1.00, 0.50, 0.00, 1.00, 1.00, 1.00, 1.00, 0.00, 1.00, 0.50
+Mean precision: 0.70
+
+Recall scores: 0.25, 0.25, 0.00, 0.25, 0.20, 0.40, 0.40, 0.00, 1.00, 0.25
+Mean recall: 0.30
+
+Accuracy scores: 0.67, 0.56, 0.56, 0.67, 0.56, 0.67, 0.67, 0.22, 1.00, 0.50
+Mean Accuracy:  0.61
+
+F1 scores: 0.40, 0.33, 0.00, 0.40, 0.33, 0.57, 0.57, 0.00, 1.00, 0.33
+Mean F1:  0.39
+
+AUC scores: 0.62, 0.53, 0.50, 0.62, 0.60, 0.70, 0.70, 0.25, 1.00, 0.50
+Mean AUC: 0.60
+(Not possible to collect feature importances)
+CSV,Netflix-eureka,design,GaussianNaiveBayesModel,0.70,0.30,0.61,0.39,40,4,31,13,0.60
+Finished at 2023-10-17 23:15:43
+TIME,Netflix-eureka,design,GaussianNaiveBayesModel,2023-10-17 23:15:43,2023-10-17 23:15:43
+Model GradientBoostingRegressorModel
+Execution: 84/108
+Started at 2023-10-17 23:15:43
+Test search started at 2023-10-17 23:15:43
+
+Hyperparametrization:
+{
+  "max_depth": 3,
+  "min_samples_split": 2,
+  "n_estimators": 50
+}
+Best result: 0.6673202614379085
+Cross validation started at 2023-10-17 23:15:52
+
+Production model build started at 2023-10-17 23:15:52
+
+Production Model Results:
+Precision scores: 1.00, 0.60, 0.50, 0.67, 1.00, 1.00, 0.67, 0.75, 0.60, 1.00
+Mean precision: 0.78
+
+Recall scores: 0.50, 0.75, 0.75, 0.50, 0.40, 1.00, 0.80, 0.60, 0.75, 0.75
+Mean recall: 0.68
+
+Accuracy scores: 0.78, 0.67, 0.56, 0.67, 0.67, 1.00, 0.67, 0.67, 0.62, 0.88
+Mean Accuracy:  0.72
+
+F1 scores: 0.67, 0.67, 0.60, 0.57, 0.57, 1.00, 0.73, 0.67, 0.67, 0.86
+Mean F1:  0.70
+
+AUC scores: 0.75, 0.68, 0.57, 0.65, 0.70, 1.00, 0.65, 0.68, 0.62, 0.88
+Mean AUC: 0.72
+Feature Importances: 
+number_of_comments               : 1.0000
+
+CSV,Netflix-eureka,design,GradientBoostingRegressorModel,0.78,0.68,0.72,0.70,33,11,14,30,0.72
+Finished at 2023-10-17 23:15:52
+TIME,Netflix-eureka,design,GradientBoostingRegressorModel,2023-10-17 23:15:43,2023-10-17 23:15:52
+Dataset Spring-boot
+**** Smell granularity implementation
+---- Retrieve labeled instances for dataset: Spring-boot
+raw number of impactful patches instances: 64
+raw number of not impactful patches instances: 3267
+impactful patches instance (after dropping NA)s: 47
+not impactful patches instances (after dropping NA)s: 2499
+instances before balancing: Counter({0: 2499, 1: 47})
+instances after balancing: Counter({0: 47, 1: 47})
+Features before reduction (total of 6): mean_number_of_words, number_of_words, density_design_keywords, density_refactoring_keywords, number_design_keywords, number_refactoring_keywords
+Features after reduction (total of 3): density_design_keywords, density_refactoring_keywords, number_refactoring_keywords
+Feature ranking: 2, 4, 1, 1, 3, 1
+Feature grid scores: mean_test_score, std_test_score, split0_test_score, split1_test_score, split2_test_score, split3_test_score, split4_test_score
+Model LinearSVMModel
+Execution: 85/108
+Started at 2023-10-17 23:15:52
+Test search started at 2023-10-17 23:15:52
+
+Hyperparametrization:
+{
+  "C": 3.4133781460048196,
+  "kernel": "linear",
+  "shrinking": false
+}
+Best result: 0.5111111111111111
+Cross validation started at 2023-10-17 23:15:52
+
+Production model build started at 2023-10-17 23:15:52
+
+Production Model Results:
+Precision scores: 1.00, 0.60, 0.33, 0.57, 0.44, 0.67, 0.00, 0.33, 0.67, 0.50
+Mean precision: 0.51
+
+Recall scores: 0.40, 0.60, 0.20, 0.80, 1.00, 1.00, 0.00, 0.20, 0.40, 0.20
+Mean recall: 0.48
+
+Accuracy scores: 0.70, 0.60, 0.40, 0.60, 0.44, 0.78, 0.56, 0.33, 0.56, 0.44
+Mean Accuracy:  0.54
+
+F1 scores: 0.57, 0.60, 0.25, 0.67, 0.62, 0.80, 0.00, 0.25, 0.50, 0.29
+Mean F1:  0.45
+
+AUC scores: 0.70, 0.60, 0.40, 0.60, 0.50, 0.80, 0.50, 0.35, 0.57, 0.47
+Mean AUC: 0.55
+Features:density_design_keywords, density_refactoring_keywords, number_refactoring_keywords
+Coefficients:
+[-2.0523347209239495, 0.9323621916513266, 2.9256108777925265]
+CSV,Spring-boot,implementation,LinearSVMModel,0.51,0.48,0.54,0.45,29,18,25,22,0.55
+Finished at 2023-10-17 23:15:52
+TIME,Spring-boot,implementation,LinearSVMModel,2023-10-17 23:15:52,2023-10-17 23:15:52
+Model RandomForestModel
+Execution: 86/108
+Started at 2023-10-17 23:15:52
+Test search started at 2023-10-17 23:15:52
+
+Hyperparametrization:
+{
+  "bootstrap": false,
+  "criterion": "entropy",
+  "max_depth": 12,
+  "max_features": "sqrt",
+  "min_samples_split": 4,
+  "n_estimators": 100
+}
+Best result: 0.6812865497076024
+Cross validation started at 2023-10-17 23:18:37
+
+Production model build started at 2023-10-17 23:18:37
+
+Production Model Results:
+Precision scores: 0.67, 0.50, 0.50, 0.75, 0.50, 0.60, 1.00, 1.00, 0.60, 0.75
+Mean precision: 0.69
+
+Recall scores: 0.80, 0.80, 0.60, 0.60, 0.50, 0.75, 1.00, 0.80, 0.60, 0.60
+Mean recall: 0.70
+
+Accuracy scores: 0.70, 0.50, 0.50, 0.70, 0.56, 0.67, 1.00, 0.89, 0.56, 0.67
+Mean Accuracy:  0.67
+
+F1 scores: 0.73, 0.62, 0.55, 0.67, 0.50, 0.67, 1.00, 0.89, 0.60, 0.67
+Mean F1:  0.69
+
+AUC scores: 0.70, 0.50, 0.50, 0.70, 0.55, 0.68, 1.00, 0.90, 0.55, 0.68
+Mean AUC: 0.68
+Feature Importances: 
+density_design_keywords          : 0.3045
+density_refactoring_keywords     : 0.3490
+number_refactoring_keywords      : 0.3465
+
+CSV,Spring-boot,implementation,RandomForestModel,0.69,0.70,0.67,0.69,30,17,14,33,0.68
+Finished at 2023-10-17 23:18:37
+TIME,Spring-boot,implementation,RandomForestModel,2023-10-17 23:15:52,2023-10-17 23:18:37
+Model DecisionTreeModel
+Execution: 87/108
+Started at 2023-10-17 23:18:37
+Test search started at 2023-10-17 23:18:37
+
+Hyperparametrization:
+{
+  "criterion": "gini",
+  "max_depth": 12,
+  "max_features": "sqrt",
+  "min_samples_split": 3,
+  "splitter": "random"
+}
+Best result: 0.6596491228070175
+Cross validation started at 2023-10-17 23:18:38
+
+Production model build started at 2023-10-17 23:18:38
+
+Production Model Results:
+Precision scores: 0.75, 1.00, 1.00, 0.50, 0.80, 0.00, 0.50, 1.00, 0.57, 0.67
+Mean precision: 0.68
+
+Recall scores: 0.60, 0.80, 0.40, 0.40, 1.00, 0.00, 0.25, 0.40, 0.80, 0.40
+Mean recall: 0.51
+
+Accuracy scores: 0.70, 0.90, 0.70, 0.50, 0.89, 0.44, 0.56, 0.67, 0.56, 0.56
+Mean Accuracy:  0.65
+
+F1 scores: 0.67, 0.89, 0.57, 0.44, 0.89, 0.00, 0.33, 0.57, 0.67, 0.50
+Mean F1:  0.55
+
+AUC scores: 0.70, 0.90, 0.70, 0.50, 0.90, 0.40, 0.53, 0.70, 0.53, 0.57
+Mean AUC: 0.64
+Feature Importances: 
+density_design_keywords          : 0.3321
+density_refactoring_keywords     : 0.3294
+number_refactoring_keywords      : 0.3385
+
+CSV,Spring-boot,implementation,DecisionTreeModel,0.68,0.51,0.65,0.55,37,10,23,24,0.64
+Finished at 2023-10-17 23:18:38
+TIME,Spring-boot,implementation,DecisionTreeModel,2023-10-17 23:18:37,2023-10-17 23:18:38
+Model LogisticRegressionModel
+Execution: 88/108
+Started at 2023-10-17 23:18:38
+Test search started at 2023-10-17 23:18:38
+
+Hyperparametrization:
+{
+  "C": 82.5447456814304,
+  "max_iter": 50
+}
+Best result: 0.47017543859649125
+Cross validation started at 2023-10-17 23:18:39
+
+Production model build started at 2023-10-17 23:18:39
+
+Production Model Results:
+Precision scores: 0.33, 0.60, 0.40, 0.50, 0.75, 0.50, 0.00, 0.67, 0.60, 0.50
+Mean precision: 0.48
+
+Recall scores: 0.20, 0.60, 0.40, 0.20, 0.75, 0.25, 0.00, 0.40, 0.60, 0.20
+Mean recall: 0.36
+
+Accuracy scores: 0.40, 0.60, 0.40, 0.50, 0.78, 0.56, 0.22, 0.56, 0.56, 0.44
+Mean Accuracy:  0.50
+
+F1 scores: 0.25, 0.60, 0.40, 0.29, 0.75, 0.33, 0.00, 0.50, 0.60, 0.29
+Mean F1:  0.40
+
+AUC scores: 0.40, 0.60, 0.40, 0.50, 0.78, 0.53, 0.20, 0.57, 0.55, 0.47
+Mean AUC: 0.50
+Features:density_design_keywords, density_refactoring_keywords, number_refactoring_keywords
+Coefficients:
+[-1.9863056417414602, -0.026460059192231856, 4.3303708228834745]
+CSV,Spring-boot,implementation,LogisticRegressionModel,0.48,0.36,0.50,0.40,30,17,30,17,0.50
+Finished at 2023-10-17 23:18:39
+TIME,Spring-boot,implementation,LogisticRegressionModel,2023-10-17 23:18:38,2023-10-17 23:18:39
+Model GaussianNaiveBayesModel
+Execution: 89/108
+Started at 2023-10-17 23:18:39
+Test search started at 2023-10-17 23:18:39
+
+Hyperparametrization:
+{
+  "var_smoothing": 1e-10
+}
+Best result: 0.5333333333333333
+Cross validation started at 2023-10-17 23:18:39
+
+Production model build started at 2023-10-17 23:18:39
+
+Production Model Results:
+Precision scores: 0.67, 1.00, 0.25, 1.00, 0.67, 0.50, 0.33, 0.75, 0.50, 0.00
+Mean precision: 0.57
+
+Recall scores: 0.40, 0.40, 0.20, 0.20, 0.50, 0.75, 0.25, 0.60, 0.20, 0.00
+Mean recall: 0.35
+
+Accuracy scores: 0.60, 0.70, 0.30, 0.60, 0.67, 0.56, 0.44, 0.67, 0.44, 0.22
+Mean Accuracy:  0.52
+
+F1 scores: 0.50, 0.57, 0.22, 0.33, 0.57, 0.60, 0.29, 0.67, 0.29, 0.00
+Mean F1:  0.40
+
+AUC scores: 0.60, 0.70, 0.30, 0.60, 0.65, 0.57, 0.42, 0.68, 0.47, 0.25
+Mean AUC: 0.53
+(Not possible to collect feature importances)
+CSV,Spring-boot,implementation,GaussianNaiveBayesModel,0.57,0.35,0.52,0.40,33,14,31,16,0.53
+Finished at 2023-10-17 23:18:39
+TIME,Spring-boot,implementation,GaussianNaiveBayesModel,2023-10-17 23:18:39,2023-10-17 23:18:39
+Model GradientBoostingRegressorModel
+Execution: 90/108
+Started at 2023-10-17 23:18:39
+Test search started at 2023-10-17 23:18:39
+
+Hyperparametrization:
+{
+  "max_depth": 12,
+  "min_samples_split": 2,
+  "n_estimators": 10
+}
+Best result: 0.6918128654970761
+Cross validation started at 2023-10-17 23:18:52
+
+Production model build started at 2023-10-17 23:18:53
+
+Production Model Results:
+Precision scores: 0.50, 0.33, 1.00, 0.60, 0.57, 0.60, 1.00, 0.80, 0.67, 0.57
+Mean precision: 0.66
+
+Recall scores: 0.40, 0.20, 0.60, 0.60, 1.00, 0.75, 0.25, 0.80, 0.80, 0.80
+Mean recall: 0.62
+
+Accuracy scores: 0.50, 0.40, 0.80, 0.60, 0.67, 0.67, 0.67, 0.78, 0.67, 0.56
+Mean Accuracy:  0.63
+
+F1 scores: 0.44, 0.25, 0.75, 0.60, 0.73, 0.67, 0.40, 0.80, 0.73, 0.67
+Mean F1:  0.60
+
+AUC scores: 0.50, 0.40, 0.80, 0.60, 0.70, 0.68, 0.62, 0.78, 0.65, 0.53
+Mean AUC: 0.62
+Feature Importances: 
+density_design_keywords          : 0.3380
+density_refactoring_keywords     : 0.3625
+number_refactoring_keywords      : 0.2995
+
+CSV,Spring-boot,implementation,GradientBoostingRegressorModel,0.66,0.62,0.63,0.60,30,17,18,29,0.62
+Finished at 2023-10-17 23:18:53
+TIME,Spring-boot,implementation,GradientBoostingRegressorModel,2023-10-17 23:18:39,2023-10-17 23:18:53
+**** Smell granularity design
+---- Retrieve labeled instances for dataset: Spring-boot
+raw number of impactful patches instances: 60
+raw number of not impactful patches instances: 3271
+impactful patches instance (after dropping NA)s: 43
+not impactful patches instances (after dropping NA)s: 2503
+instances before balancing: Counter({0: 2503, 1: 43})
+instances after balancing: Counter({0: 43, 1: 43})
+Features before reduction (total of 6): mean_number_of_words, number_of_words, density_design_keywords, density_refactoring_keywords, number_design_keywords, number_refactoring_keywords
+Features after reduction (total of 3): number_of_words, density_design_keywords, number_refactoring_keywords
+Feature ranking: 2, 1, 1, 3, 4, 1
+Feature grid scores: mean_test_score, std_test_score, split0_test_score, split1_test_score, split2_test_score, split3_test_score, split4_test_score
+Model LinearSVMModel
+Execution: 91/108
+Started at 2023-10-17 23:18:53
+Test search started at 2023-10-17 23:18:53
+
+Hyperparametrization:
+{
+  "C": 2.4676719157449507,
+  "kernel": "linear",
+  "shrinking": false
+}
+Best result: 0.54640522875817
+Cross validation started at 2023-10-17 23:18:53
+
+Production model build started at 2023-10-17 23:18:53
+
+Production Model Results:
+Precision scores: 0.50, 0.57, 0.43, 0.67, 0.50, 0.57, 0.00, 0.50, 0.50, 0.40
+Mean precision: 0.46
+
+Recall scores: 1.00, 1.00, 0.75, 0.80, 0.20, 0.80, 0.00, 0.75, 0.75, 0.50
+Mean recall: 0.66
+
+Accuracy scores: 0.56, 0.67, 0.44, 0.67, 0.44, 0.56, 0.25, 0.50, 0.50, 0.38
+Mean Accuracy:  0.50
+
+F1 scores: 0.67, 0.73, 0.55, 0.73, 0.29, 0.67, 0.00, 0.60, 0.60, 0.44
+Mean F1:  0.53
+
+AUC scores: 0.60, 0.70, 0.47, 0.65, 0.47, 0.53, 0.25, 0.50, 0.50, 0.38
+Mean AUC: 0.51
+Features:number_of_words, density_design_keywords, number_refactoring_keywords
+Coefficients:
+[0.39344736493140836, -2.854231326528355, 0.6892206047132808]
+CSV,Spring-boot,design,LinearSVMModel,0.46,0.66,0.50,0.53,15,28,15,28,0.51
+Finished at 2023-10-17 23:18:53
+TIME,Spring-boot,design,LinearSVMModel,2023-10-17 23:18:53,2023-10-17 23:18:53
+Model RandomForestModel
+Execution: 92/108
+Started at 2023-10-17 23:18:53
+Test search started at 2023-10-17 23:18:53
+
+Hyperparametrization:
+{
+  "bootstrap": true,
+  "criterion": "gini",
+  "max_depth": 24,
+  "max_features": "sqrt",
+  "min_samples_split": 2,
+  "n_estimators": 200
+}
+Best result: 0.6045751633986929
+Cross validation started at 2023-10-17 23:21:36
+
+Production model build started at 2023-10-17 23:21:37
+
+Production Model Results:
+Precision scores: 0.60, 0.25, 0.00, 0.50, 0.60, 1.00, 0.33, 1.00, 0.43, 0.50
+Mean precision: 0.52
+
+Recall scores: 0.75, 0.25, 0.00, 0.40, 0.60, 0.60, 0.50, 0.75, 0.75, 0.50
+Mean recall: 0.51
+
+Accuracy scores: 0.67, 0.33, 0.33, 0.44, 0.56, 0.78, 0.25, 0.88, 0.38, 0.50
+Mean Accuracy:  0.51
+
+F1 scores: 0.67, 0.25, 0.00, 0.44, 0.60, 0.75, 0.40, 0.86, 0.55, 0.50
+Mean F1:  0.50
+
+AUC scores: 0.68, 0.33, 0.30, 0.45, 0.55, 0.80, 0.25, 0.88, 0.38, 0.50
+Mean AUC: 0.51
+Feature Importances: 
+number_of_words                  : 0.5243
+density_design_keywords          : 0.1913
+number_refactoring_keywords      : 0.2844
+
+CSV,Spring-boot,design,RandomForestModel,0.52,0.51,0.51,0.50,22,21,21,22,0.51
+Finished at 2023-10-17 23:21:37
+TIME,Spring-boot,design,RandomForestModel,2023-10-17 23:18:53,2023-10-17 23:21:37
+Model DecisionTreeModel
+Execution: 93/108
+Started at 2023-10-17 23:21:37
+Test search started at 2023-10-17 23:21:37
+
+Hyperparametrization:
+{
+  "criterion": "gini",
+  "max_depth": 12,
+  "max_features": "sqrt",
+  "min_samples_split": 3,
+  "splitter": "random"
+}
+Best result: 0.615032679738562
+Cross validation started at 2023-10-17 23:21:38
+
+Production model build started at 2023-10-17 23:21:38
+
+Production Model Results:
+Precision scores: 0.50, 0.33, 0.50, 0.67, 1.00, 1.00, 0.33, 0.50, 0.67, 0.40
+Mean precision: 0.59
+
+Recall scores: 0.50, 0.25, 0.25, 0.40, 0.20, 0.20, 0.25, 0.50, 0.50, 0.50
+Mean recall: 0.35
+
+Accuracy scores: 0.56, 0.44, 0.56, 0.56, 0.56, 0.56, 0.38, 0.50, 0.62, 0.38
+Mean Accuracy:  0.51
+
+F1 scores: 0.50, 0.29, 0.33, 0.50, 0.33, 0.33, 0.29, 0.50, 0.57, 0.44
+Mean F1:  0.41
+
+AUC scores: 0.55, 0.42, 0.53, 0.57, 0.60, 0.60, 0.38, 0.50, 0.62, 0.38
+Mean AUC: 0.52
+Feature Importances: 
+number_of_words                  : 0.3342
+density_design_keywords          : 0.2299
+number_refactoring_keywords      : 0.4359
+
+CSV,Spring-boot,design,DecisionTreeModel,0.59,0.35,0.51,0.41,29,14,28,15,0.52
+Finished at 2023-10-17 23:21:38
+TIME,Spring-boot,design,DecisionTreeModel,2023-10-17 23:21:37,2023-10-17 23:21:38
+Model LogisticRegressionModel
+Execution: 94/108
+Started at 2023-10-17 23:21:38
+Test search started at 2023-10-17 23:21:38
+
+Hyperparametrization:
+{
+  "C": 18.9531059953693,
+  "max_iter": 50
+}
+Best result: 0.580392156862745
+Cross validation started at 2023-10-17 23:21:38
+
+Production model build started at 2023-10-17 23:21:38
+
+Production Model Results:
+Precision scores: 0.17, 0.57, 0.80, 0.67, 0.60, 0.62, 0.60, 0.40, 0.50, 0.60
+Mean precision: 0.55
+
+Recall scores: 0.25, 1.00, 1.00, 0.40, 0.60, 1.00, 0.75, 0.50, 0.75, 0.75
+Mean recall: 0.70
+
+Accuracy scores: 0.11, 0.67, 0.89, 0.56, 0.56, 0.67, 0.62, 0.38, 0.50, 0.62
+Mean Accuracy:  0.56
+
+F1 scores: 0.20, 0.73, 0.89, 0.50, 0.60, 0.77, 0.67, 0.44, 0.60, 0.67
+Mean F1:  0.61
+
+AUC scores: 0.12, 0.70, 0.90, 0.57, 0.55, 0.62, 0.62, 0.38, 0.50, 0.62
+Mean AUC: 0.56
+Features:number_of_words, density_design_keywords, number_refactoring_keywords
+Coefficients:
+[0.2658062435495695, -2.098784892852229, 1.485885000507125]
+CSV,Spring-boot,design,LogisticRegressionModel,0.55,0.70,0.56,0.61,18,25,13,30,0.56
+Finished at 2023-10-17 23:21:38
+TIME,Spring-boot,design,LogisticRegressionModel,2023-10-17 23:21:38,2023-10-17 23:21:38
+Model GaussianNaiveBayesModel
+Execution: 95/108
+Started at 2023-10-17 23:21:38
+Test search started at 2023-10-17 23:21:38
+
+Hyperparametrization:
+{
+  "var_smoothing": 1e-10
+}
+Best result: 0.6169934640522875
+Cross validation started at 2023-10-17 23:21:39
+
+Production model build started at 2023-10-17 23:21:39
+
+Production Model Results:
+Precision scores: 0.38, 0.00, 0.50, 0.67, 0.71, 0.25, 0.50, 0.67, 0.50, 0.50
+Mean precision: 0.47
+
+Recall scores: 0.75, 0.00, 0.25, 0.80, 1.00, 0.20, 0.50, 0.50, 0.75, 1.00
+Mean recall: 0.57
+
+Accuracy scores: 0.33, 0.44, 0.56, 0.67, 0.78, 0.22, 0.50, 0.62, 0.50, 0.50
+Mean Accuracy:  0.51
+
+F1 scores: 0.50, 0.00, 0.33, 0.73, 0.83, 0.22, 0.50, 0.57, 0.60, 0.67
+Mean F1:  0.50
+
+AUC scores: 0.38, 0.40, 0.53, 0.65, 0.75, 0.23, 0.50, 0.62, 0.50, 0.50
+Mean AUC: 0.51
+(Not possible to collect feature importances)
+CSV,Spring-boot,design,GaussianNaiveBayesModel,0.47,0.57,0.51,0.50,19,24,18,25,0.51
+Finished at 2023-10-17 23:21:39
+TIME,Spring-boot,design,GaussianNaiveBayesModel,2023-10-17 23:21:38,2023-10-17 23:21:39
+Model GradientBoostingRegressorModel
+Execution: 96/108
+Started at 2023-10-17 23:21:39
+Test search started at 2023-10-17 23:21:39
+
+Hyperparametrization:
+{
+  "max_depth": 12,
+  "min_samples_split": 5,
+  "n_estimators": 10
+}
+Best result: 0.5705882352941176
+Cross validation started at 2023-10-17 23:21:53
+
+Production model build started at 2023-10-17 23:21:53
+
+Production Model Results:
+Precision scores: 0.75, 0.33, 0.33, 0.25, 0.60, 0.67, 0.50, 0.50, 0.60, 0.25
+Mean precision: 0.48
+
+Recall scores: 0.75, 0.25, 0.25, 0.20, 0.60, 0.40, 0.50, 0.75, 0.75, 0.25
+Mean recall: 0.47
+
+Accuracy scores: 0.78, 0.44, 0.44, 0.22, 0.56, 0.56, 0.50, 0.50, 0.62, 0.25
+Mean Accuracy:  0.49
+
+F1 scores: 0.75, 0.29, 0.29, 0.22, 0.60, 0.50, 0.50, 0.60, 0.67, 0.25
+Mean F1:  0.47
+
+AUC scores: 0.78, 0.42, 0.42, 0.23, 0.55, 0.57, 0.50, 0.50, 0.62, 0.25
+Mean AUC: 0.48
+Feature Importances: 
+number_of_words                  : 0.6656
+density_design_keywords          : 0.1581
+number_refactoring_keywords      : 0.1763
+
+CSV,Spring-boot,design,GradientBoostingRegressorModel,0.48,0.47,0.49,0.47,22,21,23,20,0.48
+Finished at 2023-10-17 23:21:53
+TIME,Spring-boot,design,GradientBoostingRegressorModel,2023-10-17 23:21:39,2023-10-17 23:21:53
+Dataset Spring-security
+**** Smell granularity implementation
+---- Retrieve labeled instances for dataset: Spring-security
+raw number of impactful patches instances: 326
+raw number of not impactful patches instances: 558
+impactful patches instance (after dropping NA)s: 239
+not impactful patches instances (after dropping NA)s: 471
+instances before balancing: Counter({0: 471, 1: 239})
+instances after balancing: Counter({0: 239, 1: 239})
+Features before reduction (total of 6): density_design_keywords, density_refactoring_keywords, number_design_keywords, number_refactoring_keywords, mean_number_of_words, number_of_words
+Features after reduction (total of 6): density_design_keywords, density_refactoring_keywords, number_design_keywords, number_refactoring_keywords, mean_number_of_words, number_of_words
+Feature ranking: 1, 1, 1, 1, 1, 1
+Feature grid scores: mean_test_score, std_test_score, split0_test_score, split1_test_score, split2_test_score, split3_test_score, split4_test_score
+Model LinearSVMModel
+Execution: 97/108
+Started at 2023-10-17 23:21:54
+Test search started at 2023-10-17 23:21:54
+
+Hyperparametrization:
+{
+  "C": 8.043886711461647,
+  "kernel": "linear",
+  "shrinking": false
+}
+Best result: 0.5521929824561403
+Cross validation started at 2023-10-17 23:21:54
+
+Production model build started at 2023-10-17 23:21:54
+
+Production Model Results:
+Precision scores: 0.73, 0.75, 0.60, 0.67, 0.75, 0.56, 0.60, 0.91, 0.86, 0.56
+Mean precision: 0.70
+
+Recall scores: 0.33, 0.38, 0.12, 0.17, 0.25, 0.21, 0.38, 0.42, 0.26, 0.38
+Mean recall: 0.29
+
+Accuracy scores: 0.60, 0.62, 0.52, 0.54, 0.58, 0.52, 0.56, 0.69, 0.62, 0.53
+Mean Accuracy:  0.58
+
+F1 scores: 0.46, 0.50, 0.21, 0.27, 0.38, 0.30, 0.46, 0.57, 0.40, 0.45
+Mean F1:  0.40
+
+AUC scores: 0.60, 0.62, 0.52, 0.54, 0.58, 0.52, 0.56, 0.69, 0.61, 0.54
+Mean AUC: 0.58
+Features:density_design_keywords, density_refactoring_keywords, number_design_keywords, number_refactoring_keywords, mean_number_of_words, number_of_words
+Coefficients:
+[0.6922361025417204, -1.0503357256772954, 1.0131411065426614, 6.1292683475313865, 3.9906856673859585, -4.565417387337548]
+CSV,Spring-security,implementation,LinearSVMModel,0.70,0.29,0.58,0.40,208,31,170,69,0.58
+Finished at 2023-10-17 23:21:54
+TIME,Spring-security,implementation,LinearSVMModel,2023-10-17 23:21:54,2023-10-17 23:21:54
+Model RandomForestModel
+Execution: 98/108
+Started at 2023-10-17 23:21:54
+Test search started at 2023-10-17 23:21:54
+
+Hyperparametrization:
+{
+  "bootstrap": false,
+  "criterion": "entropy",
+  "max_depth": 3,
+  "max_features": "sqrt",
+  "min_samples_split": 2,
+  "n_estimators": 10
+}
+Best result: 0.6089254385964912
+Cross validation started at 2023-10-17 23:25:45
+
+Production model build started at 2023-10-17 23:25:45
+
+Production Model Results:
+Precision scores: 0.62, 0.62, 0.57, 0.60, 0.57, 0.75, 0.53, 0.59, 0.67, 0.59
+Mean precision: 0.61
+
+Recall scores: 0.42, 0.42, 0.33, 0.62, 0.33, 0.50, 0.33, 0.42, 0.43, 0.54
+Mean recall: 0.44
+
+Accuracy scores: 0.58, 0.58, 0.54, 0.60, 0.54, 0.67, 0.52, 0.56, 0.62, 0.57
+Mean Accuracy:  0.58
+
+F1 scores: 0.50, 0.50, 0.42, 0.61, 0.42, 0.60, 0.41, 0.49, 0.53, 0.57
+Mean F1:  0.50
+
+AUC scores: 0.58, 0.58, 0.54, 0.60, 0.54, 0.67, 0.52, 0.56, 0.61, 0.58
+Mean AUC: 0.58
+Feature Importances: 
+density_design_keywords          : 0.0564
+density_refactoring_keywords     : 0.1647
+number_design_keywords           : 0.0354
+number_refactoring_keywords      : 0.2445
+mean_number_of_words             : 0.2811
+number_of_words                  : 0.2179
+
+CSV,Spring-security,implementation,RandomForestModel,0.61,0.44,0.58,0.50,173,66,135,104,0.58
+Finished at 2023-10-17 23:25:45
+TIME,Spring-security,implementation,RandomForestModel,2023-10-17 23:21:54,2023-10-17 23:25:45
+Model DecisionTreeModel
+Execution: 99/108
+Started at 2023-10-17 23:25:45
+Test search started at 2023-10-17 23:25:45
+
+Hyperparametrization:
+{
+  "criterion": "gini",
+  "max_depth": 6,
+  "max_features": null,
+  "min_samples_split": 2,
+  "splitter": "random"
+}
+Best result: 0.5900657894736842
+Cross validation started at 2023-10-17 23:25:46
+
+Production model build started at 2023-10-17 23:25:46
+
+Production Model Results:
+Precision scores: 0.83, 0.89, 0.73, 0.60, 0.57, 0.60, 0.64, 0.53, 0.69, 0.50
+Mean precision: 0.66
+
+Recall scores: 0.42, 0.33, 0.46, 0.38, 0.33, 0.38, 0.38, 0.38, 0.39, 0.67
+Mean recall: 0.41
+
+Accuracy scores: 0.67, 0.65, 0.65, 0.56, 0.54, 0.56, 0.58, 0.52, 0.62, 0.49
+Mean Accuracy:  0.58
+
+F1 scores: 0.56, 0.48, 0.56, 0.46, 0.42, 0.46, 0.47, 0.44, 0.50, 0.57
+Mean F1:  0.49
+
+AUC scores: 0.67, 0.65, 0.65, 0.56, 0.54, 0.56, 0.58, 0.52, 0.61, 0.49
+Mean AUC: 0.58
+Feature Importances: 
+density_design_keywords          : 0.1253
+density_refactoring_keywords     : 0.1590
+number_design_keywords           : 0.0318
+number_refactoring_keywords      : 0.4285
+mean_number_of_words             : 0.1126
+number_of_words                  : 0.1428
+
+CSV,Spring-security,implementation,DecisionTreeModel,0.66,0.41,0.58,0.49,181,58,141,98,0.58
+Finished at 2023-10-17 23:25:46
+TIME,Spring-security,implementation,DecisionTreeModel,2023-10-17 23:25:45,2023-10-17 23:25:46
+Model LogisticRegressionModel
+Execution: 100/108
+Started at 2023-10-17 23:25:46
+Test search started at 2023-10-17 23:25:46
+
+Hyperparametrization:
+{
+  "C": 75.89271740934596,
+  "max_iter": 50
+}
+Best result: 0.5565570175438597
+Cross validation started at 2023-10-17 23:25:46
+
+Production model build started at 2023-10-17 23:25:46
+
+Production Model Results:
+Precision scores: 0.59, 0.56, 0.52, 0.62, 0.46, 0.70, 0.37, 0.65, 0.65, 0.60
+Mean precision: 0.57
+
+Recall scores: 0.54, 0.42, 0.50, 0.54, 0.46, 0.58, 0.29, 0.62, 0.57, 0.50
+Mean recall: 0.50
+
+Accuracy scores: 0.58, 0.54, 0.52, 0.60, 0.46, 0.67, 0.40, 0.65, 0.64, 0.57
+Mean Accuracy:  0.56
+
+F1 scores: 0.57, 0.48, 0.51, 0.58, 0.46, 0.64, 0.33, 0.64, 0.60, 0.55
+Mean F1:  0.53
+
+AUC scores: 0.58, 0.54, 0.52, 0.60, 0.46, 0.67, 0.40, 0.65, 0.64, 0.58
+Mean AUC: 0.56
+Features:density_design_keywords, density_refactoring_keywords, number_design_keywords, number_refactoring_keywords, mean_number_of_words, number_of_words
+Coefficients:
+[0.8167545284089437, -0.7598859716874247, 0.09753242192090641, 3.805884060388718, 2.2052898146163984, -3.228901808303247]
+CSV,Spring-security,implementation,LogisticRegressionModel,0.57,0.50,0.56,0.53,149,90,119,120,0.56
+Finished at 2023-10-17 23:25:46
+TIME,Spring-security,implementation,LogisticRegressionModel,2023-10-17 23:25:46,2023-10-17 23:25:46
+Model GaussianNaiveBayesModel
+Execution: 101/108
+Started at 2023-10-17 23:25:46
+Test search started at 2023-10-17 23:25:46
+
+Hyperparametrization:
+{
+  "var_smoothing": 1e-10
+}
+Best result: 0.5585964912280701
+Cross validation started at 2023-10-17 23:25:46
+
+Production model build started at 2023-10-17 23:25:46
+
+Production Model Results:
+Precision scores: 0.44, 0.71, 0.57, 0.50, 0.60, 0.88, 0.75, 0.62, 0.50, 0.69
+Mean precision: 0.63
+
+Recall scores: 0.17, 0.21, 0.33, 0.25, 0.38, 0.29, 0.25, 0.21, 0.13, 0.38
+Mean recall: 0.26
+
+Accuracy scores: 0.48, 0.56, 0.54, 0.50, 0.56, 0.62, 0.58, 0.54, 0.51, 0.60
+Mean Accuracy:  0.55
+
+F1 scores: 0.24, 0.32, 0.42, 0.33, 0.46, 0.44, 0.38, 0.31, 0.21, 0.49
+Mean F1:  0.36
+
+AUC scores: 0.48, 0.56, 0.54, 0.50, 0.56, 0.62, 0.58, 0.54, 0.50, 0.60
+Mean AUC: 0.55
+(Not possible to collect feature importances)
+CSV,Spring-security,implementation,GaussianNaiveBayesModel,0.63,0.26,0.55,0.36,201,38,177,62,0.55
+Finished at 2023-10-17 23:25:46
+TIME,Spring-security,implementation,GaussianNaiveBayesModel,2023-10-17 23:25:46,2023-10-17 23:25:46
+Model GradientBoostingRegressorModel
+Execution: 102/108
+Started at 2023-10-17 23:25:46
+Test search started at 2023-10-17 23:25:46
+
+Hyperparametrization:
+{
+  "max_depth": 3,
+  "min_samples_split": 2,
+  "n_estimators": 50
+}
+Best result: 0.6171929824561403
+Cross validation started at 2023-10-17 23:26:29
+
+Production model build started at 2023-10-17 23:26:29
+
+Production Model Results:
+Precision scores: 0.54, 0.67, 0.67, 0.64, 0.58, 0.53, 0.48, 0.71, 0.58, 0.61
+Mean precision: 0.60
+
+Recall scores: 0.62, 0.50, 0.58, 0.58, 0.62, 0.38, 0.46, 0.42, 0.48, 0.46
+Mean recall: 0.51
+
+Accuracy scores: 0.54, 0.62, 0.65, 0.62, 0.58, 0.52, 0.48, 0.62, 0.57, 0.57
+Mean Accuracy:  0.58
+
+F1 scores: 0.58, 0.57, 0.62, 0.61, 0.60, 0.44, 0.47, 0.53, 0.52, 0.52
+Mean F1:  0.55
+
+AUC scores: 0.54, 0.62, 0.65, 0.63, 0.58, 0.52, 0.48, 0.62, 0.57, 0.58
+Mean AUC: 0.58
+Feature Importances: 
+density_design_keywords          : 0.0726
+density_refactoring_keywords     : 0.1654
+number_design_keywords           : 0.0081
+number_refactoring_keywords      : 0.1804
+mean_number_of_words             : 0.3520
+number_of_words                  : 0.2214
+
+CSV,Spring-security,implementation,GradientBoostingRegressorModel,0.60,0.51,0.58,0.55,155,84,117,122,0.58
+Finished at 2023-10-17 23:26:29
+TIME,Spring-security,implementation,GradientBoostingRegressorModel,2023-10-17 23:25:46,2023-10-17 23:26:29
+**** Smell granularity design
+---- Retrieve labeled instances for dataset: Spring-security
+raw number of impactful patches instances: 274
+raw number of not impactful patches instances: 610
+impactful patches instance (after dropping NA)s: 198
+not impactful patches instances (after dropping NA)s: 512
+instances before balancing: Counter({0: 512, 1: 198})
+instances after balancing: Counter({0: 198, 1: 198})
+Features before reduction (total of 6): density_design_keywords, density_refactoring_keywords, number_design_keywords, number_refactoring_keywords, mean_number_of_words, number_of_words
+Features after reduction (total of 6): density_design_keywords, density_refactoring_keywords, number_design_keywords, number_refactoring_keywords, mean_number_of_words, number_of_words
+Feature ranking: 1, 1, 1, 1, 1, 1
+Feature grid scores: mean_test_score, std_test_score, split0_test_score, split1_test_score, split2_test_score, split3_test_score, split4_test_score
+Model LinearSVMModel
+Execution: 103/108
+Started at 2023-10-17 23:26:29
+Test search started at 2023-10-17 23:26:29
+
+Hyperparametrization:
+{
+  "C": 6.380245748542441,
+  "kernel": "linear",
+  "shrinking": false
+}
+Best result: 0.5481329113924052
+Cross validation started at 2023-10-17 23:26:29
+
+Production model build started at 2023-10-17 23:26:29
+
+Production Model Results:
+Precision scores: 0.75, 0.50, 0.57, 0.67, 0.33, 0.67, 0.50, 0.56, 1.00, 1.00
+Mean precision: 0.65
+
+Recall scores: 0.30, 0.10, 0.20, 0.30, 0.05, 0.10, 0.05, 0.26, 0.25, 0.20
+Mean recall: 0.18
+
+Accuracy scores: 0.60, 0.50, 0.53, 0.57, 0.47, 0.53, 0.51, 0.54, 0.62, 0.59
+Mean Accuracy:  0.55
+
+F1 scores: 0.43, 0.17, 0.30, 0.41, 0.09, 0.17, 0.10, 0.36, 0.40, 0.33
+Mean F1:  0.28
+
+AUC scores: 0.60, 0.50, 0.53, 0.57, 0.48, 0.52, 0.50, 0.53, 0.62, 0.60
+Mean AUC: 0.55
+Features:density_design_keywords, density_refactoring_keywords, number_design_keywords, number_refactoring_keywords, mean_number_of_words, number_of_words
+Coefficients:
+[1.5501951392247921, 0.3983239802021301, 2.381808797379436, -0.12216138648761499, 0.9466907122037352, 1.6959827069830968]
+CSV,Spring-security,design,LinearSVMModel,0.65,0.18,0.55,0.28,180,18,162,36,0.55
+Finished at 2023-10-17 23:26:29
+TIME,Spring-security,design,LinearSVMModel,2023-10-17 23:26:29,2023-10-17 23:26:29
+Model RandomForestModel
+Execution: 104/108
+Started at 2023-10-17 23:26:29
+Test search started at 2023-10-17 23:26:29
+
+Hyperparametrization:
+{
+  "bootstrap": true,
+  "criterion": "entropy",
+  "max_depth": 24,
+  "max_features": null,
+  "min_samples_split": 10,
+  "n_estimators": 10
+}
+Best result: 0.598512658227848
+Cross validation started at 2023-10-17 23:30:08
+
+Production model build started at 2023-10-17 23:30:09
+
+Production Model Results:
+Precision scores: 0.46, 0.58, 0.73, 0.50, 0.50, 0.50, 0.62, 0.60, 0.58, 0.41
+Mean precision: 0.55
+
+Recall scores: 0.55, 0.70, 0.55, 0.50, 0.40, 0.55, 0.53, 0.79, 0.70, 0.45
+Mean recall: 0.57
+
+Accuracy scores: 0.45, 0.60, 0.68, 0.50, 0.50, 0.50, 0.62, 0.64, 0.59, 0.38
+Mean Accuracy:  0.55
+
+F1 scores: 0.50, 0.64, 0.63, 0.50, 0.44, 0.52, 0.57, 0.68, 0.64, 0.43
+Mean F1:  0.56
+
+AUC scores: 0.45, 0.60, 0.68, 0.50, 0.50, 0.50, 0.61, 0.64, 0.59, 0.38
+Mean AUC: 0.55
+Feature Importances: 
+density_design_keywords          : 0.0531
+density_refactoring_keywords     : 0.0975
+number_design_keywords           : 0.0374
+number_refactoring_keywords      : 0.1016
+mean_number_of_words             : 0.3724
+number_of_words                  : 0.3380
+
+CSV,Spring-security,design,RandomForestModel,0.55,0.57,0.55,0.56,103,95,85,113,0.55
+Finished at 2023-10-17 23:30:09
+TIME,Spring-security,design,RandomForestModel,2023-10-17 23:26:29,2023-10-17 23:30:09
+Model DecisionTreeModel
+Execution: 105/108
+Started at 2023-10-17 23:30:09
+Test search started at 2023-10-17 23:30:09
+
+Hyperparametrization:
+{
+  "criterion": "entropy",
+  "max_depth": 12,
+  "max_features": "sqrt",
+  "min_samples_split": 11,
+  "splitter": "best"
+}
+Best result: 0.591139240506329
+Cross validation started at 2023-10-17 23:30:10
+
+Production model build started at 2023-10-17 23:30:10
+
+Production Model Results:
+Precision scores: 0.50, 0.63, 0.50, 0.58, 0.50, 0.58, 0.53, 0.58, 0.52, 0.44
+Mean precision: 0.54
+
+Recall scores: 0.60, 0.60, 0.35, 0.70, 0.35, 0.55, 0.53, 0.58, 0.55, 0.40
+Mean recall: 0.52
+
+Accuracy scores: 0.50, 0.62, 0.50, 0.60, 0.50, 0.57, 0.54, 0.59, 0.51, 0.44
+Mean Accuracy:  0.54
+
+F1 scores: 0.55, 0.62, 0.41, 0.64, 0.41, 0.56, 0.53, 0.58, 0.54, 0.42
+Mean F1:  0.52
+
+AUC scores: 0.50, 0.62, 0.50, 0.60, 0.50, 0.57, 0.54, 0.59, 0.51, 0.44
+Mean AUC: 0.54
+Feature Importances: 
+density_design_keywords          : 0.0690
+density_refactoring_keywords     : 0.0569
+number_design_keywords           : 0.0476
+number_refactoring_keywords      : 0.0983
+mean_number_of_words             : 0.3408
+number_of_words                  : 0.3874
+
+CSV,Spring-security,design,DecisionTreeModel,0.54,0.52,0.54,0.52,110,88,95,103,0.54
+Finished at 2023-10-17 23:30:10
+TIME,Spring-security,design,DecisionTreeModel,2023-10-17 23:30:09,2023-10-17 23:30:10
+Model LogisticRegressionModel
+Execution: 106/108
+Started at 2023-10-17 23:30:10
+Test search started at 2023-10-17 23:30:10
+
+Hyperparametrization:
+{
+  "C": 42.13268139306013,
+  "max_iter": 50
+}
+Best result: 0.5732594936708861
+Cross validation started at 2023-10-17 23:30:10
+
+Production model build started at 2023-10-17 23:30:10
+
+Production Model Results:
+Precision scores: 0.50, 0.55, 0.60, 0.50, 0.54, 0.73, 0.50, 0.42, 0.56, 0.69
+Mean precision: 0.56
+
+Recall scores: 0.30, 0.30, 0.45, 0.35, 0.35, 0.40, 0.26, 0.26, 0.45, 0.45
+Mean recall: 0.36
+
+Accuracy scores: 0.50, 0.53, 0.57, 0.50, 0.53, 0.62, 0.51, 0.46, 0.54, 0.62
+Mean Accuracy:  0.54
+
+F1 scores: 0.37, 0.39, 0.51, 0.41, 0.42, 0.52, 0.34, 0.32, 0.50, 0.55
+Mean F1:  0.43
+
+AUC scores: 0.50, 0.53, 0.57, 0.50, 0.53, 0.62, 0.51, 0.46, 0.54, 0.62
+Mean AUC: 0.54
+Features:density_design_keywords, density_refactoring_keywords, number_design_keywords, number_refactoring_keywords, mean_number_of_words, number_of_words
+Coefficients:
+[0.5256311348250717, 0.8666563294546554, 1.370576069590977, -1.5474825303950854, -0.055208939945560837, 2.9626747172876846]
+CSV,Spring-security,design,LogisticRegressionModel,0.56,0.36,0.54,0.43,142,56,127,71,0.54
+Finished at 2023-10-17 23:30:10
+TIME,Spring-security,design,LogisticRegressionModel,2023-10-17 23:30:10,2023-10-17 23:30:10
+Model GaussianNaiveBayesModel
+Execution: 107/108
+Started at 2023-10-17 23:30:10
+Test search started at 2023-10-17 23:30:10
+
+Hyperparametrization:
+{
+  "var_smoothing": 1e-10
+}
+Best result: 0.5682911392405063
+Cross validation started at 2023-10-17 23:30:11
+
+Production model build started at 2023-10-17 23:30:11
+
+Production Model Results:
+Precision scores: 0.57, 0.56, 0.80, 0.88, 0.44, 0.55, 0.83, 1.00, 0.67, 0.73
+Mean precision: 0.70
+
+Recall scores: 0.20, 0.25, 0.20, 0.35, 0.20, 0.30, 0.26, 0.42, 0.30, 0.40
+Mean recall: 0.29
+
+Accuracy scores: 0.53, 0.53, 0.57, 0.65, 0.47, 0.53, 0.62, 0.72, 0.56, 0.62
+Mean Accuracy:  0.58
+
+F1 scores: 0.30, 0.34, 0.32, 0.50, 0.28, 0.39, 0.40, 0.59, 0.41, 0.52
+Mean F1:  0.40
+
+AUC scores: 0.53, 0.53, 0.57, 0.65, 0.47, 0.53, 0.61, 0.71, 0.57, 0.62
+Mean AUC: 0.58
+(Not possible to collect feature importances)
+CSV,Spring-security,design,GaussianNaiveBayesModel,0.70,0.29,0.58,0.40,172,26,141,57,0.58
+Finished at 2023-10-17 23:30:11
+TIME,Spring-security,design,GaussianNaiveBayesModel,2023-10-17 23:30:10,2023-10-17 23:30:11
+Model GradientBoostingRegressorModel
+Execution: 108/108
+Started at 2023-10-17 23:30:11
+Test search started at 2023-10-17 23:30:11
+
+Hyperparametrization:
+{
+  "max_depth": 3,
+  "min_samples_split": 5,
+  "n_estimators": 200
+}
+Best result: 0.6111392405063291
+Cross validation started at 2023-10-17 23:30:52
+
+Production model build started at 2023-10-17 23:30:52
+
+Production Model Results:
+Precision scores: 0.57, 0.65, 0.43, 0.50, 0.46, 0.68, 0.60, 0.68, 0.67, 0.60
+Mean precision: 0.58
+
+Recall scores: 0.60, 0.75, 0.45, 0.45, 0.30, 0.65, 0.47, 0.79, 0.50, 0.60
+Mean recall: 0.56
+
+Accuracy scores: 0.57, 0.68, 0.42, 0.50, 0.47, 0.68, 0.59, 0.72, 0.62, 0.59
+Mean Accuracy:  0.58
+
+F1 scores: 0.59, 0.70, 0.44, 0.47, 0.36, 0.67, 0.53, 0.73, 0.57, 0.60
+Mean F1:  0.57
+
+AUC scores: 0.58, 0.68, 0.42, 0.50, 0.48, 0.67, 0.59, 0.72, 0.62, 0.59
+Mean AUC: 0.58
+Feature Importances: 
+density_design_keywords          : 0.0471
+density_refactoring_keywords     : 0.0815
+number_design_keywords           : 0.0449
+number_refactoring_keywords      : 0.0994
+mean_number_of_words             : 0.4046
+number_of_words                  : 0.3225
+
+CSV,Spring-security,design,GradientBoostingRegressorModel,0.58,0.56,0.58,0.57,121,77,88,110,0.58
+Finished at 2023-10-17 23:30:52
+TIME,Spring-security,design,GradientBoostingRegressorModel,2023-10-17 23:30:11,2023-10-17 23:30:52

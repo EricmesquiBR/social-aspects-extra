@@ -1,0 +1,13 @@
+221297,['Netflix-zuul', 'Netflix-Hystrix', 'Netflix-conductor', 'Netflix-eureka'],LinearSVMModel,implementation,['C: 8.837722134059787'; 'kernel: linear'; 'shrinking: false']
+221297,['Netflix-zuul', 'Netflix-Hystrix', 'Netflix-conductor', 'Netflix-eureka'],RandomForestModel,implementation,['bootstrap: true'; 'criterion: entropy'; 'max_depth: 3'; 'max_features: log2'; 'min_samples_split: 10'; 'n_estimators: 10']
+221297,['Netflix-zuul', 'Netflix-Hystrix', 'Netflix-conductor', 'Netflix-eureka'],DecisionTreeModel,implementation,['criterion: gini'; 'max_depth: 3'; 'max_features: log2'; 'min_samples_split: 2'; 'splitter: best']
+221297,['Netflix-zuul', 'Netflix-Hystrix', 'Netflix-conductor', 'Netflix-eureka'],LogisticRegressionModel,implementation,['C: 40.46700787393973'; 'max_iter: 50']
+221297,['Netflix-zuul', 'Netflix-Hystrix', 'Netflix-conductor', 'Netflix-eureka'],GaussianNaiveBayesModel,implementation,['var_smoothing: 1e-05']
+221297,['Netflix-zuul', 'Netflix-Hystrix', 'Netflix-conductor', 'Netflix-eureka'],GradientBoostingRegressorModel,implementation,['max_depth: 3'; 'min_samples_split: 2'; 'n_estimators: 10']
+221297,['Netflix-zuul', 'Netflix-Hystrix', 'Netflix-conductor', 'Netflix-eureka'],LinearSVMModel,implementation,['C: 2.1931246803658184'; 'kernel: linear'; 'shrinking: false']
+221297,['Netflix-zuul', 'Netflix-Hystrix', 'Netflix-conductor', 'Netflix-eureka'],RandomForestModel,implementation,['bootstrap: true'; 'criterion: entropy'; 'max_depth: 3'; 'max_features: sqrt'; 'min_samples_split: 2'; 'n_estimators: 100']
+221297,['Netflix-zuul', 'Netflix-Hystrix', 'Netflix-conductor', 'Netflix-eureka'],DecisionTreeModel,implementation,['criterion: entropy'; 'max_depth: 3'; 'max_features: sqrt'; 'min_samples_split: 2'; 'splitter: best']
+221297,['Netflix-zuul', 'Netflix-Hystrix', 'Netflix-conductor', 'Netflix-eureka'],LogisticRegressionModel,implementation,['C: 25.0324643218907'; 'max_iter: 50']
+221297,['Netflix-zuul', 'Netflix-Hystrix', 'Netflix-conductor', 'Netflix-eureka'],GaussianNaiveBayesModel,implementation,['var_smoothing: 1e-10']
+221297,['Netflix-zuul', 'Netflix-Hystrix', 'Netflix-conductor', 'Netflix-eureka'],GradientBoostingRegressorModel,implementation,['max_depth: 3'; 'min_samples_split: 2'; 'n_estimators: 10']
+

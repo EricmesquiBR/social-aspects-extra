@@ -1,0 +1,9 @@
+project,type,model,test_precision,test_recall,test_f1,test_accuracy
+Google,design,DecisionTreeModel,0.61,0.61,0.6,0.61
+Google,design,GradientBoostingRegressorModel,0.62,0.6,0.61,0.62
+Google,design,LinearSVMModel,0.62,0.34,0.4,0.55
+Google,design,RandomForestModel,0.58,0.51,0.54,0.57
+Google,implementation,DecisionTreeModel,0.67,0.56,0.6,0.64
+Google,implementation,GradientBoostingRegressorModel,0.68,0.58,0.63,0.66
+Google,implementation,LinearSVMModel,0.76,0.26,0.37,0.58
+Google,implementation,RandomForestModel,0.64,0.56,0.59,0.62

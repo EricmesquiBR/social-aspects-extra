@@ -1,0 +1,13 @@
+project,type,model,test_precision,test_recall,test_f1,test_accuracy
+Netflix,design,DecisionTreeModel,0.63,0.5,0.55,0.6
+Netflix,design,GaussianNaiveBayesModel,0.5,0.99,0.66,0.5
+Netflix,design,GradientBoostingRegressorModel,0.65,0.58,0.61,0.63
+Netflix,design,LinearSVMModel,0.69,0.36,0.47,0.59
+Netflix,design,LogisticRegressionModel,0.62,0.46,0.52,0.59
+Netflix,design,RandomForestModel,0.68,0.61,0.64,0.66
+Netflix,implementation,DecisionTreeModel,0.67,0.56,0.6,0.64
+Netflix,implementation,GaussianNaiveBayesModel,0.63,0.29,0.39,0.56
+Netflix,implementation,GradientBoostingRegressorModel,0.68,0.62,0.65,0.67
+Netflix,implementation,LinearSVMModel,0.64,0.32,0.42,0.56
+Netflix,implementation,LogisticRegressionModel,0.62,0.48,0.54,0.59
+Netflix,implementation,RandomForestModel,0.67,0.6,0.63,0.66

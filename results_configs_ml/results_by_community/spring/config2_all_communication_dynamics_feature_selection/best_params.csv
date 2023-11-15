@@ -1,0 +1,13 @@
+911826,['Spring-boot', 'Spring-security'],LinearSVMModel,implementation,['C: 0.7039784741968872'; 'kernel: linear'; 'shrinking: false']
+911826,['Spring-boot', 'Spring-security'],RandomForestModel,implementation,['bootstrap: false'; 'criterion: entropy'; 'max_depth: 3'; 'max_features: sqrt'; 'min_samples_split: 2'; 'n_estimators: 100']
+911826,['Spring-boot', 'Spring-security'],DecisionTreeModel,implementation,['criterion: gini'; 'max_depth: 6'; 'max_features: sqrt'; 'min_samples_split: 2'; 'splitter: best']
+911826,['Spring-boot', 'Spring-security'],LogisticRegressionModel,implementation,['C: 59.97234512558144'; 'max_iter: 50']
+911826,['Spring-boot', 'Spring-security'],GaussianNaiveBayesModel,implementation,['var_smoothing: 1e-10']
+911826,['Spring-boot', 'Spring-security'],GradientBoostingRegressorModel,implementation,['max_depth: 12'; 'min_samples_split: 4'; 'n_estimators: 10']
+911826,['Spring-boot', 'Spring-security'],LinearSVMModel,implementation,['C: 0.6538329456332215'; 'kernel: linear'; 'shrinking: false']
+911826,['Spring-boot', 'Spring-security'],RandomForestModel,implementation,['bootstrap: true'; 'criterion: gini'; 'max_depth: 6'; 'max_features: null'; 'min_samples_split: 5'; 'n_estimators: 10']
+911826,['Spring-boot', 'Spring-security'],DecisionTreeModel,implementation,['criterion: gini'; 'max_depth: 6'; 'max_features: null'; 'min_samples_split: 2'; 'splitter: best']
+911826,['Spring-boot', 'Spring-security'],LogisticRegressionModel,implementation,['C: 71.8953290411915'; 'max_iter: 50']
+911826,['Spring-boot', 'Spring-security'],GaussianNaiveBayesModel,implementation,['var_smoothing: 1e-10']
+911826,['Spring-boot', 'Spring-security'],GradientBoostingRegressorModel,implementation,['max_depth: 3'; 'min_samples_split: 3'; 'n_estimators: 50']
+
