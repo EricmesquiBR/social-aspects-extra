@@ -1,0 +1,19 @@
+DIMENSÃO DA MÉTRICA,MÉTRICAS DO ARTIGO ,MÉTRICAS DO DATASET
+Communication Dynamics Dimension,Number of Newbies,newbies
+,Number of Contributors,contributors
+,Number of Core Developers,core_developers
+,Discussion Size,discussion_size
+,Mean Time Between Comments,mean_time_between_comments
+,Discussion Duration (Discussion Length),discussion_duration
+,Time Between Pull Request Opening and First Comment,open_and_first
+,Time Between Last Comment and Merge,last_and_close
+Discussion Content Dimension,Number of Words in Discussion,number_of_words
+,Number of Words per Comment in Discussion,mean_number_of_words
+,Number of Design Keywords,number_design_keywords
+,Number of Refactoring Keywords,number_refactoring_keywords
+,Density of Design Keywords,density_design_keywords
+,Density of Refactoring Keywords,density_refactoring_keywords
+Organization Dynamics Dimension,Team Size,team_size
+,Gender Diversity,number_females; number_males
+,Number of Newcomers,newbies; newcomers_size
+,Number of Developers Inactive,users_left_size

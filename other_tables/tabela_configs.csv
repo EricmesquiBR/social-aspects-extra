@@ -1,0 +1,13 @@
+Dimension,Feature Set,Config
+Communication Dynamics,all features,1
+,feature selection,2
+Discussion Content,all features,3
+,feature selection,4
+Organization Dynamics,all features,5
+,feature selection,6
+Collaboration networks,all features,7
+,feature selection,8
+"Communication Dynamics + 
+Discussion Content +
+Organization Dynamics",all features,7
+,feature selection,8
