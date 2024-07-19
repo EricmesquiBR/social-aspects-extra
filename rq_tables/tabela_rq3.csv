@@ -1,0 +1,27 @@
+Design,,,,,,
+Ranking,Communication Dynamics,,Discussion Content,,Organization Dynamics,
+,Feature Name,Frequence,Feature Name,Frequence,Feature Name,Frequence
+1,discussion_duration,15,number_of_words,16,last_and_close,30
+,mean_time_between_comments,7,number_refactoring_keywords,6,number_of_comments,5
+,last_and_close,5,mean_number_of_words,5,newcomers_size,5
+,core_developers,5,number_of_comments,4,team_size,3
+,contributors,4,last_and_close,4,number_males,1
+5,discussion_duration,41,last_and_close,44,last_and_close,44
+,discussion_size,36,number_of_words,40,newcomers_size,42
+,mean_time_between_comments,35,number_refactoring_keywords,33,number_males,41
+,last_and_close,34,density_refactoring_keywords,31,team_size,37
+,open_and_first,26,mean_number_of_words,30,number_females,28
+,,,,,,
+Implemetation,,,,,,
+Ranking,Communication Dynamics,,Discussion Content,,Organization Dynamics,
+,Feature Name,Frequence,Feature Name,Frequence,Feature Name,Frequence
+1,discussion_duration,14,number_of_words,13,last_and_close,23
+,discussion_size,10,number_refactoring_keywords,9,number_of_comments,9
+,mean_time_between_comments,10,mean_number_of_words,8,team_size,4
+,last_and_close,5,last_and_close,8,newcomers_size,3
+,open_and_first,3,number_of_comments,4,users_left_size,2
+5,mean_time_between_comments,42,number_of_words,42,team_size,43
+,open_and_first,36,number_refactoring_keywords,38,last_and_close,43
+,last_and_close,35,last_and_close,38,newcomers_size,40
+,discussion_duration,35,mean_number_of_words,31,number_males,38
+,discussion_size,31,density_refactoring_keywords,25,number_females,24

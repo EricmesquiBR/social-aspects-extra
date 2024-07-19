@@ -1,0 +1,47 @@
+Decision Tree,,,,,,,,,
+Dimension,Feature Set,Class-level,,,,Method-level,,,
+,,Pr,Re,F1,AUC,Pr,Re,F1,AUC
+Communication Dynamics,All Features,0.64,0.64,0.64,0.64,0.73,0.64,0.68,0.70
+,Feature Selection,0.65,0.65,0.65,0.65,0.70,0.66,0.67,0.68
+Discussion Content,All Features,0.61,0.66,0.63,0.61,0.67,0.66,0.66,0.66
+,Feature Selection,0.62,0.59,0.60,0.61,0.62,0.69,0.65,0.64
+Organization Dynamics,All Features,0.67,0.52,0.58,0.62,0.66,0.58,0.61,0.64
+,Feature Selection,0.63,0.60,0.61,0.62,0.69,0.57,0.62,0.66
+All Dimensions,All Features,0.62,0.50,0.55,0.59,0.67,0.73,0.70,0.68
+,Feature Selection,0.69,0.55,0.61,0.64,0.67,0.72,0.69,0.68
+,,,,,,,,,
+Grandient Boosting,,,,,,,,,
+Dimension,Feature Set,Class-level,,,,Method-level,,,
+,,Pr,Re,F1,AUC,Pr,Re,F1,AUC
+Communication Dynamics,All Features,0.64,0.60,0.62,0.63,0.70,0.65,0.67,0.69
+,Feature Selection,0.67,0.64,0.65,0.66,0.68,0.68,0.68,0.68
+Discussion Content,All Features,0.59,0.55,0.57,0.58,0.66,0.63,0.64,0.65
+,Feature Selection,0.62,0.51,0.55,0.59,0.61,0.61,0.61,0.61
+Organization Dynamics,All Features,0.69,0.58,0.62,0.65,0.69,0.59,0.63,0.66
+,Feature Selection,0.68,0.60,0.64,0.66,0.69,0.61,0.64,0.66
+All Dimensions,All Features,0.65,0.58,0.61,0.63,0.69,0.73,0.71,0.70
+,Feature Selection,0.69,0.50,0.57,0.63,0.68,0.72,0.70,0.69
+,,,,,,,,,
+Linear SVM,,,,,,,,,
+Dimension,Feature Set,Class-level,,,,Method-level,,,
+,,Pr,Re,F1,AUC,Pr,Re,F1,AUC
+Communication Dynamics,All Features,0.68,0.27,0.38,0.57,0.68,0.45,0.54,0.62
+,Feature Selection,0.73,0.26,0.37,0.58,0.69,0.46,0.54,0.62
+Discussion Content,All Features,0.67,0.35,0.45,0.59,0.68,0.42,0.52,0.61
+,Feature Selection,0.67,0.34,0.44,0.59,0.64,0.49,0.56,0.61
+Organization Dynamics,All Features,0.64,0.37,0.46,0.58,0.67,0.28,0.38,0.57
+,Feature Selection,0.64,0.36,0.45,0.58,0.63,0.32,0.42,0.57
+All Dimensions,All Features,0.67,0.44,0.53,0.61,0.68,0.55,0.60,0.64
+,Feature Selection,0.68,0.38,0.48,0.60,0.69,0.56,0.62,0.65
+,,,,,,,,,
+Random Forest,,,,,,,,,
+Dimension,Feature Set,Class-level,,,,Method-level,,,
+,,Pr,Re,F1,AUC,Pr,Re,F1,AUC
+Communication Dynamics,All Features,0.62,0.62,0.61,0.62,0.70,0.66,0.68,0.69
+,Feature Selection,0.64,0.60,0.61,0.63,0.69,0.69,0.69,0.69
+Discussion Content,All Features,0.61,0.58,0.59,0.61,0.69,0.66,0.67,0.68
+,Feature Selection,0.63,0.56,0.59,0.62,0.62,0.69,0.65,0.63
+Organization Dynamics,All Features,0.65,0.60,0.62,0.63,0.67,0.59,0.63,0.65
+,Feature Selection,0.65,0.59,0.61,0.63,0.70,0.62,0.66,0.68
+All Dimensions,All Features,0.63,0.60,0.61,0.62,0.67,0.70,0.69,0.68
+,Feature Selection,0.65,0.56,0.60,0.63,0.67,0.71,0.69,0.68
